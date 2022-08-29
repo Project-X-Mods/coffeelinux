@@ -60,13 +60,13 @@ Instructions are as follows: For most things you just answer yes to if asked as 
 
 5: hit yes alot when asked lol.
 
-6: remove the "#" from the multilib entries in the file it brings up (if needed), ctrl+S,ctrl+x to save and exit the editor.
+6: remove the "#" from the multilib entries in the file it brings up (if needed), ctrl+s,ctrl+x to save and exit the editor.
 
 7: let it do its thing. make choices involving pipewire and fonts, stupid stuff like that.
 
 8: set the root password, user password, and the temp user password (needed to automate yay install).
 
-9: enter the temp user password once.
+9: enter the temp user password a few times.
 
 10: yay installs come next (they will ask for the user password alot, sorry).
 
@@ -104,13 +104,13 @@ follow normal installer procedure from step 2 of the live iso.
 
 5: hit yes alot when asked lol.
 
-6: remove the "#" from the multilib entries in the file it brings up (if needed), ctrl+S,ctrl+x to save and exit the editor.
+6: remove the "#" from the multilib entries in the file it brings up (if needed), ctrl+s,ctrl+x to save and exit the editor.
 
 7: let it do its thing. make choices involving pipewire and fonts, stupid stuff like that.
 
 8: set the root password, user password, and the temp user password (needed to automate yay install).
 
-9: enter the temp user password once.
+9: enter the temp user password a few times.
 
 10: yay installs come next (they will ask for the user password alot, sorry).
 
