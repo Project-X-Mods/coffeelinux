@@ -2,9 +2,10 @@
 [Description]
 Key Features: Arch-Based, BTRFS installation, Hybridized Desktop Environment/s, Pipewire, VAAPI on Chrome (with game streaming in mind), FirewallD, and SystemD-Boot.
 
-A script designed to install a unique Coffee-Linux Experience via Arch easily, and semi painlessly.
+A script/command designed to install a unique Coffee-Linux Experience via Arch easily, and semi painlessly.
 (premade Stadia app is located in /opt folder. Place the stadia app file in ~/.local/share/applications/ folder. and reboot after launching chrome and it fails once. Enjoy.)
-This Installer will create an Coffee-Linux install.
+
+This Installer will create an Coffee-Linux install on the fly. Requires internet.
 
 (source files : https://github.com/Project-X-Mods/coffeelinux/releases/tag/Releases)
 
