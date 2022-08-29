@@ -11,6 +11,7 @@ This Installer will create a Coffee-Linux install on the fly. Requires internet.
 
 Features: 
 1. Pure Arch foundation using official repos (and a little AUR here and there)
+
 1a. Built on a running version of itself. archiso was used : project github: https://github.com/archlinux/archiso
 
 2. A Gnome Desktop Environment to be modern, yet familiar in all the right ways. (Always the latest version due to Arch being a rolling release.)
