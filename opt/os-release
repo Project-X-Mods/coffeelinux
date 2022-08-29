@@ -1,6 +1,6 @@
 NAME="Coffee Linux"
 PRETTY_NAME="Coffee Linux"
-ID=coffee
+ID=arch
 BUILD_ID=rolling
 ANSI_COLOR="38;2;23;147;209"
 HOME_URL="https://archlinux.org/"
