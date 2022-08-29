@@ -41,17 +41,15 @@ function cleanupafter(){
 echo 'Cleaning up' &&
 cp coffeelinux/opt/chrome-flags.conf /mnt/home/$user01/.config/ && 
 mkdir /usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/coffeewall01.jpg /mnt/usr/share/backgrounds/coffee/ && 
-cp coffeelinux/opt/coffeewall02.jpg /mnt/usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/coffeewall03.jpg /mnt/usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/coffeewall04.jpg /mnt/usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/coffeewall05.jpg /mnt/usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/coffeewall06.jpg /mnt/usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/coffeewall07.jpg /mnt/usr/share/backgrounds/coffee/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall01.jpg /mnt/usr/share/backgrounds/coffee/ && 
+cp coffeelinux/opt/backgrounds/coffee/coffeewall02.jpg /mnt/usr/share/backgrounds/coffee/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/coffee/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall04.jpg /mnt/usr/share/backgrounds/coffee/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall05.jpg /mnt/usr/share/backgrounds/coffee/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall06.jpg /mnt/usr/share/backgrounds/coffee/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall07.jpg /mnt/usr/share/backgrounds/coffee/ &&
 cp coffeelinux/opt/coffee.png /mnt/opt/ && 
 cp coffeelinux/opt/chrome-flags.conf /mnt/opt/ &&
-cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
-cp coffeelinux/opt/os-release /mnt/etc/ && 
 cp coffeelinux/opt/coffeebrewer /mnt/usr/local/bin/ && 
 cp coffeelinux/opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ &&
 mount -R /mnt &&
