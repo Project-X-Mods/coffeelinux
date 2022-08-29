@@ -85,9 +85,9 @@ Alternate Method
 
 4a: Enter: pacman -S --noconfirm git
 
-5a: Enter: git clone https://liquidsmokex64/arch-linux-installer.git
+5a: Enter: git clone https://github.com/Project-X-Mods/coffeelinux.git
 
-6a: Enter: bash /arch-linux-installer/coffeebrewer.sh
+6a: Enter: bash coffeelinux/coffeebrewer.sh
 
 ===============================================================
 
