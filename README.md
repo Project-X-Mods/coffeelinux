@@ -45,7 +45,7 @@ Note: This is designed for PCs with UEFI, Intel CPUs, and Nvidia GPUs, AMD insta
 
 Note-3: You will have to use fdisk to prepare your drive during installation.
 
-=================================================================================================================
+=======================================================================================================
 
 Instructions are as follows: For most things you just answer yes to if asked as I have already prepared everything in a certain order for your convenience.
 
