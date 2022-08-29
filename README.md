@@ -17,6 +17,8 @@ Features:
 
 2a. Coffee wallpapers in default location (might need to be set manually).
 
+3. Uses nvidia-open driver (not the dkms proprietary older package)(not nouveau either lol)
+
 3/4. Linux Mint Themes, Icons, and Backgrounds installed via yay during os install.
 
 5. Pamac Graphical Software Manager (Select "1 4" in part 4 when prompted for pamac-aur for full functionality)
