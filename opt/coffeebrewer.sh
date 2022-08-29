@@ -31,18 +31,17 @@ arch-chroot /mnt xdg-user-dirs-update
 }
 
 function fixthedm(){
-echo 'Ensuring correct DM is set.' && 
-arch-chroot /mnt pacman -S lightdm lightdm-gtk-greeter &&  
+echo 'Ensuring correct DM is set.' &&   
 arch-chroot /mnt pacman -Syu && 
-arch-chroot /mnt systemctl enable lightdm
+arch-chroot /mnt systemctl enable gdm
 }
 
 function cleanupafter(){
 #Phase 5
 echo 'Cleaning up' &&
-cp -r coffeelinux/opt/chrome-flags.conf /mnt/home/$user01/.config/ && 
+cp  coffeelinux/opt/chrome-flags.conf /mnt/home/$user01/.config/ && 
 cp -r coffeelinux/opt/backgrounds/* /mnt/home/$user01/Pictures/ && 
-cp -r coffeelinux/opt/backgrounds/* /mnt/usr/share/backgrounds/ &&  
+cp -r coffeelinux/opt/backgrounds/* /mnt/usr/share/backgrounds/ &&   
 cp coffeelinux/opt/coffee.png /mnt/opt/ && 
 cp coffeelinux/opt/chrome-flags.conf /mnt/opt/ &&
 cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
@@ -172,7 +171,7 @@ echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf &&
 echo 'options root="LABEL=CoffeePot" rw nvidia-drm.modeset=1' >> /boot/loader/entries/arch.conf && 
 echo 'Presetting default services.' && 
 #read -n 1 -s -r -p "Press any key to continue" &&
-systemctl enable lightdm && 
+systemctl enable gdm && 
 systemctl enable dhcpcd && 
 systemctl enable NetworkManager && 
 systemctl --global enable pipewire.service pipewire-pulse.service wireplumber.service && 
@@ -216,4 +215,3 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 fixthedm &&
 #read -n 1 -s -r -p "Press any key to continue" &&
 cleanupafter
-
