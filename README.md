@@ -113,7 +113,7 @@ follow normal installer procedure from step 2 of the live iso.
 
 10: yay installs come next (they will ask for the user password alot, sorry).
 
-11: it will fix lightdm and the greeter, and copy over coffee related files to /opt and user home directories, then reboot automattically if successful.
+11: it will fix gdm, and copy over coffee related files to /opt and user home directories, then reboot automattically if successful.
 
 12: Login, open chrome once (it will likely fail, this is normal), then reboot.
 
