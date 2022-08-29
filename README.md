@@ -15,7 +15,7 @@ Features:
 
 2. A Cinnamon/Gnome Desktop Environment to be modern, yet familiar in all the right ways. (Always the latest version/s due to Arch being a rolling release.)
 
-2a. Coffee wallpapers in user pictures folder and default location.
+2a. Coffee wallpapers in default location (might need to be set manually).
 
 2b. Blended Cinnamon DE w/Gnome built in as well, uses GDM and Mutter to be different than Mint in some other ways lol.
 
