@@ -15,7 +15,7 @@ Features:
 
 2a. Coffee wallpapers in user pictures folder and default location.
 
-2b. Blended Cinnamon DE and Gnome, yet uses LightDM/Muffin, the gnome backend just smoothes it out a bit.
+2b. Blended Cinnamon DE w/Gnome built in as well, uses GDM and Mutter to be different than Mint in some other ways lol.
 
 3/4. Linux Mint Themes, Sounds, Icons, and Backgrounds installed via yay during os install.
 
