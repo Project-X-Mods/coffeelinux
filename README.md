@@ -9,7 +9,7 @@ This Installer will create an Coffee-Linux install.
 Features: 
 1. Pure Arch foundation using official repos (and a little AUR here and there)
 2. 
-1a. ISO built on a running install of itself with archiso.
+1a. ISO built on a running install of itself with archiso. project github: https://github.com/archlinux/archiso
 
 2. A Cinnamon/Gnome Desktop Environment (Always the latest version)
 
