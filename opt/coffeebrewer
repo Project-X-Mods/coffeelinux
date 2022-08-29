@@ -39,19 +39,22 @@ arch-chroot /mnt systemctl enable gdm
 function cleanupafter(){
 #Phase 5
 echo 'Cleaning up' &&
-cp  coffeelinux/opt/chrome-flags.conf /mnt/home/$user01/.config/ && 
-cp -r coffeelinux/opt/backgrounds/* /mnt/home/$user01/Pictures/ && 
-cp -r coffeelinux/opt/backgrounds/* /mnt/usr/share/backgrounds/ &&   
+cp coffeelinux/opt/chrome-flags.conf /mnt/home/$user01/.config/ && 
+mkdir /usr/share/backgrounds/coffee/ &&
+cp coffeelinux/opt/coffeewall01.jpg /mnt/usr/share/backgrounds/coffee/ && 
+cp coffeelinux/opt/coffeewall02.jpg /mnt/usr/share/backgrounds/coffee/ &&
+cp coffeelinux/opt/coffeewall03.jpg /mnt/usr/share/backgrounds/coffee/ &&
+cp coffeelinux/opt/coffeewall04.jpg /mnt/usr/share/backgrounds/coffee/ &&
+cp coffeelinux/opt/coffeewall05.jpg /mnt/usr/share/backgrounds/coffee/ &&
+cp coffeelinux/opt/coffeewall06.jpg /mnt/usr/share/backgrounds/coffee/ &&
+cp coffeelinux/opt/coffeewall07.jpg /mnt/usr/share/backgrounds/coffee/ &&
 cp coffeelinux/opt/coffee.png /mnt/opt/ && 
 cp coffeelinux/opt/chrome-flags.conf /mnt/opt/ &&
 cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
 cp coffeelinux/opt/os-release /mnt/etc/ && 
 cp coffeelinux/opt/coffeebrewer /mnt/usr/local/bin/ && 
 cp coffeelinux/opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ &&
-cp coffeelinux/opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/home/$user01/Desktop/ && 
-cp coffeelinux/opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/home/$user01/.local/share/applications/ &&
-cp coffeelinux/opt/CoffeeBrewer.desktop /mnt/home/$user01/Desktop/ && 
-umount -R /mnt &&
+mount -R /mnt &&
 echo "Installation Complete, Please Reboot to use your OS." && 
 read -n 1 -s -r -p "Press any key to continue" && 
 reboot
@@ -79,8 +82,8 @@ echo $$
 EOT
 }
 
-echo "This script must be run as root"
-echo "If you have not ran as root user, please exit now."
+echo "This script must be run as via sudo bash only"
+echo "If you have not ran with sudo bash, please exit now."
 
 
 echo "Set your username."
