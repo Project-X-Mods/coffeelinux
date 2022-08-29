@@ -6,6 +6,8 @@ A script designed to install a unique Coffee-Linux Experience via Arch easily, a
 (vaapi chrome-flags.conf and premade Stadia app are located in /opt folder. place chrome-flags.conf in ~/.config/ folder, and the stadia app file in ~/.local/share/applications/ folder. and reboot after launching chrome and it fails once. Enjoy.)
 This Installer will create an Coffee-Linux install.
 
+(source files : https://github.com/Project-X-Mods/coffeelinux/releases/tag/Releases)
+
 Features: 
 1. Pure Arch foundation using official repos (and a little AUR here and there)
 2. 
