@@ -40,9 +40,20 @@ arch-chroot /mnt systemctl enable lightdm
 function cleanupafter(){
 #Phase 5
 echo 'Cleaning up' &&
-#cp arch-linux-installer/coffeebrewer.sh /mnt/opt/ &&
-cp arch-linux-installer/chrome-flags.conf /mnt/opt/ && 
-cp arch-linux-installer/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ && 
+cp -r coffeelinux/opt/chrome-flags.conf /mnt/home/$user01/.config/ && 
+cp -r coffeelinux/opt/backgrounds/* /mnt/home/$user01/Pictures/ && 
+cp -r coffeelinux/opt/backgrounds/* /mnt/usr/share/backgrounds/ && 
+cp -r coffeelinux/opt/icons/* /mnt/usr/share/icons/ && 
+cp -r coffeelinux/opt/themes/* /mnt/usr/share/themes/ && 
+cp coffeelinux/opt/coffee.png /mnt/opt/ && 
+cp coffeelinux/opt/chrome-flags.conf /mnt/opt/ &&
+cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
+cp coffeelinux/opt/os-release /mnt/etc/ && 
+cp coffeelinux/opt/coffeebrewer /mnt/usr/local/bin/ && 
+cp coffeelinux/opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ &&
+cp coffeelinux/opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/home/$user01/Desktop/ && 
+cp coffeelinux/opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/home/$user01/.local/share/applications/ &&
+cp coffeelinux/opt/CoffeeBrewer.desktop /mnt/home/$user01/Desktop/ && 
 umount -R /mnt &&
 echo "Installation Complete, Please Reboot to use your OS." && 
 read -n 1 -s -r -p "Press any key to continue" && 
