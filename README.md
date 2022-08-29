@@ -3,7 +3,7 @@
 Key Features: Arch-Based, BTRFS installation, Hybridized Desktop Environment/s, Pipewire, VAAPI on Chrome (with game streaming in mind), FirewallD, and SystemD-Boot.
 
 A script designed to install a unique Coffee-Linux Experience via Arch easily, and semi painlessly.
-(vaapi chrome-flags.conf and premade Stadia app are located in /opt folder. place chrome-flags.conf in ~/.config/ folder, and the stadia app file in ~/.local/share/applications/ folder. and reboot after launching chrome and it fails once. Enjoy.)
+(premade Stadia app is located in /opt folder. Place the stadia app file in ~/.local/share/applications/ folder. and reboot after launching chrome and it fails once. Enjoy.)
 This Installer will create an Coffee-Linux install.
 
 (source files : https://github.com/Project-X-Mods/coffeelinux/releases/tag/Releases)
@@ -51,7 +51,7 @@ Instructions are as follows: For most things you just answer yes to if asked as 
 
 1a: download link to mega: https://mega.nz/file/tblzBYrA#WsTJpS4fQmWwuy8Ft0tZmYkMJnheOiJ5Yjq4-hCFKcU
 
-2: run the installer,
+2: run the installer, (or run "sudo bash coffeebrewer" in terminal)
 
 3: enter your username, drive id, and partition numbers (easy to find out)
 
@@ -69,7 +69,7 @@ Instructions are as follows: For most things you just answer yes to if asked as 
 
 10: yay installs come next (they will ask for the user password alot, sorry).
 
-11: it will fix lightdm and the greeter, and copy over coffee related files to /opt and user home directories, then reboot automattically if successful.
+11: it will fix gdm, and copy over coffee related files to /opt and user home directories, then reboot automattically if successful.
 
 12: Login, open chrome once (it will likely fail, this is normal), then reboot.
 
