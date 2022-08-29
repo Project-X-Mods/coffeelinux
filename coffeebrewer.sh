@@ -40,11 +40,10 @@ arch-chroot /mnt systemctl enable lightdm
 function cleanupafter(){
 #Phase 5
 echo 'Cleaning up' &&
-cp -r coffeelinux/opt/chrome-flags.conf /mnt/home/$user01/.config/ && 
+cp  coffeelinux/opt/chrome-flags.conf /mnt/home/$user01/.config/ && 
 cp -r coffeelinux/opt/backgrounds/* /mnt/home/$user01/Pictures/ && 
 cp -r coffeelinux/opt/backgrounds/* /mnt/usr/share/backgrounds/ && 
-cp -r coffeelinux/opt/icons/* /mnt/usr/share/icons/ && 
-cp -r coffeelinux/opt/themes/* /mnt/usr/share/themes/ && 
+cp -r coffeelinux/opt/icons/* /mnt/usr/share/icons/ &&  
 cp coffeelinux/opt/coffee.png /mnt/opt/ && 
 cp coffeelinux/opt/chrome-flags.conf /mnt/opt/ &&
 cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
