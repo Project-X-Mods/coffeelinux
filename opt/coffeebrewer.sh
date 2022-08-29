@@ -40,7 +40,7 @@ function cleanupafter(){
 #Phase 5
 echo 'Cleaning up' &&
 cp coffeelinux/opt/chrome-flags.conf /mnt/home/$user01/.config/ && 
-mkdir /usr/share/backgrounds/coffee/ &&
+mkdir /mnt/usr/share/backgrounds/coffee/ &&
 cp coffeelinux/opt/coffeewall01.jpg /mnt/usr/share/backgrounds/coffee/ && 
 cp coffeelinux/opt/coffeewall02.jpg /mnt/usr/share/backgrounds/coffee/ &&
 cp coffeelinux/opt/coffeewall03.jpg /mnt/usr/share/backgrounds/coffee/ &&
