@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=CoffeeBrewer
-Exec=coffeebrewer
-Comment=Installs Coffee Linux
-Terminal=true
-Icon=/opt/coffee.png
-Type=Application
-Name[en_US]=CoffeeBrewer
