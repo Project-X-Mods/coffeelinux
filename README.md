@@ -87,7 +87,7 @@ Alternate Method
 
 5a: Enter: git clone https://github.com/Project-X-Mods/coffeelinux.git
 
-6a: Enter: bash coffeelinux/coffeebrewer.sh
+6a: Enter: bash coffeelinux/opt/coffeebrewer.sh
 
 ===============================================================
 
