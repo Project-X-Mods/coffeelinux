@@ -1,6 +1,6 @@
 # Coffee-Linux (Script-Installed Arch-Linux for Gamers)
 [Description]
-Key Features: Arch-Based, BTRFS installation, Hybridized Desktop Environment/s, Pipewire, VAAPI on Chrome (with game streaming in mind), FirewallD, and SystemD-Boot.
+Key Features: Arch-Based, BTRFS installation, Gnome Desktop Environment/s, Pipewire, VAAPI on Chrome (with game streaming in mind), FirewallD, and SystemD-Boot.
 
 A script/command designed to install a unique Coffee-Linux Experience via Arch easily, and semi painlessly.
 (premade Stadia app is located in /opt folder. Place the stadia app file in ~/.local/share/applications/ folder. and reboot after launching chrome and it fails once. Enjoy.)
@@ -13,13 +13,11 @@ Features:
 1. Pure Arch foundation using official repos (and a little AUR here and there)
 1a. Built on a running version of itself. archiso was used : project github: https://github.com/archlinux/archiso
 
-2. A Cinnamon/Gnome Desktop Environment to be modern, yet familiar in all the right ways. (Always the latest version/s due to Arch being a rolling release.)
+2. A Gnome Desktop Environment to be modern, yet familiar in all the right ways. (Always the latest version due to Arch being a rolling release.)
 
 2a. Coffee wallpapers in default location (might need to be set manually).
 
-2b. Blended Cinnamon DE w/Gnome built in as well, uses GDM and Mutter to be different than Mint in some other ways lol.
-
-3/4. Linux Mint Themes, Sounds, Icons, and Backgrounds installed via yay during os install.
+3/4. Linux Mint Themes, Icons, and Backgrounds installed via yay during os install.
 
 5. Pamac Graphical Software Manager (Select "1 4" in part 4 when prompted for pamac-aur for full functionality)
 
