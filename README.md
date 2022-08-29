@@ -51,7 +51,7 @@ Instructions are as follows: For most things you just answer yes to if asked as 
 
 1: Boot a Coffee Linux live iso (live environment is still a WIP but works fine for what its really needed for lol.). [UEFI ONLY]
 
-1a: download link to mega: [Link Redacted][Fixing a bug]
+1a: download link to mega: (https://mega.nz/file/5WUwCbxI#v1joOYLvm8-zn1bHFva607AWkR073PqnAuys5ybOI-k)
 
 2: run the installer, (or run "sudo bash coffeebrewer" in terminal)
 
