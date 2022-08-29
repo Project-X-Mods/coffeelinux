@@ -131,7 +131,7 @@ pacstrap /mnt base linux linux-firmware linux-headers btrfs-progs net-tools netw
 echo 'Installing Cinnamon/Gnome' && 
 setlocale && 
 #read -n 1 -s -r -p "Press any key to continue" &&
-arch-chroot /mnt pacman -Sy git gnome-menus polkit-gnome gnome gdm gtk4 qt6 gnome-extra dkms gnome-keyring base-devel intel-ucode cinnamon lightdm lightdm-gtk-greeter gnome-terminal gnome-disk-utility gnome-calculator cinnamon-translations gnome-system-monitor xed xreader vlc gnome-keyring cinnamon-translations archlinux-wallpaper udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad sudo nano && 
+arch-chroot /mnt pacman -Sy git gnome-menus polkit-gnome gnome gdm gtk4 qt6 gnome-extra dkms gnome-keyring base-devel intel-ucode cinnamon gnome-terminal gnome-disk-utility gnome-calculator cinnamon-translations gnome-system-monitor xed xreader vlc gnome-keyring cinnamon-translations archlinux-wallpaper udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad sudo nano && 
 echo 'Creating Links' && 
 #read -n 1 -s -r -p "Press any key to continue" && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
