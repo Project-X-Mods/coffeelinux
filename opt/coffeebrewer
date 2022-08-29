@@ -31,10 +31,9 @@ arch-chroot /mnt xdg-user-dirs-update
 }
 
 function fixthedm(){
-echo 'Ensuring correct DM is set.' && 
-arch-chroot /mnt pacman -S lightdm lightdm-gtk-greeter &&  
+echo 'Ensuring correct DM is set.' &&   
 arch-chroot /mnt pacman -Syu && 
-arch-chroot /mnt systemctl enable lightdm
+arch-chroot /mnt systemctl enable gdm
 }
 
 function cleanupafter(){
@@ -172,7 +171,7 @@ echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf &&
 echo 'options root="LABEL=CoffeePot" rw nvidia-drm.modeset=1' >> /boot/loader/entries/arch.conf && 
 echo 'Presetting default services.' && 
 #read -n 1 -s -r -p "Press any key to continue" &&
-systemctl enable lightdm && 
+systemctl enable gdm && 
 systemctl enable dhcpcd && 
 systemctl enable NetworkManager && 
 systemctl --global enable pipewire.service pipewire-pulse.service wireplumber.service && 
