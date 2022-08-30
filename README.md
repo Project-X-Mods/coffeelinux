@@ -8,7 +8,7 @@ This gives it that coffee flavor. We don't maintain anything but the script, eve
 
 We believe using your PC should be as easy as a sip of coffee, so we fixed it up to be that way for you. No guesswork, it just does what its supposed to do. So kick back, relax and enjoy your cup.
 
-=======================================================================================================
+==================================================
 
 Instructions are as follows: For most things you just answer yes to if asked as I have already prepared everything in a certain order for your convenience.
 
@@ -105,4 +105,8 @@ Note: This is designed for PCs with UEFI, Intel CPUs, and Nvidia GPUs, AMD insta
 
 Note-3: You will have to use fdisk to prepare your drive during installation.
 
+===============================================================
 
+Like, Share, and Enjoy. Our Linux is the cure.
+
+===============================================================
