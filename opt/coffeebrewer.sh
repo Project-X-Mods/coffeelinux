@@ -37,6 +37,13 @@ function cleanupafter(){
 echo 'Cleaning up' &&
 cp coffeelinux/opt/chrome-flags.conf /mnt/home/$user01/.config/ && 
 mkdir /mnt/usr/share/backgrounds/coffee/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall01.jpg /mnt/home/$user01/Pictures/ && 
+cp coffeelinux/opt/backgrounds/coffee/coffeewall02.jpg /mnt/home/$user01/Pictures/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/home/$user01/Pictures/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall04.jpg /mnt/home/$user01/Pictures/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall05.jpg /mnt/home/$user01/Pictures/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall06.jpg /mnt/home/$user01/Pictures/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall07.jpg /mnt/home/$user01/Pictures/ &&
 cp coffeelinux/opt/backgrounds/coffee/coffeewall01.jpg /mnt/usr/share/backgrounds/coffee/ && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall02.jpg /mnt/usr/share/backgrounds/coffee/ &&
 cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/coffee/ &&
@@ -186,10 +193,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y protontricks && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y nvidia-vaapi-driver && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y cpupower-gui && 
-arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev && 
-arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mintlocale && 
-arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork &&& 
-arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y linuxmint-keyring &&  
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev &&   
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y google-chrome && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-browser-connector && 
 fixthedm &&
