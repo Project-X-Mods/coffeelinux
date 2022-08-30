@@ -33,30 +33,14 @@ arch-chroot /mnt systemctl enable gdm
 }
 
 function installtheme(){
-mkdir /mnt/usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall01.jpg /mnt/usr/share/backgrounds/coffee/ && 
-cp coffeelinux/opt/backgrounds/coffee/coffeewall02.jpg /mnt/usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/coffee/ && 
-cp coffeelinux/opt/backgrounds/coffee/coffeewall04.jpg /mnt/usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall05.jpg /mnt/usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall06.jpg /mnt/usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall07.jpg /mnt/usr/share/backgrounds/coffee/ && 
-cp coffeelinux/opt/backgrounds/coffee/coffeewall08.jpg /mnt/usr/share/backgrounds/coffee/ && 
-rm -r /mnt/usr/share/icons/Adwaita/
-rm -r /mnt/usr/share/backgrounds/gnome/
-rm -d /mnt/usr/share/icons/Adwaita/
-tar -xvf coffeelinux/opt/NewAdwaitaIcons.tar.xz -C /mnt/usr/share/icons/ && 
-tar -xvf coffeelinux/opt/NewAdwaitaCursors.tar.xz -C /mnt/usr/share/icons/Adwaita/ && 
-tar -xvf coffeelinux/opt/breeze-icons.tar.xz -C /mnt/usr/share/icons/ && 
-tar -xvf coffeelinux/opt/NewAdwaitaTheme.tar.xz -C /mnt/usr/share/themes/ &&
 cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/gnome/adwaita-d.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall05.jpg /mnt/usr/share/backgrounds/gnome/adwaita-l.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall04.jpg /mnt/usr/share/backgrounds/gnome/libadwaita-l.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall06.jpg /mnt/usr/share/backgrounds/gnome/libadwaita-d.jpg &&
 cp coffeelinux/opt/backgrounds/coffee/coffeewall02.jpg /mnt/usr/share/backgrounds/gnome/disco-l.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall07.jpg /mnt/usr/share/backgrounds/gnome/disco-d.jpg && 
-cp coffeelinux/opt/backgrounds/coffee/coffeewall08.jpg /mnt/usr/share/backgrounds/gnome/drool-l.jpg && 
-cp coffeelinux/opt/backgrounds/coffee/coffeewall01.jpg /mnt/usr/share/backgrounds/gnome/drool-d.jpg 
+cp coffeelinux/opt/backgrounds/coffee/coffeewall08.jpg /mnt/usr/share/backgrounds/gnome/wood-l.jpg && 
+cp coffeelinux/opt/backgrounds/coffee/coffeewall01.jpg /mnt/usr/share/backgrounds/gnome/wood-d.jpg 
 }
 
 function cleanupafter(){
@@ -139,7 +123,7 @@ pacstrap /mnt base intel-ucode linux linux-firmware linux-headers btrfs-progs ne
 cp --dereference /etc/os-release /mnt/etc/ && 
 echo 'Installing Cinnamon/Gnome' && 
 setlocale && 
-arch-chroot /mnt pacman -Sy base intel-ucode linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo git gnome-menus polkit-gnome gnome gdm gtk4 qt6 gnome-extra gnome-keyring base-devel gnome-terminal gnome-disk-utility gnome-calculator gnome-system-monitor xed xreader vlc gnome-keyring archlinux-wallpaper udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad sudo nano && 
+arch-chroot /mnt pacman -Sy base intel-ucode linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo git gnome-menus polkit-gnome gnome gdm gtk4 qt6 gnome-extra gnome-keyring base-devel gnome-terminal gnome-disk-utility gnome-calculator gnome-system-monitor xed xreader vlc gnome-keyring gnome-shell udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad sudo nano && 
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 echo 'Set Root Password' && 
