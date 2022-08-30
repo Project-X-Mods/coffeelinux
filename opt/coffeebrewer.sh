@@ -37,20 +37,17 @@ function cleanupafter(){
 echo 'Cleaning up' &&
 cp coffeelinux/opt/chrome-flags.conf /mnt/home/$user01/.config/ && 
 mkdir /mnt/usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall01.jpg /mnt/home/$user01/Pictures/ && 
-cp coffeelinux/opt/backgrounds/coffee/coffeewall02.jpg /mnt/home/$user01/Pictures/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/home/$user01/Pictures/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall04.jpg /mnt/home/$user01/Pictures/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall05.jpg /mnt/home/$user01/Pictures/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall06.jpg /mnt/home/$user01/Pictures/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall07.jpg /mnt/home/$user01/Pictures/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall01.jpg /mnt/usr/share/backgrounds/coffee/ && 
-cp coffeelinux/opt/backgrounds/coffee/coffeewall02.jpg /mnt/usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall04.jpg /mnt/usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall05.jpg /mnt/usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall06.jpg /mnt/usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall07.jpg /mnt/usr/share/backgrounds/coffee/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall01.jpg /mnt/usr/share/backgrounds/gnome/ && 
+cp coffeelinux/opt/backgrounds/coffee/coffeewall02.jpg /mnt/usr/share/backgrounds/gnome/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/gnome/ &&
+rm /mnt/usr/share/backgrounds/gnome/adwaita-d.jpg && 
+rm /mnt/usr/share/backgrounds/gnome/adwaita-l.jpg && 
+cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/gnome/adwaita-d.jpg && 
+cp coffeelinux/opt/backgrounds/coffee/coffeewall05.jpg /mnt/usr/share/backgrounds/gnome/adwaita-l.jpg && 
+cp coffeelinux/opt/backgrounds/coffee/coffeewall04.jpg /mnt/usr/share/backgrounds/gnome/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall05.jpg /mnt/usr/share/backgrounds/gnome/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall06.jpg /mnt/usr/share/backgrounds/gnome/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall07.jpg /mnt/usr/share/backgrounds/gnome/ &&
 cp coffeelinux/opt/chrome-flags.conf /mnt/opt/ && 
 cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
 cp coffeelinux/opt/os-release /mnt/etc/ && 
