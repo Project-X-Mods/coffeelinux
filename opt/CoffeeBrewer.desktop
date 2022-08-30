@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=CoffeeBrewer
-Exec=sudo bash coffeebrewer
-Comment=Installs Coffee Linux
-Terminal=true
-Icon=/opt/coffee.png
-Type=Application
-Name[en_US]=CoffeeBrewer
