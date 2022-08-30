@@ -67,7 +67,12 @@ That should finish it off for you. Enjoy your Coffee. Spread the word! Coffee is
 Hashtags:
 #GamingOnLinux #ArchGaming #SteamLinux #ArchInstaller #CoffeeLinux
 
+==================================================
+
 [Detailed-Description]
+
+==================================================
+
 Key Features: Arch-Based, BTRFS installation, Gnome Desktop Environment/s, Pipewire, VAAPI on Chrome (with game streaming in mind), FirewallD, and SystemD-Boot.
 
 A script/command designed to install a unique Coffee-Linux Experience via Arch easily, and semi painlessly.
