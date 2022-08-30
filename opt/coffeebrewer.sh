@@ -51,9 +51,7 @@ cp coffeelinux/opt/backgrounds/coffee/coffeewall04.jpg /mnt/usr/share/background
 cp coffeelinux/opt/backgrounds/coffee/coffeewall05.jpg /mnt/usr/share/backgrounds/coffee/ &&
 cp coffeelinux/opt/backgrounds/coffee/coffeewall06.jpg /mnt/usr/share/backgrounds/coffee/ &&
 cp coffeelinux/opt/backgrounds/coffee/coffeewall07.jpg /mnt/usr/share/backgrounds/coffee/ &&
-cp coffeelinux/opt/coffee.png /mnt/opt/ && 
-cp coffeelinux/opt/chrome-flags.conf /mnt/opt/ &&
-cp coffeelinux/opt/coffeebrewer /mnt/usr/local/bin/ && 
+cp coffeelinux/opt/chrome-flags.conf /mnt/opt/ && 
 cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
 cp coffeelinux/opt/os-release /mnt/etc/ && 
 cp coffeelinux/opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ &&
