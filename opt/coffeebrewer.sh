@@ -45,32 +45,18 @@ cp coffeelinux/opt/backgrounds/coffee/coffeewall07.jpg /mnt/usr/share/background
 cp coffeelinux/opt/backgrounds/coffee/coffeewall08.jpg /mnt/usr/share/backgrounds/coffee/wood-l.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall01.jpg /mnt/usr/share/backgrounds/coffee/wood-d.jpg && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y humanity-icon-theme && 
-#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ubuntu-dock && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-gtk-theme && 
-#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-gnome-shell-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-icon-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-gtksourceview-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-colors-icon-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-colors-gtk-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-colors-wallpapers && 
-arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-sound-theme &&
-arch-chroot /mnt sudo -Su $user01 yay -R yaru-session && 
-echo "Making sure Gnome Sessions are gone now..."
-arch-chroot /mnt pacman -Ry --noconfirm gnome-session gnome-desktop gnome-desktop-common gnome-shell mutter
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-sound-theme
 }
 
 function cleanupafter(){
 #Phase 5
 echo 'Cleaning up' &&
-cp coffeelinux/opt/chrome-flags.conf /mnt/home/$user01/.config/ && 
-cp coffeelinux/opt/user-folders.lst /mnt/home/$user01/.cinnamon/backgrounds/ &&
-cp coffeelinux/opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/home/$user01/Desktop/ &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/home/$user01/.cinnamon/backgrounds/defaultwallpaper.jpg && 
-cp coffeelinux/opt/chrome-flags.conf /mnt/opt/ && 
-cp coffeelinux/opt/coffeebrewer.sh /mnt/opt/ && 
-cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
-cp coffeelinux/opt/os-release /mnt/etc/ && 
-cp coffeelinux/opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ &&
 umount -R /mnt &&
 echo "Installation Complete, Please Reboot to use your OS." && 
 read -n 1 -s -r -p "Press any key to continue" && 
@@ -156,7 +142,13 @@ echo 'Set Temporary User Password' &&
 arch-chroot /mnt useradd -m -G wheel,audio,video,power,users,storage --badname user02 && 
 arch-chroot /mnt passwd user02 && 
 #Phase 2
-installextrapackages &&
+installextrapackages && 
+cp coffeelinux/opt/chrome-flags.conf /mnt/home/$user01/.config/ && 
+cp coffeelinux/opt/chrome-flags.conf /mnt/opt/ && 
+cp coffeelinux/opt/coffeebrewer.sh /mnt/opt/ && 
+cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
+cp coffeelinux/opt/os-release /mnt/etc/ && 
+cp coffeelinux/opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ && 
 #Phase 3
 arch-chroot /mnt /bin/bash <<"EOT"
 mkdir -p /tmp/arch &&
@@ -209,8 +201,6 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y cpupower-gui && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev &&   
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y google-chrome && 
-#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-browser-connector &&  
-#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mutter-dynamic-buffering && 
 installtheme && 
 fixthedm && 
 fixthehomedir && 
