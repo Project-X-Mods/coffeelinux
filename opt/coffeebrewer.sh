@@ -34,8 +34,8 @@ arch-chroot /mnt systemctl enable gdm
 }
 
 function installtheme(){
-rm -r /usr/share/backgrounds/gnome/ && 
-mkdir /usr/share/backgrounds/gnome/ && 
+rm -r /mnt/usr/share/backgrounds/gnome/ && 
+mkdir /mnt/usr/share/backgrounds/gnome/ && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/gnome/adwaita-d.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall05.jpg /mnt/usr/share/backgrounds/gnome/adwaita-l.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall04.jpg /mnt/usr/share/backgrounds/gnome/libadwaita-l.jpg && 
@@ -44,11 +44,8 @@ cp coffeelinux/opt/backgrounds/coffee/coffeewall02.jpg /mnt/usr/share/background
 cp coffeelinux/opt/backgrounds/coffee/coffeewall07.jpg /mnt/usr/share/backgrounds/gnome/disco-d.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall08.jpg /mnt/usr/share/backgrounds/gnome/wood-l.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall01.jpg /mnt/usr/share/backgrounds/gnome/wood-d.jpg && 
-#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ubuntu-dock && 
-#arch-chroot /mnt gnome-shell-extension-tool -e ubuntu-dock && 
-#arch-chroot /mnt gnome-shell-extension-tool -e user-themes && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y humanity-icon-theme && 
-#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ubuntu-dock && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ubuntu-dock && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-gtk-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-gnome-shell-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-icon-theme && 
@@ -56,7 +53,9 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-colors-icon-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-colors-gtk-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-colors-wallpapers && 
-arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-sound-theme
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-sound-theme && 
+arch-chroot /mnt gnome-shell-extension-tool -e ubuntu-dock && 
+arch-chroot /mnt gnome-shell-extension-tool -e user-themes
 }
 
 function cleanupafter(){
@@ -139,7 +138,7 @@ pacstrap /mnt base intel-ucode linux linux-firmware linux-headers btrfs-progs ne
 cp --dereference /etc/os-release /mnt/etc/ && 
 echo 'Installing Cinnamon/Gnome' && 
 setlocale && 
-arch-chroot /mnt pacman -Sy base intel-ucode linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo git polkit-gnome gdm qt6 gnome-keyring base-devel gnome-terminal gnome-disk-utility gnome-calculator gnome-system-monitor xed xreader vlc gnome-keyring gnome-shell udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad sudo nano cinnamon cinnamon-translations gtk3 && 
+arch-chroot /mnt pacman -Sy base intel-ucode linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo git polkit-gnome gdm qt6 gnome-keyring base-devel gnome-terminal gnome-disk-utility gnome-calculator gnome-system-monitor xed xreader vlc gnome-keyring gnome-shell udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad sudo nano gnome gnome-extra gtk4 && 
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 echo 'Set Root Password' && 
