@@ -16,7 +16,7 @@ cp /etc/pacman.conf /mnt/etc/pacman.conf &&
 cp --dereference /etc/resolv.conf /mnt/etc/ &&
 arch-chroot /mnt pacman -Syy &&
 echo 'Installing a bunch of stuff for gaming and general prettiness.' && 
-arch-chroot /mnt pacman -Sy cpupower go meson xorg xorg-server xorg-apps nvidia-open git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src steam lib32-opencl-nvidia zenity discord gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber firewalld shotwell && 
+arch-chroot /mnt pacman -Sy cpupower go meson xorg xorg-server xorg-apps nvidia-open git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src steam lib32-opencl-nvidia zenity discord gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber firewalld shotwell polkit-gnome gnome-keyring gnome-terminal gnome-disk-utility gnome-calculator gnome-system-monitor && 
 arch-chroot /mnt archlinux-java set java-18-openjdk
 }
 
@@ -34,7 +34,7 @@ arch-chroot /mnt systemctl enable lightdm
 }
 
 function installtheme(){
-arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answerupgrade y --answeredit y mint-artwork && 
 mkdir /mnt/usr/share/backgrounds/coffee/ && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/coffee/adwaita-d.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall05.jpg /mnt/usr/share/backgrounds/coffee/adwaita-l.jpg && 
@@ -53,14 +53,21 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-colors-icon-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-colors-gtk-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-colors-wallpapers && 
-arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-sound-theme
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-sound-theme &&
+arch-chroot /mnt sudo -Su $user01 yay -R yaru-session && 
+echo "Making sure Gnome Sessions are gone now..."
+arch-chroot /mnt pacman -Ry --noconfirm gnome-session gnome-desktop gnome-desktop-common gnome-shell mutter
 }
 
 function cleanupafter(){
 #Phase 5
 echo 'Cleaning up' &&
 cp coffeelinux/opt/chrome-flags.conf /mnt/home/$user01/.config/ && 
+cp coffeelinux/opt/user-folders.lst /mnt/home/$user01/.cinnamon/backgrounds/ &&
+cp coffeelinux/opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/home/$user01/Desktop/ &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/home/$user01/.cinnamon/backgrounds/defaultwallpaper.jpg && 
 cp coffeelinux/opt/chrome-flags.conf /mnt/opt/ && 
+cp coffeelinux/opt/coffeebrewer.sh /mnt/opt/ && 
 cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
 cp coffeelinux/opt/os-release /mnt/etc/ && 
 cp coffeelinux/opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ &&
@@ -133,10 +140,10 @@ echo 'Installing Kernel Frameworks' &&
 pacman -Syy && 
 pacman -Sy --noconfirm archlinux-keyring && 
 pacstrap /mnt base intel-ucode linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo && 
-cp --dereference /etc/os-release /mnt/etc/ && 
+cp --dereference coffeelinux/opt/os-release /mnt/etc/ && 
 echo 'Installing Gnome' && 
 setlocale && 
-arch-chroot /mnt pacman -Sy sudo nano cinnamon translations gtk3 lightdm lightdm-gtk-greeter git polkit-gnome gnome-keyring base-devel gnome-terminal gnome-disk-utility gnome-calculator gnome-system-monitor xed xreader vlc udev dbus gstreamer systemd system-config-printer ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad  && 
+arch-chroot /mnt pacman -Sy sudo nano muffin cinnamon cinnamon-translations gtk3 lightdm lightdm-gtk-greeter git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad libreoffice-fresh && 
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 echo 'Set Root Password' && 
@@ -202,8 +209,9 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y cpupower-gui && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev &&   
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y google-chrome && 
-arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-browser-connector &&  
-arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mutter-dynamic-buffering && 
+#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-browser-connector &&  
+#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mutter-dynamic-buffering && 
+installtheme && 
 fixthedm && 
-installtheme &&
+fixthehomedir && 
 cleanupafter
