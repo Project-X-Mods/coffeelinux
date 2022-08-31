@@ -73,7 +73,7 @@ Hashtags:
 
 ==================================================
 
-Key Features: Arch-Based, BTRFS installation, Gnome Desktop Environment/s, Pipewire, VAAPI on Chrome (with game streaming in mind), FirewallD, and SystemD-Boot.
+Key Features: Arch-Based, BTRFS installation, Cinnamon Desktop Environment, Pipewire, VAAPI on Chrome (with game streaming in mind), FirewallD, and SystemD-Boot.
 
 A script/command designed to install a unique Coffee-Linux Experience via Arch easily, and semi painlessly.
 (premade Stadia app is located in /opt folder. Place the stadia app file in ~/.local/share/applications/ folder. and reboot after launching chrome and it fails once. Enjoy.)
@@ -83,7 +83,7 @@ This Installer will create a Coffee-Linux install on the fly. Requires internet.
 Features: 
 1. Pure Arch foundation using official repos (and a little AUR here and there)
 
-2. A Gnome Desktop Environment to be modern, yet familiar in all the right ways. (Always the latest version due to Arch being a rolling release.)
+2. A Cinnamon Desktop Environment to be modern, yet familiar in all the right ways. (Always the latest version due to Arch being a rolling release.)
 
 2a. Coffee wallpapers in default location (might need to be set manually).
 
@@ -106,6 +106,10 @@ Features:
 11. Yay for CLI installation of AUR applications.
 
 12. FirewallD (Better configuration than the standard one)
+
+13. Mint themes and sounds.
+
+14. Yaru Themes and sounds from Ubuntu.
 
 Note: This is designed for PCs with UEFI, Intel CPUs, and Nvidia GPUs, AMD install WILL LIKELY fail because absolutely no AMD specific packages are installed.
 
