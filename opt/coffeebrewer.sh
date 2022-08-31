@@ -53,9 +53,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-colors-icon-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-colors-gtk-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-colors-wallpapers && 
-arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-sound-theme && 
-arch-chroot /mnt gnome-shell-extension-tool -e ubuntu-dock && 
-arch-chroot /mnt gnome-shell-extension-tool -e user-themes
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-sound-theme
 }
 
 function cleanupafter(){
@@ -205,7 +203,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev &&   
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y google-chrome && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-browser-connector &&  
-arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mutter-ubuntu && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mutter-dynamic-buffering && 
 fixthedm && 
 installtheme &&
 cleanupafter
