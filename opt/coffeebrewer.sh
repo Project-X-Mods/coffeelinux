@@ -134,9 +134,9 @@ pacman -Syy &&
 pacman -Sy --noconfirm archlinux-keyring && 
 pacstrap /mnt base intel-ucode linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo && 
 cp --dereference /etc/os-release /mnt/etc/ && 
-echo 'Installing Cinnamon/Gnome' && 
+echo 'Installing Gnome' && 
 setlocale && 
-arch-chroot /mnt pacman -Sy base intel-ucode linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo git polkit-gnome gdm qt6 gnome-keyring base-devel gnome-terminal gnome-disk-utility gnome-calculator gnome-system-monitor xed xreader vlc gnome-keyring gnome-shell udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad sudo nano gnome gnome-extra gtk4 && 
+arch-chroot /mnt pacman -Sy base intel-ucode linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo git polkit-gnome gdm qt6 gnome-keyring base-devel gnome-terminal gnome-disk-utility gnome-calculator gnome-system-monitor xed xreader vlc gnome-keyring gnome-shell udev dbus gstreamer systemd system-config-printer ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad sudo nano gnome gnome-extra gtk4 && 
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 echo 'Set Root Password' && 
