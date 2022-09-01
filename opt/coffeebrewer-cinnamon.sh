@@ -57,7 +57,14 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 function cleanupafter(){
 #Phase 5
 echo 'Cleaning up' &&
+rm -R /mnt/home/user02 &&
 umount -R /mnt &&
+cp coffeelinux/opt/chrome-flags.conf /mnt/home/$user01/.config/ && 
+cp coffeelinux/opt/chrome-flags.conf /mnt/opt/ && 
+cp coffeelinux/opt/coffeebrewer.sh /mnt/opt/ && 
+cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
+cp coffeelinux/opt/os-release /mnt/etc/ && 
+cp coffeelinux/opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ && 
 echo "Installation Complete, Please Reboot to use your OS." && 
 read -n 1 -s -r -p "Press any key to continue" && 
 reboot
@@ -143,12 +150,6 @@ arch-chroot /mnt useradd -m -G wheel,audio,video,power,users,storage --badname u
 arch-chroot /mnt passwd user02 && 
 #Phase 2
 installextrapackages && 
-cp coffeelinux/opt/chrome-flags.conf /mnt/home/$user01/.config/ && 
-cp coffeelinux/opt/chrome-flags.conf /mnt/opt/ && 
-cp coffeelinux/opt/coffeebrewer.sh /mnt/opt/ && 
-cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
-cp coffeelinux/opt/os-release /mnt/etc/ && 
-cp coffeelinux/opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ && 
 #Phase 3
 arch-chroot /mnt /bin/bash <<"EOT"
 mkdir -p /tmp/arch &&
