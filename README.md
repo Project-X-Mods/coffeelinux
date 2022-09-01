@@ -40,7 +40,7 @@ Execute normal install procedure as follows.
 1: Boot an Arch Linux live iso. [UEFI ONLY]
 1a: clone the repo as described above.
 
-2: run the installer, "bash coffeelinux/opt/coffeebrewer.sh" (or coffeebrewer-cinnamon.sh)
+2: run the installer, "bash coffeelinux/opt/coffeebrewer.sh"
 
 3: enter your username, drive id, and partition numbers (easy to find out)
 
@@ -73,7 +73,7 @@ Hashtags:
 
 ==================================================
 
-Key Features: Arch-Based, BTRFS installation, Gnome or Cinnamon Desktop Environment, Pipewire, VAAPI on Chrome (with game streaming in mind), FirewallD, and SystemD-Boot.
+Key Features: Arch-Based, BTRFS installation, Gnome or Desktop Environment, Pipewire, VAAPI on Chrome (with game streaming in mind), FirewallD, and SystemD-Boot.
 
 A script/command designed to install a unique Coffee-Linux Experience via Arch easily, and semi painlessly.
 (premade Stadia app is located in /opt folder. Place the stadia app file in ~/.local/share/applications/ folder. and reboot after launching chrome and it fails once. Enjoy.)
