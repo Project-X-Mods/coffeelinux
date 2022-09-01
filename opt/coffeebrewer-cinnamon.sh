@@ -34,6 +34,7 @@ arch-chroot /mnt systemctl enable lightdm
 }
 
 function installtheme(){
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answerupgrade y --answeredit y mint-themes-legacy && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answerupgrade y --answeredit y mint-artwork && 
 mkdir /mnt/usr/share/backgrounds/coffee/ && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/coffee/adwaita-d.jpg && 
