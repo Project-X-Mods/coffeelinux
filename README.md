@@ -8,6 +8,7 @@ This gives it that coffee flavor. We don't maintain anything but the script, eve
 
 We believe using your PC should be as easy as a sip of coffee, so we fixed it up to be that way for you. No guesswork, it just does what its supposed to do. So kick back, relax and enjoy your cup.
 
+
 ==================================================
 
 Instructions are as follows: For most things you just answer yes if asked 
@@ -79,11 +80,23 @@ A script/command designed to install a unique Coffee-Linux Experience via Arch e
 (premade Stadia app is located in /opt folder. Place the stadia app file in ~/.local/share/applications/ folder. and reboot after launching chrome and it fails once. Enjoy.)
 
 This Installer will create a Coffee-Linux install on the fly. Requires internet.
+ 
+[Notable Feature] 
+0: Home made and tested installer script.
+0a. Somehow.. in our tests of games like Elite Dangerous, The Forest, and No Mans Sky.. I am seeing a significant fps improvement over Linux Mint 22 (Vanessa) Cinnamon, Ubuntu 22.04.1 LTS, Fedora 36 Workstation, Manjaro (KDE, and Gnome).
+Example: 
 
-Features: 
+The Forest on Ubuntu ran at ~45-55fps (on my hardware)[This is a known horrible performing game on Linux, so I knew this was the test I had to conduct.]
+
+The Forest on Coffee Linux ran at ~75-120fps, exact same settings, same installation of the game even on a second drive.
+
+0b. This is a massive gain and its worth mentioning this was tested on a "GTX 1660" @ 1920x1080 144hz Display default settings except vsync = on in game. This installation script must just do it right or something lol.
+
+0c. I personally (LiquidSmokeX64) test every build script on my own home pc just to be certain it works as intended.
+
 1. Pure Arch foundation using official repos (and a little AUR here and there)
 
-2. A Desktop Environment designed to be modern, yet familiar in all the right ways. (Always the latest version due to Arch being a rolling release.)
+2. A Yaru Desktop Environment designed to be modern, yet much like Ubuntu because of its easy of use is pretty high with a similar Desktop. (Always the latest version due to Arch being a rolling release.)
 
 2a. Coffee wallpapers in default location (might need to be set manually).
 
