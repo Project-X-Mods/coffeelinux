@@ -74,7 +74,7 @@ Hashtags:
 
 ==================================================
 
-Key Features: Arch-Based, BTRFS installation, Gnome or Desktop Environment, Pipewire, VAAPI on Chrome (with game streaming in mind), FirewallD, and SystemD-Boot.
+Key Features: Arch-Based, BTRFS installation, Choice Desktop Environment, Pipewire, VAAPI on Chrome (with game streaming in mind), FirewallD, and SystemD-Boot.
 
 A script/command designed to install a unique Coffee-Linux Experience via Arch easily, and semi painlessly.
 (premade Stadia app is located in /opt folder. Place the stadia app file in ~/.local/share/applications/ folder. and reboot after launching chrome and it fails once. Enjoy.)
@@ -96,7 +96,7 @@ The Forest on Coffee Linux ran at ~75-120fps, exact same settings, same installa
 
 1. Pure Arch foundation using official repos (and a little AUR here and there)
 
-2. A Yaru Desktop Environment designed to be modern, yet much like Ubuntu because of its easy of use is pretty high with a similar Desktop. (Always the latest version due to Arch being a rolling release.)
+2. A Choice Desktop Environment designed to be easy to use. (Always the latest version due to Arch being a rolling release.)
 
 2a. Coffee wallpapers in default location (might need to be set manually).
 
@@ -120,9 +120,9 @@ The Forest on Coffee Linux ran at ~75-120fps, exact same settings, same installa
 
 12. FirewallD (Better configuration than the standard one)
 
-13. Mint themes and sounds.
+13. Mint themes and sounds (Cinnamon only).
 
-14. Yaru Themes and sounds from Ubuntu.
+14. Yaru Themes and sounds from Ubuntu (Gnome only).
 
 Note: This is designed for PCs with UEFI, Intel CPUs, and Nvidia GPUs, AMD install WILL LIKELY fail because absolutely no AMD specific packages are installed.
 
