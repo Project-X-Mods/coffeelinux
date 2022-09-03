@@ -1,4 +1,4 @@
-# Coffee-Linux (Script-Installed Arch-Linux for Gamers)
+# Coffee-Linux (Script-Installed Arch-Linux for Gamers) v2.0.0
 
 What is Coffee Linux? Coffee Linux is a meta-distro similar to Gentoo, but not as painful.
 The idea is that everything is script based meaning we do not have to worry about releases, old packages being installed or anything like that.
