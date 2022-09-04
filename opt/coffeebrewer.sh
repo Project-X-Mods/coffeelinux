@@ -30,27 +30,7 @@ then
 #
 echo 'Starting Gnome version install'
 echo 'Partition the Disk' && 
-#fdisk $drive0 &&
-#
-$ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS  | fdisk $drive0
-g      # create new GPT partition
-n      # add new partition
-1      # partition number
-       # default - first sector
-+1G    # partition size
-n      # add new partition
-2      # partition number
-       # default - first sector
-       # default - last sector
-t      # change partition type
-1      # partition number
-1      # EFI filesystem
-t      # change partition type
-2      # partition number
-83     # Linux filesystem
-w      # write partition table and exit
-FDISK_CMDS
-#
+fdisk $drive0 &&
 echo 'Formatting Partitions' && 
 mkfs.fat -F32 $boot0 && 
 #mkswap $swap0 && 
@@ -217,26 +197,7 @@ elif [ $desktop0 == 'kde' ]
 then
 echo 'Starting KDE version install'
 echo 'Partition the Disk' && 
-#
-$ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS  | fdisk $drive0
-g      # create new GPT partition
-n      # add new partition
-1      # partition number
-       # default - first sector
-+1G    # partition size
-n      # add new partition
-2      # partition number
-       # default - first sector
-       # default - last sector
-t      # change partition type
-1      # partition number
-1      # EFI filesystem
-t      # change partition type
-2      # partition number
-83     # Linux filesystem
-w      # write partition table and exit
-FDISK_CMDS
-#
+fdisk $drive0 &&
 echo 'Formatting Partitions' && 
 mkfs.fat -F32 $boot0 && 
 #mkswap $swap0 && 
@@ -276,7 +237,7 @@ echo '127.0.1.1 Coffee-Linux' >> /etc/hosts &&
 echo $$
 EOT
 # 
-arch-chroot /mnt pacman -Sy plasma-framework kcmutils archlinux-appstream-data appstream-qt qt5-graphicaleffects kuserfeedback knewstuff kidletime discount hicolor-icon-theme kirigami2 cmake make packagekit-qt5 flatpack fwupd extra-cmake-modules plasma-wayland-session egl-wayland qt6 dkms kde-applications-meta sddm plasma-meta sudo nano git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad && 
+arch-chroot /mnt pacman -Sy plasma-framework kcmutils archlinux-appstream-data appstream-qt qt5-graphicaleffects kuserfeedback knewstuff kidletime discount hicolor-icon-theme kirigami2 cmake make flatpac fwupd extra-cmake-modules plasma-wayland-session egl-wayland qt6 dkms kde-applications-meta sddm plasma-meta sudo nano git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad && 
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 echo 'Set Root Password' && 
@@ -364,7 +325,7 @@ cp coffeelinux/opt/backgrounds/coffee/coffeewall07.jpg /mnt/usr/share/background
 cp coffeelinux/opt/backgrounds/coffee/coffeewall08.jpg /mnt/usr/share/backgrounds/coffee/coffeewall07.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall01.jpg /mnt/usr/share/backgrounds/coffee/coffeewall08.jpg &&  
 # 
-arch-chroot /mnt chown -hR root:wheel /mnt/usr/share/backgrounds/coffee/* && 
+#arch-chroot /mnt chown -hR root:wheel /mnt/usr/share/backgrounds/coffee/* && 
 echo 'Ensuring correct DM is set.' &&  
 arch-chroot /mnt pacman -Syu && 
 arch-chroot /mnt systemctl enable sddm && 
@@ -391,25 +352,7 @@ then
 echo 'Starting Cinnamon version install'
 echo 'Partition the Disk' && 
 #
-$ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS  | fdisk $drive0
-g      # create new GPT partition
-n      # add new partition
-1      # partition number
-       # default - first sector
-+1G    # partition size
-n      # add new partition
-2      # partition number
-       # default - first sector
-       # default - last sector
-t      # change partition type
-1      # partition number
-1      # EFI filesystem
-t      # change partition type
-2      # partition number
-83     # Linux filesystem
-w      # write partition table and exit
-FDISK_CMDS
-#
+fdisk $drive0 && 
 echo 'formatting Partitions' && 
 mkfs.fat -F32 $boot0 && 
 #mkswap $swap0 && 
