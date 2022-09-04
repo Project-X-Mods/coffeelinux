@@ -1,6 +1,6 @@
 NAME="CoffeeLinux"
 PRETTY_NAME="Coffee Linux"
-VERSION_ID="2.0.0"
+VERSION_ID="2.0.1"
 VERSION_CODENAME="Liberica"
 ID="coffeelinux"
 BUILD_ID="Liberica"
