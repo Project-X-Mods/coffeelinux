@@ -90,7 +90,7 @@ echo '127.0.1.1 Coffee-Linux' >> /etc/hosts &&
 echo $$
 EOT
 #
-arch-chroot /mnt pacman -Sy sudo nano git base-devel dkms xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad gtk4 gdm gnome gnome-extra &&  
+arch-chroot /mnt pacman -Sy sudo nano git base-devel dkms xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad gtk4 gdm gnome gnome-extra egl-wayland &&  
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 echo 'Set Root Password' && 
@@ -276,7 +276,7 @@ echo '127.0.1.1 Coffee-Linux' >> /etc/hosts &&
 echo $$
 EOT
 # 
-arch-chroot /mnt pacman -Sy qt6 dkms kde-applications-meta sddm plasma-meta sudo nano git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad && 
+arch-chroot /mnt pacman -Sy plasma-framework kcmutils archlinux-appstream-data appstream-qt qt5-graphicaleffects kuserfeedback knewstuff kidletime discount hicolor-icon-theme kirigami2 cmake make packagekit-qt5 flatpack fwupd extra-cmake-modules plasma-wayland-session egl-wayland qt6 dkms kde-applications-meta sddm plasma-meta sudo nano git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad && 
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 echo 'Set Root Password' && 
@@ -449,7 +449,7 @@ echo '127.0.1.1 Coffee-Linux' >> /etc/hosts &&
 echo $$
 EOT
 #
-arch-chroot /mnt pacman -Sy sudo nano dkms git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad cinnamon cinnamon-translations gtk4 &&  
+arch-chroot /mnt pacman -Sy sudo nano egl-wayland dkms git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad cinnamon cinnamon-translations gtk3 &&  
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 echo 'Set Root Password' && 
@@ -543,7 +543,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y cpupower-gui && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-locale && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y linuxmint-keyring && 
-rm /mnt/usr/share/xsessions/gnome* && 
+#rm /mnt/usr/share/xsessions/gnome* && 
 arch-chroot /mnt chown -hR root:wheel /mnt/usr/share/backgrounds/coffee/* &&
 echo 'Ensuring correct DM is set.' && 
 arch-chroot /mnt pacman -Sy lightdm lightdm-gtk-settings
