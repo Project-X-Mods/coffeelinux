@@ -170,7 +170,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-gnome-shell-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-session && 
 rm /mnt/usr/share/xsessions/gnome* && 
-arch-chroot /mnt chown -hR root:wheel /mnt/usr/share/backgrounds/gnome/* &&
+#arch-chroot /mnt chown -hR root:wheel /mnt/usr/share/backgrounds/gnome/* &&
 echo 'Ensuring correct DM is set.' &&  
 arch-chroot /mnt pacman -Syu && 
 arch-chroot /mnt systemctl enable gdm && 
@@ -313,7 +313,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y nvidia-vaapi-driver &&  
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev &&   
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y google-chrome && 
-arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y pamac-aur && 
+#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y pamac-aur && 
 mkdir -p /mnt/usr/share/backgrounds/coffee/ && 
 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/coffee/coffeewall01.jpg && 
@@ -487,7 +487,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-locale && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y linuxmint-keyring && 
 #rm /mnt/usr/share/xsessions/gnome* && 
-arch-chroot /mnt chown -hR root:wheel /mnt/usr/share/backgrounds/coffee/* &&
+#arch-chroot /mnt chown -hR root:wheel /mnt/usr/share/backgrounds/coffee/* &&
 echo 'Ensuring correct DM is set.' && 
 arch-chroot /mnt pacman -Sy lightdm lightdm-gtk-settings
 arch-chroot /mnt pacman -Syu && 
