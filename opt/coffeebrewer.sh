@@ -18,34 +18,49 @@ echo "Set your Boot Partition ('p1 or 1')."
 read boot
 boot0=$drive0$boot
 
-echo "Set your Swap Partition ('p2 or 2')."
-read swap
-swap0=$drive0$swap
+#echo "Set your Swap Partition ('p2 or 2')."
+#read swap
+#swap0=$drive0$swap
 
-echo "Set your System/Home Partition ('p3 or 3')."
+echo "Set your System/Home Partition ('p2 or 2')."
 read system
 system0=$drive0$system
 
 echo "What dektop environment would you like? ('gnome, kde, or cinnamon (case-sensitive)')."
-read desktopenvironment
-desktop0=$desktopenvironment
+read desktop0
 
-if [ $desktop0 != 'gnome' ] || [ $desktop0 != 'kde' ] || [ $desktop0 != 'cinnamon' ]
-then
-echo 'Desktop check failed, Aborting now...' && exit
-elif [ $desktop0 == 'gnome' ]
+if [ $desktop0 == 'gnome' ]
 then
 #
 echo 'Starting Gnome version install'
 echo 'Partition the Disk' && 
-fdisk $drive0 && 
-#partitionthedisk && 
+#fdisk $drive0 &&
+#
+$ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS  | sudo fdisk $drive0
+g      # create new GPT partition
+n      # add new partition
+1      # partition number
+       # default - first sector
++1G    # partition size
+n      # add new partition
+2      # partition number
+       # default - first sector
+       # default - last sector
+t      # change partition type
+1      # partition number
+1      # EFI filesystem
+t      # change partition type
+2      # partition number
+83     # Linux filesystem
+w      # write partition table and exit
+FDISK_CMDS
+#
 echo 'Formatting Partitions' && 
 mkfs.fat -F32 $boot0 && 
-mkswap $swap0 && 
+#mkswap $swap0 && 
 mkfs.btrfs -L CoffeePot $system0 && 
 echo 'Mounting Disks' && 
-swapon $swap0 && 
+#swapon $swap0 && 
 mount $system0 /mnt && 
 mkdir /mnt/boot && 
 mount $boot0 /mnt/boot
@@ -157,7 +172,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev &&   
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y google-chrome && 
 rm -R /mnt/usr/share/backgrounds/gnome/ && 
-mkdir /mnt/usr/share/backgrounds/gnome/ && 
+mkdir -p /mnt/usr/share/backgrounds/gnome/ && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/gnome/adwaita-d.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall05.jpg /mnt/usr/share/backgrounds/gnome/adwaita-l.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall04.jpg /mnt/usr/share/backgrounds/gnome/libadwaita-l.jpg && 
@@ -203,16 +218,34 @@ reboot
 #
 elif [ $desktop0 == 'kde' ]
 then
-echo 'starting KDE version install'
+echo 'Starting KDE version install'
 echo 'Partition the Disk' && 
-fdisk $drive0 && 
-#partitionthedisk && 
+#
+$ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS  | sudo fdisk $drive0
+g      # create new GPT partition
+n      # add new partition
+1      # partition number
+       # default - first sector
++1G    # partition size
+n      # add new partition
+2      # partition number
+       # default - first sector
+       # default - last sector
+t      # change partition type
+1      # partition number
+1      # EFI filesystem
+t      # change partition type
+2      # partition number
+83     # Linux filesystem
+w      # write partition table and exit
+FDISK_CMDS
+#
 echo 'Formatting Partitions' && 
 mkfs.fat -F32 $boot0 && 
-mkswap $swap0 && 
+#mkswap $swap0 && 
 mkfs.btrfs -L CoffeePot $system0 && 
 echo 'Mounting Disks' && 
-swapon $swap0 && 
+#swapon $swap0 && 
 mount $system0 /mnt && 
 mkdir /mnt/boot && 
 mount $boot0 /mnt/boot
@@ -247,7 +280,6 @@ echo $$
 EOT
 # 
 arch-chroot /mnt pacman -Sy qt6 dkms kde-applications-meta sddm plasma-meta sudo nano git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad && 
-installthedm && 
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 echo 'Set Root Password' && 
@@ -323,7 +355,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y nvidia-vaapi-driver &&  
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev &&   
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y google-chrome && 
-mkdir /mnt/usr/share/backgrounds/coffee/ && 
+mkdir -p /mnt/usr/share/backgrounds/coffee/ && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/coffee/coffeewall01.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall05.jpg /mnt/usr/share/backgrounds/coffee/coffeewall02.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall04.jpg /mnt/usr/share/backgrounds/coffee/coffeewall03.jpg && 
@@ -358,14 +390,32 @@ elif [ $desktop0 == 'cinnamon' ]
 then
 echo 'Starting Cinnamon version install'
 echo 'Partition the Disk' && 
-fdisk $drive0 && 
-#partitionthedisk && 
-echo 'Formatting Partitions' && 
+#
+$ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS  | sudo fdisk $drive0
+g      # create new GPT partition
+n      # add new partition
+1      # partition number
+       # default - first sector
++1G    # partition size
+n      # add new partition
+2      # partition number
+       # default - first sector
+       # default - last sector
+t      # change partition type
+1      # partition number
+1      # EFI filesystem
+t      # change partition type
+2      # partition number
+83     # Linux filesystem
+w      # write partition table and exit
+FDISK_CMDS
+#
+echo 'formatting Partitions' && 
 mkfs.fat -F32 $boot0 && 
-mkswap $swap0 && 
+#mkswap $swap0 && 
 mkfs.btrfs -L CoffeePot $system0 && 
 echo 'Mounting Disks' && 
-swapon $swap0 && 
+#swapon $swap0 && 
 mount $system0 /mnt && 
 mkdir /mnt/boot && 
 mount $boot0 /mnt/boot
@@ -476,7 +526,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y nvidia-vaapi-driver &&  
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev &&   
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y google-chrome && 
-mkdir /mnt/usr/share/backgrounds/coffee/ && 
+mkdir -p /mnt/usr/share/backgrounds/coffee/ && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/coffee/coffeewall01.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall05.jpg /mnt/usr/share/backgrounds/coffee/coffeewall02.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall04.jpg /mnt/usr/share/backgrounds/coffee/coffeewall03.jpg && 
@@ -515,8 +565,6 @@ echo "Installation Complete, Please Reboot to use your OS." &&
 read -n 1 -s -r -p "Press any key to continue" && 
 umount -R /mnt &&
 reboot
-#
 else
-then
-exit
+echo "You need to enter a valid desktop environment"
 fi
