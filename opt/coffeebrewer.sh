@@ -36,7 +36,7 @@ echo 'Starting Gnome version install'
 echo 'Partition the Disk' && 
 #fdisk $drive0 &&
 #
-$ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS  | sudo fdisk $drive0
+$ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS  | fdisk $drive0
 g      # create new GPT partition
 n      # add new partition
 1      # partition number
@@ -221,7 +221,7 @@ then
 echo 'Starting KDE version install'
 echo 'Partition the Disk' && 
 #
-$ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS  | sudo fdisk $drive0
+$ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS  | fdisk $drive0
 g      # create new GPT partition
 n      # add new partition
 1      # partition number
@@ -391,7 +391,7 @@ then
 echo 'Starting Cinnamon version install'
 echo 'Partition the Disk' && 
 #
-$ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS  | sudo fdisk $drive0
+$ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS  | fdisk $drive0
 g      # create new GPT partition
 n      # add new partition
 1      # partition number
