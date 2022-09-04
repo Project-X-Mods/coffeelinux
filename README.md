@@ -12,8 +12,9 @@ We believe using your PC should be as easy as a sip of coffee, so we fixed it up
 
 ==================================================
 
-Instructions are as follows: For most things you just answer yes if asked 
-I have already prepared everything in a certain order for your convenience internally.
+Instructions are as follows: For most things you just answer "yes" if asked.
+
+The installer is prepared everything in a certain order for your convenience and performance internally.
 
 ==================================================
 
