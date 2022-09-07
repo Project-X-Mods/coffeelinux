@@ -65,6 +65,10 @@ pacman -Syy &&
 pacman -Sy --noconfirm archlinux-keyring && 
 pacstrap /mnt base intel-ucode && 
 #cp --dereference /opt/os-release /mnt/etc/ && 
+arch-chroot /mnt pacman -Syy &&
+arch-chroot /mnt pacman -Sy --noconfirm archlinux-keyring &&
+cp /etc/pacman.conf /mnt/etc/pacman.conf &&
+arch-chroot /mnt pacman -Syy &&
 echo 'Installing Gnome' && 
 arch-chroot /mnt /bin/bash <<"EOT"
 echo 'Setting Locale' && 
@@ -87,7 +91,7 @@ echo '127.0.0.1 localhost' >> /mnt/etc/hosts &&
 echo '::1 localhost' >> /mnt/etc/hosts && 
 echo 127.0.1.1 $hostname0 >> /mnt/etc/hosts && 
 #
-arch-chroot /mnt pacman -Sy linux-neptune linux-firmware-neptune linux-neptune-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo sudo nano git base-devel archlinux-appstream-data dkms qt6 xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad gtk4 gdm gnome gnome-extra egl-wayland &&
+arch-chroot /mnt pacman -Sy linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo sudo nano git base-devel archlinux-appstream-data dkms qt6 xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad gtk4 gdm gnome gnome-extra egl-wayland &&
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 echo 'Set Root Password' && 
@@ -125,9 +129,9 @@ echo 'timeout 5' >> /boot/loader/loader.conf &&
 echo 'console-mode max' >> /boot/loader/loader.conf && 
 echo 'editor no' >> /boot/loader/loader.conf && 
 echo 'title Coffee-Linux' > /boot/loader/entries/arch.conf && 
-echo 'linux /vmlinuz-linux-neptune' >> /boot/loader/entries/arch.conf &&
+echo 'linux /vmlinuz-linux' >> /boot/loader/entries/arch.conf &&
 echo 'initrd /intel-ucode.img' >> /boot/loader/entries/arch.conf && 
-echo 'initrd /initramfs-linux-neptune.img' >> /boot/loader/entries/arch.conf &&
+echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf &&
 
 echo 'Presetting default services.' && 
 #read -n 1 -s -r -p "Press any key to continue" &&
@@ -166,7 +170,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y nvidia-vaapi-driver &&  
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev &&   
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y microsoft-edge-stable &&
-rm -R /mnt/usr/share/backgrounds/gnome/ && ttf-ms-win11
+rm -R /mnt/usr/share/backgrounds/gnome/ && 
 mkdir -p /mnt/usr/share/backgrounds/gnome/ && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/gnome/adwaita-d.jpg && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall05.jpg /mnt/usr/share/backgrounds/gnome/adwaita-l.jpg && 
@@ -190,7 +194,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-session && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-sound-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-unity-theme && 
-arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11 && 
+#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11 && 
 rm /mnt/usr/share/xsessions/gnome* && 
 #arch-chroot /mnt chown -hR root:wheel /usr/share/backgrounds/gnome/* &&
 echo 'Ensuring correct DM is set.' &&  
@@ -248,6 +252,10 @@ pacman -Syy &&
 pacman -Sy --noconfirm archlinux-keyring && 
 pacstrap /mnt base intel-ucode && 
 #cp --dereference /opt/os-release /mnt/etc/ && 
+arch-chroot /mnt pacman -Syy &&
+arch-chroot /mnt pacman -Sy --noconfirm archlinux-keyring &&
+cp /etc/pacman.conf /mnt/etc/pacman.conf &&
+arch-chroot /mnt pacman -Syy &&
 echo 'Installing KDE' && 
 arch-chroot /mnt /bin/bash <<"EOT"
 echo 'Setting Locale' && 
@@ -270,7 +278,7 @@ echo '127.0.0.1 localhost' >> /mnt/etc/hosts &&
 echo '::1 localhost' >> /mnt/etc/hosts && 
 echo 127.0.1.1 $hostname0 >> /mnt/etc/hosts && 
 #
-arch-chroot /mnt pacman -Sy linux-neptune linux-firmware-neptune linux-neptune-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo plasma-framework kcmutils archlinux-appstream-data appstream-qt qt5-graphicaleffects kuserfeedback knewstuff kidletime discount hicolor-icon-theme kirigami2 cmake make flatpak fwupd extra-cmake-modules plasma-wayland-session egl-wayland qt6 dkms kde-applications-meta sddm sddm-kcm plasma-meta sudo nano git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad &&
+arch-chroot /mnt pacman -Sy linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo plasma-framework kcmutils archlinux-appstream-data appstream-qt qt5-graphicaleffects kuserfeedback knewstuff kidletime discount hicolor-icon-theme kirigami2 cmake make flatpak fwupd extra-cmake-modules plasma-wayland-session egl-wayland qt6 dkms kde-applications-meta sddm sddm-kcm plasma-meta sudo nano git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad &&
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 echo 'Set Root Password' && 
@@ -290,7 +298,7 @@ cp /etc/pacman.conf /mnt/etc/pacman.conf &&
 cp --dereference /etc/resolv.conf /mnt/etc/ &&
 arch-chroot /mnt pacman -Syy &&
 echo 'Installing a bunch of stuff for gaming and general prettiness.' && 
-arch-chroot /mnt pacman -Sy power-profiles-daemon go meson xorg xorg-server xorg-apps nvidia-open virtualbox virtualbox-guest-utils git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src steam-jupiter-stable steamdeck-kde-presets gamescope lib32-opencl-nvidia libreoffice-fresh zenity discord gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber firewalld shotwell geary &&
+arch-chroot /mnt pacman -Sy gnome-disk-utility power-profiles-daemon go meson xorg xorg-server xorg-apps nvidia-open virtualbox virtualbox-guest-utils git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src steam-jupiter-stable steamdeck-kde-presets gamescope lib32-opencl-nvidia libreoffice-fresh zenity discord gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber firewalld shotwell geary &&
 arch-chroot /mnt archlinux-java set java-18-openjdk && 
 #Phase 3
 arch-chroot /mnt /bin/bash <<"EOT"
@@ -308,9 +316,9 @@ echo 'timeout 5' >> /boot/loader/loader.conf &&
 echo 'console-mode max' >> /boot/loader/loader.conf && 
 echo 'editor no' >> /boot/loader/loader.conf && 
 echo 'title Coffee-Linux' > /boot/loader/entries/arch.conf && 
-echo 'linux /vmlinuz-linux-neptune' >> /boot/loader/entries/arch.conf &&
+echo 'linux /vmlinuz-linux' >> /boot/loader/entries/arch.conf &&
 echo 'initrd /intel-ucode.img' >> /boot/loader/entries/arch.conf && 
-echo 'initrd /initramfs-linux-neptune.img' >> /boot/loader/entries/arch.conf &&
+echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf &&
 echo 'Presetting default services.' && 
 #read -n 1 -s -r -p "Press any key to continue" &&
 systemctl enable sddm && 
@@ -349,7 +357,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y microsoft-edge-stable &&
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y pamac-aur && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y systemd-kcm && 
-arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11 &&
+#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11 &&
 mkdir -p /mnt/usr/share/backgrounds/coffee/ && 
 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/coffee/coffeewall01.jpg && 
@@ -416,6 +424,10 @@ pacman -Syy &&
 pacman -Sy --noconfirm archlinux-keyring && 
 pacstrap /mnt base intel-ucode &&
 #cp --dereference /opt/os-release /mnt/etc/ && 
+arch-chroot /mnt pacman -Syy &&
+arch-chroot /mnt pacman -Sy --noconfirm archlinux-keyring &&
+cp /etc/pacman.conf /mnt/etc/pacman.conf &&
+arch-chroot /mnt pacman -Syy && 
 echo 'Installing Cinnamon' && 
 arch-chroot /mnt /bin/bash <<"EOT"
 echo 'Setting Locale' && 
@@ -438,7 +450,7 @@ echo '127.0.0.1 localhost' >> /mnt/etc/hosts &&
 echo '::1 localhost' >> /mnt/etc/hosts && 
 echo 127.0.1.1 $hostname0 >> /mnt/etc/hosts && 
 #
-arch-chroot /mnt pacman -Sy linux-neptune linux-firmware-neptune linux-neptune-headers btrfs-progs net-tools networkmanager dhcpcd iwd qt6 man-pages man-db texinfo sudo nano dkms git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad cinnamon cinnamon-translations gtk3 &&
+arch-chroot /mnt pacman -Sy linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd qt6 man-pages man-db texinfo sudo nano dkms git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad cinnamon cinnamon-translations gtk3 &&
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 echo 'Set Root Password' && 
@@ -476,9 +488,9 @@ echo 'timeout 5' >> /boot/loader/loader.conf &&
 echo 'console-mode max' >> /boot/loader/loader.conf && 
 echo 'editor no' >> /boot/loader/loader.conf && 
 echo 'title Coffee-Linux' > /boot/loader/entries/arch.conf && 
-echo 'linux /vmlinuz-linux-neptune' >> /boot/loader/entries/arch.conf &&
+echo 'linux /vmlinuz-linux' >> /boot/loader/entries/arch.conf &&
 echo 'initrd /intel-ucode.img' >> /boot/loader/entries/arch.conf && 
-echo 'initrd /initramfs-linux-neptune.img' >> /boot/loader/entries/arch.conf &&
+echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf &&
 echo 'Presetting default services.' && 
 #read -n 1 -s -r -p "Press any key to continue" &&
 systemctl enable lightdm && 
@@ -516,7 +528,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y nvidia-vaapi-driver &&  
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev &&   
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y microsoft-edge-stable &&
-arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11 && 
+#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11 && 
 rm -R /mnt/usr/share/backgrounds/gnome/ && 
 mkdir -p /mnt/usr/share/backgrounds/gnome/ && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/gnome/adwaita-d.jpg && 
