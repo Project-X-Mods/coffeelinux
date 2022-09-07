@@ -210,8 +210,8 @@ echo 'Cleaning up' &&
 rm -R /mnt/home/user02/ && 
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/home/$user01/.config/ &&
 cp coffeelinux/opt/microsoft-edge-stable.conf /mnt/opt/ &&
-cp coffeelinux/opt/coffeebrewer /mnt/opt/ && 
-cp coffeelinux/opt/coffeebrewer /mnt/usr/local/bin/ && 
+cp coffeelinux/opt/coffeebrewer.sh /mnt/opt/ && 
+cp coffeelinux/opt/coffeebrewer.sh /mnt/usr/local/bin/ && 
 cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
 cp coffeelinux/opt/os-release /mnt/etc/ && 
 #cp /opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ &&
@@ -381,8 +381,8 @@ echo 'Cleaning up' &&
 rm -R /mnt/home/user02/ && 
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/home/$user01/.config/ &&
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/opt/ &&
-cp coffeelinux/opt/coffeebrewer /mnt/opt/ && 
-cp coffeelinux/opt/coffeebrewer /mnt/usr/local/bin/ && 
+cp coffeelinux/opt/coffeebrewer.sh /mnt/opt/ && 
+cp coffeelinux/opt/coffeebrewer.sh /mnt/usr/local/bin/ && 
 cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
 cp coffeelinux/opt/os-release /mnt/etc/ && 
 #cp /opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ &&
@@ -562,8 +562,8 @@ echo 'Cleaning up' &&
 rm -R /mnt/home/user02/ && 
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/home/$user01/.config/ &&
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/opt/ &&
-cp coffeelinux/opt/coffeebrewer /mnt/opt/ && 
-cp coffeelinux/opt/coffeebrewer /mnt/usr/local/bin/ && 
+cp coffeelinux/opt/coffeebrewer.sh /mnt/opt/ && 
+cp coffeelinux/opt/coffeebrewer.sh /mnt/usr/local/bin/ && 
 cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
 cp coffeelinux/opt/os-release /mnt/etc/ && 
 #cp /opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ &&
