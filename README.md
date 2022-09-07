@@ -1,4 +1,4 @@
-# Coffee-Linux v.2.0.3
+# Coffee-Linux v.2.2.0
 
 What is Coffee Linux? Coffee Linux is a meta-distro similar to Gentoo, but not as painful.
 # The idea is that everything is script based meaning we do not have to worry about releases, old packages being installed or anything like that.
@@ -18,7 +18,7 @@ The installer has prepared everything in a certain order for your convenience an
 
 ==================================================
 
-Cloning Method for Installation.
+Cloning Method for Installation. 
 
 ==================================================
 
@@ -125,6 +125,10 @@ The Forest on Coffee Linux ran at ~75-120fps, exact same settings, same installa
 13. Mint themes and sounds (Cinnamon only).
 
 14. Yaru Themes and sounds from Ubuntu (Gnome only).
+
+15. SteamOS Kernel, headers, and firmware.
+
+16. SteamDeck version of the Steam Client.
 
 Note: This is designed for PCs with UEFI, Intel CPUs, and Nvidia GPUs, AMD install WILL LIKELY fail because absolutely no AMD specific packages are installed.
 
