@@ -126,13 +126,11 @@ The Forest on Coffee Linux ran at ~75-120fps, exact same settings, same installa
 
 14. Yaru Themes and sounds from Ubuntu (Gnome only).
 
-15. SteamOS Kernel, headers, and firmware.
-
-16. SteamDeck version of the Steam Client.
+15. SteamDeck version of the Steam Client.
 
 Note: This is designed for PCs with UEFI, Intel CPUs, and Nvidia GPUs, AMD install WILL LIKELY fail because absolutely no AMD specific packages are installed.
 
-Note-3: You will have to use fdisk to prepare your drive during installation.
+Note-2 You will have to use fdisk to prepare your drive during installation.
 
 ===============================================================
 
