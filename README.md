@@ -1,4 +1,4 @@
-# Coffee Linux v.2.2.1
+# Coffee Linux v.3.0.0
 
 What is Coffee Linux? Coffee Linux is a meta-distro similar to Gentoo, but not as painful.
 # The idea is that everything is script based meaning we do not have to worry about releases, old packages being installed or anything like that.
@@ -51,19 +51,17 @@ Execute normal install procedure as follows.
 
 5: hit yes alot when asked lol.
 
-6: remove the "#" from the multilib entries in the file it brings up (if needed), ctrl+s,ctrl+x to save and exit the editor.
+6: let it do its thing. make choices involving pipewire and fonts, stupid stuff like that.
 
-7: let it do its thing. make choices involving pipewire and fonts, stupid stuff like that.
+7: set the root password, user password, and the temp user password (needed to automate yay install).
 
-8: set the root password, user password, and the temp user password (needed to automate yay install).
+8: enter the temp user password to install yay.
 
-9: enter the temp user password a few times.
+9: yay installs come next (they will ask for the user password alot, sorry).
 
-10: yay installs come next (they will ask for the user password alot, sorry).
+10: it will fix sddm, and copy over coffee related files to /opt and user home directories, then reboot automattically if successful.
 
-11: it will fix gdm, and copy over coffee related files to /opt and user home directories, then reboot automattically if successful.
-
-12: Login, open chrome once (it will likely fail, this is normal), then reboot.
+11: Login, open edje once, then reboot.
 
 That should finish it off for you. Enjoy your Coffee. Spread the word! Coffee is hot over here.
 
@@ -90,7 +88,7 @@ Example:
 
 The Forest on Ubuntu ran at ~45-55fps (on my hardware)[This is a known horrible performing game on Linux, so I knew this was the test I had to conduct.]
 
-The Forest on Coffee Linux ran at ~75-120fps, exact same settings, same installation of the game even on a second drive.
+The Forest on Coffee Linux 2.1.0 ran at ~75-120fps, exact same settings, same installation of the game even on a second drive.
 
 0b. This is a massive gain and its worth mentioning this was tested on a "GTX 1660" @ 1920x1080 144hz Display default settings except vsync = on in game. This installation script must just do it right or something lol.
 
@@ -98,13 +96,13 @@ The Forest on Coffee Linux ran at ~75-120fps, exact same settings, same installa
 
 1. Pure Arch foundation using official repos (and a little AUR here and there)
 
-2. A Choice Desktop Environment designed to be easy to use. (Always the latest version due to Arch being a rolling release.)
+2. A SteamOS/KDE Desktop Environment designed to be easy to use. (Always the latest version due to Arch being a rolling release.)
 
-2a. Coffee wallpapers in default location (might need to be set manually).
+2a. Coffee wallpapers in default location.
 
-3. Uses nvidia-open driver (not the dkms proprietary older package)(not nouveau either lol)
+3. Uses nvidia-dkms driver
 
-4. Vaapi enabled by default in Chrome/Chromium.
+4. Vaapi enabled by default in Edge
 
 5. Pamac Graphical Software Manager (Select "1 4" in part 4 when prompted for pamac-aur for full functionality)
 
@@ -122,11 +120,7 @@ The Forest on Coffee Linux ran at ~75-120fps, exact same settings, same installa
 
 12. FirewallD (Better configuration than the standard one)
 
-13. Mint themes and sounds (Cinnamon only).
-
-14. Yaru Themes and sounds from Ubuntu (Gnome only).
-
-15. SteamDeck version of the Steam Client.
+13. SteamDeck version of the Steam Client.
 
 Note: This is designed for PCs with UEFI, Intel CPUs, and Nvidia GPUs, AMD install WILL LIKELY fail because absolutely no AMD specific packages are installed.
 
