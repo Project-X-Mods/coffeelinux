@@ -1,7 +1,7 @@
 # Coffee Linux v.3.0.0
 
 What is Coffee Linux? Coffee Linux is a meta-distro similar to Gentoo, but not as painful.
-# The idea is that everything is script based meaning we do not have to worry about releases, old packages being installed or anything like that.
+# The idea is that ite entire installation process is script based meaning we do not have to worry about releases, old packages being installed or anything like that.
 
 It is Arch Linux, but our specialized installer script takes 99% of the pain out of installing Arch Linux yourself. 
 The script downloads and installs everything for you as it goes as you make choices.
