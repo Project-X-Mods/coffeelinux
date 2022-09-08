@@ -3,8 +3,9 @@
 What is Coffee Linux? Coffee Linux is a meta-distro similar to Gentoo, but not as painful.
 # The idea is that everything is script based meaning we do not have to worry about releases, old packages being installed or anything like that.
 
-It is Arch, but our specialized installer script takes 99% of the pain out of installing Arch Linux yourself. 
+It is Arch Linux, but our specialized installer script takes 99% of the pain out of installing Arch Linux yourself. 
 The script downloads and installs everything for you as it goes as you make choices.
+It automatically configures everything for you with Arch, Multilib, SteamOS, and HoloIso Repos enabled by default.
 This gives it that coffee flavor. We don't maintain anything but the script, everything else is not on us. 
 
 We believe using your PC should be as easy as a sip of coffee, so we fixed it up to be that way for you. No guesswork, it just does what its supposed to do. So kick back, relax and enjoy your cup.
@@ -40,14 +41,13 @@ Execute normal install procedure as follows.
 
 ===============================================================
 
-1: Boot an Arch Linux live iso. [UEFI ONLY]
-1a: clone the repo as described above.
+1: Boot a Coffee Linux live iso. [UEFI ONLY]
 
-2: run the installer, "bash coffeelinux/opt/coffeebrewer.sh"
+2: run the installer.
 
 3: enter your username, drive id, and partition numbers (easy to find out)
 
-4: partition the drive chosen with fdisk. (you need 1G for efi, 8~64G for swap, and the rest of the drive for the OS/Home.)
+4: partition the drive chosen with fdisk. (you need 1G for efi, and the rest of the drive for the OS/Home.)
 
 5: hit yes alot when asked lol.
 
@@ -74,10 +74,9 @@ Hashtags:
 
 ==================================================
 
-Key Features: Arch-Based, BTRFS installation, Choice Desktop Environment, Pipewire, VAAPI on Chrome (with game streaming in mind), FirewallD, and SystemD-Boot.
+Key Features: Arch-Based, BTRFS installation, SteamOS/KDE Desktop Environment, Pipewire, VAAPI on Edge (with game streaming in mind), FirewallD, and SystemD-Boot.
 
 A script/command designed to install a unique Coffee-Linux Experience via Arch easily, and semi painlessly.
-(premade Stadia app is located in /opt folder. Place the stadia app file in ~/.local/share/applications/ folder. and reboot after launching chrome and it fails once. Enjoy.)
 
 This Installer will create a Coffee-Linux install on the fly. Requires internet.
  
@@ -106,7 +105,7 @@ The Forest on Coffee Linux 2.1.0 ran at ~75-120fps, exact same settings, same in
 
 5. Pamac Graphical Software Manager (Select "1 4" in part 4 when prompted for pamac-aur for full functionality)
 
-6. Chrome Preinstalled via yay (not Firefox)
+6. Edge Preinstalled via yay (not Firefox)
 
 7. Latest Pipewire & Wireplumber for the best possible sound.
 
