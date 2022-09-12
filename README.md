@@ -1,4 +1,4 @@
-# Coffee Linux v.3.0.0
+# Coffee Linux v.3.0.1
 
 What is Coffee Linux? Coffee Linux is a meta-distro similar to Gentoo, but not as painful.
 # The idea is that the entire installation process is script based meaning we do not have to worry about releases, old packages being installed or anything like that.
@@ -41,7 +41,7 @@ Execute normal install procedure as follows.
 
 ===============================================================
 
-1: Boot a Coffee Linux live iso. [UEFI ONLY]
+1: Boot a Coffee Linux live iso (if one is available). [UEFI ONLY]
 
 2: run the installer.
 
@@ -95,13 +95,11 @@ The Forest on Coffee Linux 2.1.0 ran at ~75-120fps, exact same settings, same in
 
 1. Pure Arch foundation using official repos (and a little AUR here and there)
 
-2. A SteamOS/KDE Desktop Environment designed to be easy to use. (Always the latest version due to Arch being a rolling release.)
+2. A choice of Desktop Environments designed to be easy to use. (Always the latest version due to Arch being a rolling release.)
 
 2a. Coffee wallpapers in default location.
 
-3. Uses nvidia-dkms driver
-
-4. Vaapi enabled by default in Edge
+3. Vaapi enabled by default in Edge
 
 5. Pamac Graphical Software Manager (Select "1 4" in part 4 when prompted for pamac-aur for full functionality)
 
@@ -119,9 +117,7 @@ The Forest on Coffee Linux 2.1.0 ran at ~75-120fps, exact same settings, same in
 
 12. FirewallD (Better configuration than the standard one)
 
-13. SteamDeck version of the Steam Client.
-
-Note: This is designed for PCs with UEFI, Intel CPUs, and Nvidia GPUs, AMD install WILL LIKELY fail because absolutely no AMD specific packages are installed.
+Note: This is designed for PCs with UEFI, Intel CPUs, and AMD CPU/GPUs, nvidia install is hit or miss tbh.
 
 Note-2 You will have to use fdisk to prepare your drive during installation.
 
