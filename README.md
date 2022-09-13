@@ -5,7 +5,7 @@ What is Coffee Linux? Coffee Linux is a meta-distro similar to Gentoo, but not a
 
 It is Arch Linux, but our specialized installer script takes 99% of the pain out of installing Arch Linux yourself. 
 The script downloads and installs everything for you as it goes as you make choices.
-It automatically configures everything for you with Arch, Multilib, SteamOS, and HoloIso Repos enabled by default.
+It automatically configures everything for you with Arch, and Multilib, Repos enabled by default.
 This gives it that coffee flavor. We don't maintain anything but the script, everything else is not on us. 
 
 We believe using your PC should be as easy as a sip of coffee, so we fixed it up to be that way for you. No guesswork, it just does what its supposed to do. So kick back, relax and enjoy your cup.
