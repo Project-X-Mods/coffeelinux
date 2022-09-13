@@ -143,7 +143,7 @@ systemctl enable firewalld
 echo $$
 EOT
 #
-echo options root="LABEL=$drivename0" rw nvidia-drm.modeset=1 >> /mnt/boot/loader/entries/arch.conf && 
+echo options root="LABEL=$drivename0" rw >> /mnt/boot/loader/entries/arch.conf && 
 #
 echo 'Attempting to fix the home directory automatically now...' && 
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
@@ -330,7 +330,7 @@ systemctl enable firewalld
 echo $$
 EOT
 #
-echo options root="LABEL=$drivename0" rw nvidia-drm.modeset=1 >> /mnt/boot/loader/entries/arch.conf && 
+echo options root="LABEL=$drivename0" rw >> /mnt/boot/loader/entries/arch.conf && 
 #
 echo 'Attempting to fix the home directory automatically now...' && 
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
@@ -359,16 +359,16 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y pamac-aur && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y systemd-kcm && 
 #arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11 &&
-mkdir -p /mnt/usr/share/backgrounds/coffee/ && 
+mkdir -p /mnt/usr/share/wallpapers/coffee/ && 
 
-cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/coffee/coffeewall01.jpg && 
-cp coffeelinux/opt/backgrounds/coffee/coffeewall05.jpg /mnt/usr/share/backgrounds/coffee/coffeewall02.jpg && 
-cp coffeelinux/opt/backgrounds/coffee/coffeewall04.jpg /mnt/usr/share/backgrounds/coffee/coffeewall03.jpg && 
-cp coffeelinux/opt/backgrounds/coffee/coffeewall06.jpg /mnt/usr/share/backgrounds/coffee/coffeewall04.jpg &&
-cp coffeelinux/opt/backgrounds/coffee/coffeewall02.jpg /mnt/usr/share/backgrounds/coffee/coffeewall05.jpg && 
-cp coffeelinux/opt/backgrounds/coffee/coffeewall07.jpg /mnt/usr/share/backgrounds/coffee/coffeewall06.jpg && 
-cp coffeelinux/opt/backgrounds/coffee/coffeewall08.jpg /mnt/usr/share/backgrounds/coffee/coffeewall07.jpg && 
-cp coffeelinux/opt/backgrounds/coffee/coffeewall01.jpg /mnt/usr/share/backgrounds/coffee/coffeewall08.jpg &&  
+cp coffeelinux/opt/wallpapers/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/coffee/coffeewall01.jpg && 
+cp coffeelinux/opt/wallpapers/coffee/coffeewall05.jpg /mnt/usr/share/backgrounds/coffee/coffeewall02.jpg && 
+cp coffeelinux/opt/wallpapers/coffee/coffeewall04.jpg /mnt/usr/share/backgrounds/coffee/coffeewall03.jpg && 
+cp coffeelinux/opt/wallpapers/coffee/coffeewall06.jpg /mnt/usr/share/backgrounds/coffee/coffeewall04.jpg &&
+cp coffeelinux/opt/wallpapers/coffee/coffeewall02.jpg /mnt/usr/share/backgrounds/coffee/coffeewall05.jpg && 
+cp coffeelinux/opt/wallpapers/coffee/coffeewall07.jpg /mnt/usr/share/backgrounds/coffee/coffeewall06.jpg && 
+cp coffeelinux/opt/wallpapers/coffee/coffeewall08.jpg /mnt/usr/share/backgrounds/coffee/coffeewall07.jpg && 
+cp coffeelinux/opt/wallpapers/coffee/coffeewall01.jpg /mnt/usr/share/backgrounds/coffee/coffeewall08.jpg &&  
 # 
 #arch-chroot /mnt chown -hR root:wheel /usr/share/backgrounds/coffee/* && 
 echo 'Ensuring correct DM is set.' &&  
@@ -503,7 +503,7 @@ systemctl enable firewalld
 echo $$
 EOT
 #
-echo options root="LABEL=$drivename0" rw nvidia-drm.modeset=1 >> /mnt/boot/loader/entries/arch.conf && 
+echo options root="LABEL=$drivename0" rw >> /mnt/boot/loader/entries/arch.conf && 
 #
 echo 'Attempting to fix the home directory automatically now...' && 
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
