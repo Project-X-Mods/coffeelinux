@@ -1,6 +1,6 @@
 NAME="CoffeeLinux"
 PRETTY_NAME="Coffee Linux"
-VERSION_ID="3.0.1"
+VERSION_ID="3.1.0"
 VERSION_CODENAME="Arabica"
 ID="coffeelinux"
 BUILD_ID="Arabica"
