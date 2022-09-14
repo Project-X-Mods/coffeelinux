@@ -92,7 +92,7 @@ echo '127.0.0.1 localhost' >> /mnt/etc/hosts &&
 echo '::1 localhost' >> /mnt/etc/hosts && 
 echo 127.0.1.1 $hostname0 >> /mnt/etc/hosts && 
 #
-arch-chroot /mnt pacman -Sy linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo sudo nano git base-devel archlinux-appstream-data dkms qt6 xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad gtk4 gdm gnome gnome-extra egl-wayland &&
+arch-chroot /mnt pacman -Sy amd-ucode linux-neptune linux-firmware linux-neptune-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo sudo nano git base-devel archlinux-appstream-data dkms qt6 xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad gtk4 gdm gnome gnome-extra egl-wayland &&
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 #echo "/dev/nvme1n1p2  /data  ntfs-3g  defaults,locale=en_US.utf8"  0 3 >> /mnt/etc/fstab
@@ -102,9 +102,7 @@ echo 'Adding User Account' &&
 arch-chroot /mnt useradd -m -G wheel,audio,video,power,users,storage --badname $user01 && 
 echo 'Set User Password' && 
 arch-chroot /mnt passwd $user01 
-echo 'Set Temporary User Password' && 
-arch-chroot /mnt useradd -m -G wheel,audio,video,power,users,storage --badname user02 && 
-arch-chroot /mnt passwd user02 && 
+
 #Phase 2
 echo 'Setting repos in new destination' &&
 arch-chroot /mnt pacman -Syy &&
@@ -113,9 +111,12 @@ cp /etc/pacman.conf /mnt/etc/pacman.conf &&
 cp --dereference /etc/resolv.conf /mnt/etc/ &&
 arch-chroot /mnt pacman -Syy &&
 echo 'Installing a bunch of stuff for gaming and general prettiness.' && 
-arch-chroot /mnt pacman -Sy power-profiles-daemon go meson xorg xorg-server xorg-apps xorg-xwayland mesa amdvlk lib32-amdvlk virtualbox virtualbox-guest-utils git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src steam zenity discord gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber libreoffice-fresh firewalld shotwell geary &&
+arch-chroot /mnt pacman -Sy power-profiles-daemon go meson xorg xorg-server xorg-apps l amdvlk lib32-amdvlk virtualbox virtualbox-guest-utils git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber libreoffice-fresh firewalld shotwell geary &&
 arch-chroot /mnt archlinux-java set java-18-openjdk && 
 #Phase 3
+echo 'Installing a bunch of SteamOS 3.x stuff.' && 
+arch-chroot /mnt pacman -Sy yay-git lib32-vulkan-intel lib32-vulkan-mesa-layers lib32-vulkan-radeon libva-mesa-driver mesa-vdpau opencl-mesa renderdoc vulkan-intel vulkan-mesa-layers vulkan-radeon vulkan-swrast cpupower hyperv jupiter-validation-tools gamescope mangohud mangohud-debug steam-jupiter-stable zenity-light discord lib32-libva-mesa-driver lib32-mangohud lib32-mesa-vdpau lib32-opencl-mesa kscreen mesa xorg-xwayland-jupiter egl-wayland qt6-wayland
+
 arch-chroot /mnt /bin/bash <<"EOT"
 mkdir -p /tmp/arch &&
 cd /tmp/arch &&
@@ -131,10 +132,10 @@ echo 'timeout 5' >> /boot/loader/loader.conf &&
 echo 'console-mode max' >> /boot/loader/loader.conf && 
 echo 'editor no' >> /boot/loader/loader.conf && 
 echo 'title Coffee-Linux' > /boot/loader/entries/arch.conf && 
-echo 'linux /vmlinuz-linux' >> /boot/loader/entries/arch.conf &&
+echo 'linux /vmlinuz-linux-neptune' >> /boot/loader/entries/arch.conf &&
 echo 'initrd /intel-ucode.img' >> /boot/loader/entries/arch.conf && 
 echo 'initrd /amd-ucode.img' >> /boot/loader/entries/arch.conf && 
-echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf &&
+echo 'initrd /initramfs-linux-neptune.img' >> /boot/loader/entries/arch.conf &&
 echo 'Presetting default services.' && 
 #read -n 1 -s -r -p "Press any key to continue" &&
 systemctl enable gdm && 
@@ -149,20 +150,8 @@ echo options root="LABEL=$drivename0" rw >> /mnt/boot/loader/entries/arch.conf &
 #
 echo 'Attempting to fix the home directory automatically now...' && 
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
-arch-chroot /mnt xdg-user-dirs-update &&
-echo 'Installing yay for AUR support' &&
-arch-chroot /mnt /bin/bash <<"EOT"
-mkdir -p /tmp/arch/stage2 &&
-cd /tmp/arch/stage2 &&
-ls -l && 
-cd /opt &&
-echo "AUR apps installation" &&
-sudo -Su user02 sudo git clone https://aur.archlinux.org/yay.git && 
-sudo -Su user02 sudo chown -hR user02:users ./yay &&  
-cd /opt/yay &&
-sudo -Su user02 makepkg -f -s --install --noconfirm --clean
-echo $$
-EOT
+#arch-chroot /mnt xdg-user-dirs-update &&
+
 #
 echo 'Installing Coffee-QOL-Extras' &&
 arch-chroot /mnt userdel user02 &&  
@@ -201,7 +190,7 @@ rm /mnt/usr/share/xsessions/gnome* &&
 #arch-chroot /mnt chown -hR root:wheel /usr/share/backgrounds/gnome/* &&
 echo 'Ensuring correct DM is set.' &&  
 arch-chroot /mnt pacman -Syu && 
-arch-chroot /mnt pacman -R gnome-session && 
+#arch-chroot /mnt pacman -R gnome-session && 
 arch-chroot /mnt systemctl enable gdm && 
 echo 'Attempting to fix the home directory automatically now...' && 
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
@@ -211,9 +200,8 @@ arch-chroot /mnt chown -hR $user01:wheel /data/* &&
 #
 #Phase 5
 echo 'Cleaning up' &&
-rm -R /mnt/home/user02/ && 
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/home/$user01/.config/ &&
-cp coffeelinux/opt/microsoft-edge-stable.conf /mnt/opt/ &&
+cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/opt/ &&
 cp coffeelinux/opt/coffeebrewer.sh /mnt/opt/ && 
 cp coffeelinux/opt/coffeebrewer.sh /mnt/usr/local/bin/ && 
 cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
@@ -283,7 +271,7 @@ echo '127.0.0.1 localhost' >> /mnt/etc/hosts &&
 echo '::1 localhost' >> /mnt/etc/hosts && 
 echo 127.0.1.1 $hostname0 >> /mnt/etc/hosts && 
 #
-arch-chroot /mnt pacman -Sy linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo plasma-framework kcmutils archlinux-appstream-data appstream-qt qt5-graphicaleffects kuserfeedback knewstuff kidletime discount hicolor-icon-theme kirigami2 cmake make flatpak fwupd extra-cmake-modules plasma-wayland-protocols xorg-xwayland plasma-wayland-session egl-wayland qt6 dkms kde-applications-meta sddm sddm-kcm plasma-meta sudo nano git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad &&
+arch-chroot /mnt pacman -Sy amd-ucode linux-neptume linux-firmware linux-neptune headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo plasma-framework kcmutils archlinux-appstream-data appstream-qt qt5-graphicaleffects kuserfeedback knewstuff kidletime discount hicolor-icon-theme kirigami2 cmake make flatpak fwupd extra-cmake-modules plasma-wayland-protocols xorg-xwayland-jupiter plasma-wayland-session egl-wayland qt6 dkms kde-applications-meta sddm-wayland sddm-kcm plasma-meta sudo nano git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad &&
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab && 
 #echo "/dev/nvme1n1p2  /data  ntfs-3g  defaults,locale=en_US.utf8"  0 3 >> /mnt/etc/fstab
@@ -293,9 +281,6 @@ echo 'Adding User Account' &&
 arch-chroot /mnt useradd -m -G wheel,audio,video,users --badname $user01 && 
 echo 'Set User Password' && 
 arch-chroot /mnt passwd $user01 
-echo 'Set Temporary User Password' && 
-arch-chroot /mnt useradd -m -G wheel,audio,video,users --badname user02 && 
-arch-chroot /mnt passwd user02 && 
 #Phase 2
 echo 'Setting repos in new destination' &&
 arch-chroot /mnt pacman -Syy &&
@@ -304,9 +289,12 @@ cp /etc/pacman.conf /mnt/etc/pacman.conf &&
 cp --dereference /etc/resolv.conf /mnt/etc/ &&
 arch-chroot /mnt pacman -Syy &&
 echo 'Installing a bunch of stuff for gaming and general prettiness.' && 
-arch-chroot /mnt pacman -Sy gnome-disk-utility power-profiles-daemon go mesa amdvlk lib32-amdvlk meson xorg xorg-server xorg-apps virtualbox virtualbox-guest-utils git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src steam libreoffice-fresh zenity discord gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber firewalld shotwell geary &&
+arch-chroot /mnt pacman -Sy gnome-disk-utility power-profiles-daemon go mesa amdvlk lib32-amdvlk meson xorg xorg-server xorg-apps virtualbox virtualbox-guest-utils git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src libreoffice-fresh gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber firewalld shotwell geary &&
 arch-chroot /mnt archlinux-java set java-18-openjdk && 
 #Phase 3
+echo 'Installing a bunch of SteamOS 3.x stuff.' && 
+arch-chroot /mnt pacman -Sy yay-git lib32-vulkan-intel lib32-vulkan-mesa-layers lib32-vulkan-radeon libva-mesa-driver mesa-vdpau opencl-mesa renderdoc vulkan-intel vulkan-mesa-layers vulkan-radeon vulkan-swrast cpupower hyperv jupiter-validation-tools gamescope mangohud mangohud-debug steam-jupiter-stable zenity-light discord lib32-libva-mesa-driver lib32-mangohud lib32-mesa-vdpau lib32-opencl-mesa kscreen mesa xorg-xwayland-jupiter egl-wayland qt6-wayland
+
 arch-chroot /mnt /bin/bash <<"EOT"
 mkdir -p /tmp/arch &&
 cd /tmp/arch &&
@@ -322,10 +310,10 @@ echo 'timeout 5' >> /boot/loader/loader.conf &&
 echo 'console-mode max' >> /boot/loader/loader.conf && 
 echo 'editor no' >> /boot/loader/loader.conf && 
 echo 'title Coffee-Linux' > /boot/loader/entries/arch.conf && 
-echo 'linux /vmlinuz-linux' >> /boot/loader/entries/arch.conf &&
+echo 'linux /vmlinuz-linux-neptune' >> /boot/loader/entries/arch.conf &&
 echo 'initrd /intel-ucode.img' >> /boot/loader/entries/arch.conf && 
 echo 'initrd /amd-ucode.img' >> /boot/loader/entries/arch.conf && 
-echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf &&
+echo 'initrd /initramfs-linux-neptune.img' >> /boot/loader/entries/arch.conf &&
 echo 'Presetting default services.' && 
 #read -n 1 -s -r -p "Press any key to continue" &&
 systemctl enable sddm && 
@@ -342,23 +330,10 @@ echo 'Attempting to fix the home directory automatically now...' &&
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
 arch-chroot /mnt xdg-user-dirs-update && 
 cp coffeelinux/opt/os-release /mnt/data && 
-arch-chroot /mnt chown -hR $user01:wheel /data/* && 
-echo 'Installing yay for AUR support' &&
-arch-chroot /mnt /bin/bash <<"EOT"
-mkdir -p /tmp/arch/stage2 &&
-cd /tmp/arch/stage2 &&
-ls -l && 
-cd /opt &&
-echo "AUR apps installation" &&
-sudo -Su user02 sudo git clone https://aur.archlinux.org/yay.git && 
-sudo -Su user02 sudo chown -hR user02:users ./yay &&  
-cd /opt/yay &&
-sudo -Su user02 makepkg -f -s --install --noconfirm --clean
-echo $$
-EOT
+#arch-chroot /mnt chown -hR $user01:wheel /data/* && 
+
 #
-echo 'Installing Coffee-QOL-Extras' &&
-arch-chroot /mnt userdel user02 &&   
+echo 'Installing Coffee-QOL-Extras' &&  
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y libva-vdpau-driver-vp9-git && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y protontricks && 
 #arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y nvidia-vaapi-driver &&  
@@ -366,17 +341,17 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y microsoft-edge-stable &&
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y pamac-aur && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y systemd-kcm && 
-#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11 &&
+#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11-auto &&
 mkdir -p /mnt/usr/share/wallpapers/coffee/ && 
 
-cp coffeelinux/opt/wallpapers/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/coffee/coffeewall01.jpg && 
-cp coffeelinux/opt/wallpapers/coffee/coffeewall05.jpg /mnt/usr/share/backgrounds/coffee/coffeewall02.jpg && 
-cp coffeelinux/opt/wallpapers/coffee/coffeewall04.jpg /mnt/usr/share/backgrounds/coffee/coffeewall03.jpg && 
-cp coffeelinux/opt/wallpapers/coffee/coffeewall06.jpg /mnt/usr/share/backgrounds/coffee/coffeewall04.jpg &&
-cp coffeelinux/opt/wallpapers/coffee/coffeewall02.jpg /mnt/usr/share/backgrounds/coffee/coffeewall05.jpg && 
-cp coffeelinux/opt/wallpapers/coffee/coffeewall07.jpg /mnt/usr/share/backgrounds/coffee/coffeewall06.jpg && 
-cp coffeelinux/opt/wallpapers/coffee/coffeewall08.jpg /mnt/usr/share/backgrounds/coffee/coffeewall07.jpg && 
-cp coffeelinux/opt/wallpapers/coffee/coffeewall01.jpg /mnt/usr/share/backgrounds/coffee/coffeewall08.jpg &&  
+cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/wallpapers/coffee/coffeewall01.jpg && 
+cp coffeelinux/opt/backgrounds/coffee/coffeewall05.jpg /mnt/usr/share/wallpapers/coffee/coffeewall02.jpg && 
+cp coffeelinux/opt/backgrounds/coffee/coffeewall04.jpg /mnt/usr/share/wallpapers/coffee/coffeewall03.jpg && 
+cp coffeelinux/opt/backgrounds/coffee/coffeewall06.jpg /mnt/usr/share/wallpapers/coffee/coffeewall04.jpg &&
+cp coffeelinux/opt/backgrounds/coffee/coffeewall02.jpg /mnt/usr/share/wallpapers/coffee/coffeewall05.jpg && 
+cp coffeelinux/opt/backgrounds/coffee/coffeewall07.jpg /mnt/usr/share/wallpapers/coffee/coffeewall06.jpg && 
+cp coffeelinux/opt/backgrounds/coffee/coffeewall08.jpg /mnt/usr/share/wallpapers/coffee/coffeewall07.jpg && 
+cp coffeelinux/opt/backgrounds/coffee/coffeewall01.jpg /mnt/usr/share/wallpapers/coffee/coffeewall08.jpg &&  
 # 
 #arch-chroot /mnt chown -hR root:wheel /usr/share/backgrounds/coffee/* && 
 echo 'Ensuring correct DM is set.' &&  
@@ -387,7 +362,6 @@ arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
 arch-chroot /mnt xdg-user-dirs-update && 
 #Phase 5
 echo 'Cleaning up' &&
-rm -R /mnt/home/user02/ && 
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/home/$user01/.config/ &&
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/opt/ &&
 cp coffeelinux/opt/coffeebrewer.sh /mnt/opt/ && 
@@ -460,7 +434,7 @@ echo '127.0.0.1 localhost' >> /mnt/etc/hosts &&
 echo '::1 localhost' >> /mnt/etc/hosts && 
 echo 127.0.1.1 $hostname0 >> /mnt/etc/hosts && 
 #
-arch-chroot /mnt pacman -Sy linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd qt6 man-pages man-db texinfo sudo nano dkms git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad cinnamon cinnamon-translations gtk3 &&
+arch-chroot /mnt pacman -Sy amd-ucode linux-neptune linux-firmware linux-neptune-headers btrfs-progs net-tools networkmanager dhcpcd iwd qt6 man-pages man-db texinfo sudo nano dkms git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad cinnamon cinnamon-translations gtk3 &&
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab && 
 #echo "/dev/nvme1n1p2  /data  ntfs-3g  defaults,locale=en_US.utf8"  0 3 >> /mnt/etc/fstab
@@ -481,8 +455,12 @@ cp /etc/pacman.conf /mnt/etc/pacman.conf &&
 cp --dereference /etc/resolv.conf /mnt/etc/ &&
 arch-chroot /mnt pacman -Syy &&
 echo 'Installing a bunch of stuff for gaming and general prettiness.' && 
-arch-chroot /mnt pacman -Sy lightdm lightdm-gtk-greeter gnome-terminal gnome-calculator gnome-system-monitor gnome-keyring polkit-gnome power-profiles-daemon cpupower go meson xorg xorg-server xorg-apps mesa amdvlk lib32-amdvlk virtualbox virtualbox-guest-utils git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src steam zenity discord gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber libreoffice-fresh firewalld shotwell geary &&
+arch-chroot /mnt pacman -Sy lightdm lightdm-gtk-greeter gnome-terminal gnome-calculator gnome-system-monitor gnome-keyring polkit-gnome power-profiles-daemon cpupower go meson xorg xorg-server xorg-apps mesa amdvlk lib32-amdvlk virtualbox virtualbox-guest-utils git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber libreoffice-fresh firewalld shotwell geary &&
 arch-chroot /mnt archlinux-java set java-18-openjdk && 
+
+echo 'Installing a bunch of SteamOS 3.x stuff.' && 
+arch-chroot /mnt pacman -Sy yay-git lib32-vulkan-intel lib32-vulkan-mesa-layers lib32-vulkan-radeon libva-mesa-driver mesa-vdpau opencl-mesa renderdoc vulkan-intel vulkan-mesa-layers vulkan-radeon vulkan-swrast cpupower hyperv jupiter-validation-tools gamescope mangohud mangohud-debug steam-jupiter-stable zenity-light discord lib32-libva-mesa-driver lib32-mangohud lib32-mesa-vdpau lib32-opencl-mesa kscreen mesa xorg-xwayland-jupiter egl-wayland qt6-wayland
+
 #Phase 3
 arch-chroot /mnt /bin/bash <<"EOT"
 mkdir -p /tmp/arch &&
@@ -499,10 +477,10 @@ echo 'timeout 5' >> /boot/loader/loader.conf &&
 echo 'console-mode max' >> /boot/loader/loader.conf && 
 echo 'editor no' >> /boot/loader/loader.conf && 
 echo 'title Coffee-Linux' > /boot/loader/entries/arch.conf && 
-echo 'linux /vmlinuz-linux' >> /boot/loader/entries/arch.conf &&
+echo 'linux /vmlinuz-linux-neptune' >> /boot/loader/entries/arch.conf &&
 echo 'initrd /intel-ucode.img' >> /boot/loader/entries/arch.conf && 
 echo 'initrd /amd-ucode.img' >> /boot/loader/entries/arch.conf && 
-echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf &&
+echo 'initrd /initramfs-linux-neptune.img' >> /boot/loader/entries/arch.conf &&
 echo 'Presetting default services.' && 
 #read -n 1 -s -r -p "Press any key to continue" &&
 systemctl enable lightdm && 
@@ -519,30 +497,16 @@ echo 'Attempting to fix the home directory automatically now...' &&
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
 arch-chroot /mnt xdg-user-dirs-update && 
 cp coffeelinux/opt/os-release /mnt/data && 
-arch-chroot /mnt chown -hR $user01:wheel /data/* && 
-echo 'Installing yay for AUR support' &&
-arch-chroot /mnt /bin/bash <<"EOT"
-mkdir -p /tmp/arch/stage2 &&
-cd /tmp/arch/stage2 &&
-ls -l && 
-cd /opt &&
-echo "AUR apps installation" &&
-sudo -Su user02 sudo git clone https://aur.archlinux.org/yay.git && 
-sudo -Su user02 sudo chown -hR user02:users ./yay &&  
-cd /opt/yay &&
-sudo -Su user02 makepkg -f -s --install --noconfirm --clean
-echo $$
-EOT
+#arch-chroot /mnt chown -hR $user01:wheel /data/* && 
 #
-echo 'Installing Coffee-QOL-Extras' &&
-arch-chroot /mnt userdel user02 &&  
+echo 'Installing Coffee-QOL-Extras' && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y pamac-aur && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y libva-vdpau-driver-vp9-git && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y protontricks && 
 #arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y nvidia-vaapi-driver &&  
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev &&   
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y microsoft-edge-stable &&
-#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11 && 
+#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11-auto && 
 rm -R /mnt/usr/share/backgrounds/gnome/ && 
 mkdir -p /mnt/usr/share/backgrounds/gnome/ && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/gnome/adwaita-d.jpg && 
@@ -573,7 +537,6 @@ arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
 arch-chroot /mnt xdg-user-dirs-update && 
 #Phase 5
 echo 'Cleaning up' &&
-rm -R /mnt/home/user02/ && 
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/home/$user01/.config/ &&
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/opt/ &&
 cp coffeelinux/opt/coffeebrewer.sh /mnt/opt/ && 
