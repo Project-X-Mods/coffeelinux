@@ -122,6 +122,7 @@ The Forest on Coffee Linux 2.1.0 ran at ~75-120fps, exact same settings, same in
 14. Official SteamDeck Steam-Client (Desktop Version)
 
 ** VAAPI requires copying microsoft-edge-stable-flags in /opt to your .config folder **
+
 Note: This is designed for PCs with UEFI, Intel CPUs, and AMD CPU/GPUs, nvidia install is hit or miss tbh.
 
 Note-2 You will have to use fdisk to prepare your drive during installation.
