@@ -153,8 +153,7 @@ arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
 #arch-chroot /mnt xdg-user-dirs-update &&
 
 #
-echo 'Installing Coffee-QOL-Extras' &&
-arch-chroot /mnt userdel user02 &&  
+echo 'Installing Coffee-QOL-Extras' && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y pamac-aur && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y libva-vdpau-driver-vp9-git && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y protontricks && 
@@ -185,7 +184,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-session && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-sound-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-unity-theme && 
-#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11 && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11-auto && 
 rm /mnt/usr/share/xsessions/gnome* && 
 #arch-chroot /mnt chown -hR root:wheel /usr/share/backgrounds/gnome/* &&
 echo 'Ensuring correct DM is set.' &&  
@@ -196,15 +195,15 @@ echo 'Attempting to fix the home directory automatically now...' &&
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
 arch-chroot /mnt xdg-user-dirs-update && 
 cp coffeelinux/opt/os-release /mnt/data && 
-arch-chroot /mnt chown -hR $user01:wheel /data/* && 
+#arch-chroot /mnt chown -hR $user01:wheel /data/* && 
 #
 #Phase 5
 echo 'Cleaning up' &&
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/home/$user01/.config/ &&
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/opt/ &&
 cp coffeelinux/opt/coffeebrewer.sh /mnt/opt/ && 
-cp coffeelinux/opt/coffeebrewer.sh /mnt/usr/local/bin/ && 
-cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
+#cp coffeelinux/opt/coffeebrewer.sh /mnt/usr/local/bin/ && 
+#cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
 cp coffeelinux/opt/os-release /mnt/etc/ && 
 #cp /opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ &&
 #
@@ -341,7 +340,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y microsoft-edge-stable &&
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y pamac-aur && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y systemd-kcm && 
-#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11-auto &&
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11-auto &&
 mkdir -p /mnt/usr/share/wallpapers/coffee/ && 
 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/wallpapers/coffee/coffeewall01.jpg && 
@@ -365,8 +364,8 @@ echo 'Cleaning up' &&
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/home/$user01/.config/ &&
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/opt/ &&
 cp coffeelinux/opt/coffeebrewer.sh /mnt/opt/ && 
-cp coffeelinux/opt/coffeebrewer.sh /mnt/usr/local/bin/ && 
-cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
+#cp coffeelinux/opt/coffeebrewer.sh /mnt/usr/local/bin/ && 
+#cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
 cp coffeelinux/opt/os-release /mnt/etc/ && 
 #cp /opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ &&
 #
@@ -444,9 +443,6 @@ echo 'Adding User Account' &&
 arch-chroot /mnt useradd -m -G wheel,audio,video,power,users,storage --badname $user01 && 
 echo 'Set User Password' && 
 arch-chroot /mnt passwd $user01 
-echo 'Set Temporary User Password' && 
-arch-chroot /mnt useradd -m -G wheel,audio,video,power,users,storage --badname user02 && 
-arch-chroot /mnt passwd user02 && 
 #Phase 2
 echo 'Setting repos in new destination' &&
 arch-chroot /mnt pacman -Syy &&
@@ -506,7 +502,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 #arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y nvidia-vaapi-driver &&  
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev &&   
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y microsoft-edge-stable &&
-#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11-auto && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11-auto && 
 rm -R /mnt/usr/share/backgrounds/gnome/ && 
 mkdir -p /mnt/usr/share/backgrounds/gnome/ && 
 cp coffeelinux/opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/gnome/adwaita-d.jpg && 
@@ -540,8 +536,8 @@ echo 'Cleaning up' &&
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/home/$user01/.config/ &&
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/opt/ &&
 cp coffeelinux/opt/coffeebrewer.sh /mnt/opt/ && 
-cp coffeelinux/opt/coffeebrewer.sh /mnt/usr/local/bin/ && 
-cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
+#cp coffeelinux/opt/coffeebrewer.sh /mnt/usr/local/bin/ && 
+#cp coffeelinux/opt/os-release /mnt/usr/lib/ && 
 cp coffeelinux/opt/os-release /mnt/etc/ && 
 #cp /opt/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ &&
 #
