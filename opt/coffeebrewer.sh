@@ -92,7 +92,7 @@ echo '127.0.0.1 localhost' >> /mnt/etc/hosts &&
 echo '::1 localhost' >> /mnt/etc/hosts && 
 echo 127.0.1.1 $hostname0 >> /mnt/etc/hosts && 
 #
-arch-chroot /mnt pacman -Sy amd-ucode linux-neptune linux-firmware linux-neptune-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo sudo nano git base-devel archlinux-appstream-data dkms qt6 xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad gtk4 gdm gnome gnome-extra egl-wayland &&
+arch-chroot /mnt pacman -Sy amd-ucode make cmake meson glibc linux-neptune linux-firmware linux-neptune-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo sudo nano git base-devel archlinux-appstream-data dkms qt6 xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad gtk4 gdm gnome gnome-extra egl-wayland &&
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 #echo "/dev/nvme1n1p2  /data  ntfs-3g  defaults,locale=en_US.utf8"  0 3 >> /mnt/etc/fstab
@@ -270,7 +270,7 @@ echo '127.0.0.1 localhost' >> /mnt/etc/hosts &&
 echo '::1 localhost' >> /mnt/etc/hosts && 
 echo 127.0.1.1 $hostname0 >> /mnt/etc/hosts && 
 #
-arch-chroot /mnt pacman -Sy amd-ucode linux-neptune linux-firmware linux-neptune-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo plasma-framework kcmutils archlinux-appstream-data appstream-qt qt5-graphicaleffects kuserfeedback knewstuff kidletime discount hicolor-icon-theme kirigami2 cmake make flatpak fwupd extra-cmake-modules plasma-wayland-protocols xorg-xwayland-jupiter plasma-wayland-session egl-wayland qt6 dkms kde-applications-meta sddm-wayland sddm-kcm plasma-meta sudo nano git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad &&
+arch-chroot /mnt pacman -Sy amd-ucode make cmake meson glibc linux-neptune linux-firmware linux-neptune-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo plasma-framework kcmutils archlinux-appstream-data appstream-qt qt5-graphicaleffects kuserfeedback knewstuff kidletime discount hicolor-icon-theme kirigami2 cmake make flatpak fwupd extra-cmake-modules plasma-wayland-protocols xorg-xwayland-jupiter plasma-wayland-session egl-wayland qt6 dkms kde-applications-meta sddm-wayland sddm-kcm plasma-meta sudo nano git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad &&
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab && 
 #echo "/dev/nvme1n1p2  /data  ntfs-3g  defaults,locale=en_US.utf8"  0 3 >> /mnt/etc/fstab
@@ -433,7 +433,7 @@ echo '127.0.0.1 localhost' >> /mnt/etc/hosts &&
 echo '::1 localhost' >> /mnt/etc/hosts && 
 echo 127.0.1.1 $hostname0 >> /mnt/etc/hosts && 
 #
-arch-chroot /mnt pacman -Sy amd-ucode linux-neptune linux-firmware linux-neptune-headers btrfs-progs net-tools networkmanager dhcpcd iwd qt6 man-pages man-db texinfo sudo nano dkms git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad cinnamon cinnamon-translations gtk3 &&
+arch-chroot /mnt pacman -Sy amd-ucode make cmake meson glibc linux-neptune linux-firmware linux-neptune-headers btrfs-progs net-tools networkmanager dhcpcd iwd qt6 man-pages man-db texinfo sudo nano dkms git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad cinnamon cinnamon-translations gtk3 &&
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab && 
 #echo "/dev/nvme1n1p2  /data  ntfs-3g  defaults,locale=en_US.utf8"  0 3 >> /mnt/etc/fstab
