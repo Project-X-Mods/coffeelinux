@@ -1,12 +1,12 @@
-# Coffee Linux v.3.0.1
+# Coffee Linux v.3.1.2
 
 What is Coffee Linux? Coffee Linux is a meta-distro similar to Gentoo, but not as painful.
 # The idea is that the entire installation process is script based meaning we do not have to worry about releases, old packages being installed or anything like that.
 
-It is Arch Linux, but our specialized installer script takes 99% of the pain out of installing Arch Linux yourself. 
+It is Arch Linux at its core, but our specialized installer script takes 99% of the pain out of installing Arch Linux yourself. 
 The script downloads and installs everything for you as it goes as you make choices.
-It automatically configures everything for you with Arch, and Multilib, Repos enabled by default.
-This gives it that coffee flavor. We don't maintain anything but the script, everything else is not on us. 
+It automatically configures everything for you with Arch, SteamOS, and Multilib, Repos enabled by default.
+This gives it that coffee flavor. We don't maintain anything but the script, everything else up to respective package maintainers. 
 
 We believe using your PC should be as easy as a sip of coffee, so we fixed it up to be that way for you. No guesswork, it just does what its supposed to do. So kick back, relax and enjoy your cup.
 
@@ -74,7 +74,7 @@ Hashtags:
 
 ==================================================
 
-Key Features: Arch-Based, BTRFS installation, SteamOS/KDE Desktop Environment, Pipewire, VAAPI on Edge (with game streaming in mind), FirewallD, and SystemD-Boot.
+Key Features: Arch-Based, BTRFS installation, SteamOS-Infused Desktop Environment (KDE, Gnome, or Cinnamon) , Pipewire, VAAPI on Edge (with game streaming in mind)** , FirewallD, and SystemD-Boot.
 
 A script/command designed to install a unique Coffee-Linux Experience via Arch easily, and semi painlessly.
 
@@ -99,7 +99,7 @@ The Forest on Coffee Linux 2.1.0 ran at ~75-120fps, exact same settings, same in
 
 2a. Coffee wallpapers in default location.
 
-3. Vaapi enabled by default in Edge
+3. Vaapi enabled by default in Edge**
 
 5. Pamac Graphical Software Manager (Select "1 4" in part 4 when prompted for pamac-aur for full functionality)
 
@@ -117,6 +117,11 @@ The Forest on Coffee Linux 2.1.0 ran at ~75-120fps, exact same settings, same in
 
 12. FirewallD (Better configuration than the standard one)
 
+13. Official Valve Kernel used in SteamDeck.
+
+14. Official SteamDeck Steam-Client (Desktop Version)
+
+** VAAPI requires copying microsoft-edge-stable-flags in /opt to your .config folder **
 Note: This is designed for PCs with UEFI, Intel CPUs, and AMD CPU/GPUs, nvidia install is hit or miss tbh.
 
 Note-2 You will have to use fdisk to prepare your drive during installation.
