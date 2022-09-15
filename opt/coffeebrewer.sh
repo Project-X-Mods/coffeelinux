@@ -524,7 +524,8 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 rm /mnt/usr/share/xsessions/gnome* && 
 #arch-chroot /mnt chown -hR root:wheel /usr/share/backgrounds/coffee/* &&
 echo 'Ensuring correct DM is set.' && 
-arch-chroot /mnt pacman -Syu &&  
+arch-chroot /mnt pacman -Syu && 
+arch-chroot /mnt pacman -R lightdm lightdm-slick-greeter lightdm-settings && 
 arch-chroot /mnt systemctl enable gdm && 
 echo 'Attempting to fix the home directory automatically now...' && 
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
