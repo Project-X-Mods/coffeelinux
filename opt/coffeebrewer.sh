@@ -199,7 +199,7 @@ arch-chroot /mnt xdg-user-dirs-update &&
 #
 #Phase 5
 echo 'Cleaning up' &&
-cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/home/$user01/.config/ &&
+#cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/home/$user01/.config/ &&
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/opt/ &&
 cp coffeelinux/opt/coffeebrewer.sh /mnt/opt/ && 
 #cp coffeelinux/opt/coffeebrewer.sh /mnt/usr/local/bin/ && 
@@ -361,7 +361,7 @@ arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
 arch-chroot /mnt xdg-user-dirs-update && 
 #Phase 5
 echo 'Cleaning up' &&
-cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/home/$user01/.config/ &&
+#cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/home/$user01/.config/ &&
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/opt/ &&
 cp coffeelinux/opt/coffeebrewer.sh /mnt/opt/ && 
 #cp coffeelinux/opt/coffeebrewer.sh /mnt/usr/local/bin/ && 
@@ -533,7 +533,7 @@ arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
 arch-chroot /mnt xdg-user-dirs-update && 
 #Phase 5
 echo 'Cleaning up' &&
-cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/home/$user01/.config/ &&
+#cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/home/$user01/.config/ &&
 cp coffeelinux/opt/microsoft-edge-stable-flags.conf /mnt/opt/ &&
 cp coffeelinux/opt/coffeebrewer.sh /mnt/opt/ && 
 #cp coffeelinux/opt/coffeebrewer.sh /mnt/usr/local/bin/ && 
