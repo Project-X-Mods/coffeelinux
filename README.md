@@ -82,6 +82,7 @@ This Installer will create a Coffee-Linux install on the fly. Requires internet.
  
 [Notable Feature] 
 0: Home made and tested installer script.
+
 0a. Somehow.. in our tests of games like Elite Dangerous, The Forest, and No Mans Sky.. I am seeing a significant fps improvement over Linux Mint 22 (Vanessa) Cinnamon, Ubuntu 22.04.1 LTS, Fedora 36 Workstation, Manjaro (KDE, and Gnome).
 Example: 
 
