@@ -311,7 +311,7 @@ echo 'editor no' >> /boot/loader/loader.conf &&
 echo 'title Coffee-Linux' > /boot/loader/entries/arch.conf && 
 echo 'linux /vmlinuz-linux' >> /boot/loader/entries/arch.conf &&
 echo 'initrd /intel-ucode.img' >> /boot/loader/entries/arch.conf && 
-echo 'initrd /amd-ucode' >> /boot/loader/entries/arch.conf && 
+echo 'initrd /amd-ucode.img' >> /boot/loader/entries/arch.conf && 
 echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf &&
 echo 'Presetting default services.' && 
 #read -n 1 -s -r -p "Press any key to continue" &&
