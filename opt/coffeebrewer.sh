@@ -92,7 +92,7 @@ echo '127.0.0.1 localhost' >> /mnt/etc/hosts &&
 echo '::1 localhost' >> /mnt/etc/hosts && 
 echo 127.0.1.1 $hostname0 >> /mnt/etc/hosts && 
 #
-arch-chroot /mnt pacman -Sy amd-ucode make cmake meson glibc linux-neptune linux-firmware linux-neptune-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo sudo nano git base-devel archlinux-appstream-data dkms qt6 xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad gtk4 gdm gnome gnome-extra egl-wayland &&
+arch-chroot /mnt pacman -Sy amd-ucode make cmake meson nullmailer glibc linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo sudo nano git base-devel archlinux-appstream-data dkms qt6 xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad gtk4 gdm gnome xf86-video-amdgpu gnome-extra egl-wayland &&
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 #echo "/dev/nvme1n1p2  /data  ntfs-3g  defaults,locale=en_US.utf8"  0 3 >> /mnt/etc/fstab
@@ -115,7 +115,7 @@ arch-chroot /mnt pacman -Sy power-profiles-daemon go meson xorg xorg-server xorg
 arch-chroot /mnt archlinux-java set java-18-openjdk && 
 #Phase 3
 echo 'Installing a bunch of SteamOS 3.x stuff.' && 
-arch-chroot /mnt pacman -Sy yay-git lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau lib32-vulkan-intel lib32-vulkan-mesa-layers opencl-mesa renderdoc vulkan-intel vulkan-mesa-layers vulkan-swrast cpupower hyperv jupiter-validation-tools gamescope mangohud mangohud-debug steam-jupiter-stable zenity-light discord lib32-mangohud lib32-opencl-mesa mesa xorg-xwayland-jupiter egl-wayland qt6-wayland
+arch-chroot /mnt pacman -Sy yay-git lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau lib32-vulkan-mesa-layers opencl-mesa renderdoc vulkan-mesa-layers gamescope mangohud steam-jupiter-stable zenity-light discord lib32-mangohud lib32-opencl-mesa mesa xorg-xwayland-jupiter egl-wayland qt6-wayland
 
 arch-chroot /mnt /bin/bash <<"EOT"
 mkdir -p /tmp/arch &&
@@ -132,10 +132,10 @@ echo 'timeout 5' >> /boot/loader/loader.conf &&
 echo 'console-mode max' >> /boot/loader/loader.conf && 
 echo 'editor no' >> /boot/loader/loader.conf && 
 echo 'title Coffee-Linux' > /boot/loader/entries/arch.conf && 
-echo 'linux /vmlinuz-linux-neptune' >> /boot/loader/entries/arch.conf &&
+echo 'linux /vmlinuz-linux' >> /boot/loader/entries/arch.conf &&
 echo 'initrd /intel-ucode.img' >> /boot/loader/entries/arch.conf && 
 echo 'initrd /amd-ucode.img' >> /boot/loader/entries/arch.conf && 
-echo 'initrd /initramfs-linux-neptune.img' >> /boot/loader/entries/arch.conf &&
+echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf &&
 echo 'Presetting default services.' && 
 #read -n 1 -s -r -p "Press any key to continue" &&
 systemctl enable gdm && 
@@ -185,7 +185,7 @@ arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-sound-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-unity-theme && 
 #arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y ttf-ms-win11-auto &&
-rm /mnt/usr/share/xsessions/gnome* && 
+#rm /mnt/usr/share/xsessions/gnome* && 
 #arch-chroot /mnt chown -hR root:wheel /usr/share/backgrounds/gnome/* &&
 echo 'Ensuring correct DM is set.' &&  
 arch-chroot /mnt pacman -Syu && 
@@ -194,7 +194,7 @@ arch-chroot /mnt systemctl enable gdm &&
 echo 'Attempting to fix the home directory automatically now...' && 
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
 arch-chroot /mnt xdg-user-dirs-update && 
-#cp coffeelinux/opt/os-release /mnt/data &&
+#cp coffeelinux/opt/os-release /mnt/etc/ &&
 #arch-chroot /mnt chown -hR $user01:wheel /data/* && 
 #
 #Phase 5
@@ -270,7 +270,7 @@ echo '127.0.0.1 localhost' >> /mnt/etc/hosts &&
 echo '::1 localhost' >> /mnt/etc/hosts && 
 echo 127.0.1.1 $hostname0 >> /mnt/etc/hosts && 
 #
-arch-chroot /mnt pacman -Sy amd-ucode make cmake meson glibc linux-neptune linux-firmware linux-neptune-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo plasma-framework kcmutils archlinux-appstream-data appstream-qt qt5-graphicaleffects kuserfeedback knewstuff kidletime discount hicolor-icon-theme kirigami2 cmake make flatpak fwupd extra-cmake-modules plasma-wayland-protocols xorg-xwayland-jupiter plasma-wayland-session egl-wayland qt6 dkms kde-applications-meta sddm-wayland sddm-kcm plasma-meta sudo nano git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad &&
+arch-chroot /mnt pacman -Sy amd-ucode xf86-video-amdgpu make cmake nullmailer meson glibc linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo plasma-framework kcmutils archlinux-appstream-data appstream-qt qt5-graphicaleffects kuserfeedback knewstuff kidletime discount hicolor-icon-theme kirigami2 cmake make flatpak fwupd extra-cmake-modules plasma-wayland-protocols xorg-xwayland plasma-wayland-session egl-wayland qt6 dkms kde-applications-meta sddm-wayland sddm-kcm plasma-meta sudo nano git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad &&
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab && 
 #echo "/dev/nvme1n1p2  /data  ntfs-3g  defaults,locale=en_US.utf8"  0 3 >> /mnt/etc/fstab
@@ -292,7 +292,7 @@ arch-chroot /mnt pacman -Sy gnome-disk-utility power-profiles-daemon go mesa lib
 arch-chroot /mnt archlinux-java set java-18-openjdk && 
 #Phase 3
 echo 'Installing a bunch of SteamOS 3.x stuff.' && 
-arch-chroot /mnt pacman -Sy yay-git lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau lib32-vulkan-intel lib32-vulkan-mesa-layers lib32-vulkan-radeon libva-mesa-driver mesa-vdpau opencl-mesa renderdoc vulkan-intel vulkan-mesa-layers vulkan-radeon vulkan-swrast cpupower hyperv jupiter-validation-tools gamescope mangohud mangohud-debug steam-jupiter-stable zenity-light discord lib32-libva-mesa-driver lib32-mangohud lib32-mesa-vdpau lib32-opencl-mesa mesa xorg-xwayland-jupiter egl-wayland qt6-wayland
+arch-chroot /mnt pacman -Sy yay-git lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau lib32-vulkan-mesa-layers lib32-vulkan-radeon libva-mesa-driver mesa-vdpau opencl-mesa renderdoc vulkan-mesa-layers vulkan-radeon gamescope mangohud mangohud-debug steam-jupiter-stable zenity-light discord lib32-libva-mesa-driver lib32-mangohud lib32-mesa-vdpau lib32-opencl-mesa mesa xorg-xwayland-jupiter egl-wayland qt6-wayland
 
 arch-chroot /mnt /bin/bash <<"EOT"
 mkdir -p /tmp/arch &&
@@ -309,10 +309,10 @@ echo 'timeout 5' >> /boot/loader/loader.conf &&
 echo 'console-mode max' >> /boot/loader/loader.conf && 
 echo 'editor no' >> /boot/loader/loader.conf && 
 echo 'title Coffee-Linux' > /boot/loader/entries/arch.conf && 
-echo 'linux /vmlinuz-linux-neptune' >> /boot/loader/entries/arch.conf &&
+echo 'linux /vmlinuz-linux' >> /boot/loader/entries/arch.conf &&
 echo 'initrd /intel-ucode.img' >> /boot/loader/entries/arch.conf && 
-echo 'initrd /amd-ucode.img' >> /boot/loader/entries/arch.conf && 
-echo 'initrd /initramfs-linux-neptune.img' >> /boot/loader/entries/arch.conf &&
+echo 'initrd /amd-ucode' >> /boot/loader/entries/arch.conf && 
+echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf &&
 echo 'Presetting default services.' && 
 #read -n 1 -s -r -p "Press any key to continue" &&
 systemctl enable sddm && 
@@ -433,7 +433,7 @@ echo '127.0.0.1 localhost' >> /mnt/etc/hosts &&
 echo '::1 localhost' >> /mnt/etc/hosts && 
 echo 127.0.1.1 $hostname0 >> /mnt/etc/hosts && 
 #
-arch-chroot /mnt pacman -Sy amd-ucode make cmake meson glibc linux-neptune linux-firmware linux-neptune-headers btrfs-progs net-tools networkmanager dhcpcd iwd qt6 man-pages man-db texinfo sudo nano dkms git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad cinnamon cinnamon-translations lightdm lightdm-gtk-greeter gtk3 &&
+arch-chroot /mnt pacman -Sy amd-ucode xf86-video-amdgpu make cmake meson glibc linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd qt6 man-pages man-db texinfo sudo nano dkms git base-devel xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad cinnamon cinnamon-translations lightdm lightdm-gtk-greeter gtk3 &&
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab && 
 #echo "/dev/nvme1n1p2  /data  ntfs-3g  defaults,locale=en_US.utf8"  0 3 >> /mnt/etc/fstab
@@ -455,7 +455,7 @@ arch-chroot /mnt pacman -Sy gnome-terminal gnome-tweaks gnome-calculator gnome-s
 arch-chroot /mnt archlinux-java set java-18-openjdk && 
 
 echo 'Installing a bunch of SteamOS 3.x stuff.' && 
-arch-chroot /mnt pacman -Sy yay-git lib32-vulkan-intel lib32-vulkan-mesa-layers lib32-vulkan-radeon libva-mesa-driver mesa-vdpau opencl-mesa renderdoc vulkan-intel vulkan-mesa-layers vulkan-radeon vulkan-swrast cpupower hyperv jupiter-validation-tools gamescope mangohud mangohud-debug steam-jupiter-stable zenity-light discord lib32-libva-mesa-driver lib32-mangohud lib32-mesa-vdpau lib32-opencl-mesa kscreen mesa xorg-xwayland-jupiter egl-wayland qt6-wayland
+arch-chroot /mnt pacman -Sy yay-git lib32-vulkan-mesa-layers lib32-vulkan-radeon libva-mesa-driver mesa-vdpau opencl-mesa renderdoc vulkan-mesa-layers vulkan-radeon gamescope mangohud steam-jupiter-stable zenity-light discord lib32-libva-mesa-driver lib32-mangohud lib32-mesa-vdpau lib32-opencl-mesa kscreen mesa xorg-xwayland-jupiter egl-wayland qt6-wayland
 
 #Phase 3
 arch-chroot /mnt /bin/bash <<"EOT"
@@ -473,10 +473,10 @@ echo 'timeout 5' >> /boot/loader/loader.conf &&
 echo 'console-mode max' >> /boot/loader/loader.conf && 
 echo 'editor no' >> /boot/loader/loader.conf && 
 echo 'title Coffee-Linux' > /boot/loader/entries/arch.conf && 
-echo 'linux /vmlinuz-linux-neptune' >> /boot/loader/entries/arch.conf &&
+echo 'linux /vmlinuz-linux' >> /boot/loader/entries/arch.conf &&
 echo 'initrd /intel-ucode.img' >> /boot/loader/entries/arch.conf && 
 echo 'initrd /amd-ucode.img' >> /boot/loader/entries/arch.conf && 
-echo 'initrd /initramfs-linux-neptune.img' >> /boot/loader/entries/arch.conf &&
+echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf &&
 echo 'Presetting default services.' && 
 #read -n 1 -s -r -p "Press any key to continue" &&
 systemctl enable lightdm && 
