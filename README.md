@@ -118,9 +118,7 @@ The Forest on Coffee Linux 2.1.0 ran at ~75-120fps, exact same settings, same in
 
 12. FirewallD (Better configuration than the standard one)
 
-13. Official Valve Kernel used in SteamDeck.
-
-14. Official SteamDeck Steam-Client (Desktop Version)
+13. Official SteamDeck Steam-Client (Desktop Version)
 
 ** VAAPI requires copying microsoft-edge-stable-flags file in /opt to your ~/.config folder **
 
