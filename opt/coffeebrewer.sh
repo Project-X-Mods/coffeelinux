@@ -92,7 +92,7 @@ echo '127.0.0.1 localhost' >> /mnt/etc/hosts &&
 echo '::1 localhost' >> /mnt/etc/hosts && 
 echo 127.0.1.1 $hostname0 >> /mnt/etc/hosts && 
 #
-arch-chroot /mnt pacman -Sy amd-ucode make cmake meson nullmailer glibc linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo sudo nano git base-devel archlinux-appstream-data dkms qt6 xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad gtk4 gdm gnome xf86-video-amdgpu gnome-extra egl-wayland &&
+arch-chroot /mnt pacman -Sy amd-ucode xf86-video-amdgpu make cmake meson nullmailer glibc linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo sudo nano git base-devel archlinux-appstream-data dkms qt6 xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad gtk4 gdm gnome xf86-video-amdgpu gnome-extra egl-wayland &&
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 #echo "/dev/nvme1n1p2  /data  ntfs-3g  defaults,locale=en_US.utf8"  0 3 >> /mnt/etc/fstab
