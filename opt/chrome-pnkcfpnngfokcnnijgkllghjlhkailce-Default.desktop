@@ -1,9 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Stadia
-Exec=/opt/google/chrome/google-chrome  --enable-native-gpu-memory-buffers --enable-gpu-rasterization --enable-oop-rasterization --disable-gpu-vsync --ignore-gpu-blocklist --disable-font-subpixel-positioning --enable-zero-copy --enable-gpu-compositing --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,CanvasOopRasterization,RawDraw,ParallelDownloading,EnableDrDc --disable-gpu-driver-bug-workarounds --enable-raw-draw --disable-reading-from-canvas --disable-sync-preferences --use-vulkan --use-cmd-decoder=passthrough --disable-features=UseChromeOSDirectVideoDecoder,GlobalVaapiLock --enable-unsafe-webgpu --enable-accelerated-2d-canvas --disable-software-rasterizer --enable-accelerated-video-encode --enable-accelerated-video-decode --enable-accelerated-mjpeg-decode --enable-drdc --num-raster-threads=8 --profile-directory=Default --app-id=pnkcfpnngfokcnnijgkllghjlhkailce
-Icon=chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default
-StartupWMClass=crx_pnkcfpnngfokcnnijgkllghjlhkailce
