@@ -1,7 +1,7 @@
-# Coffee Linux v.3.1.6
+# Coffee Linux v.4.0.0
 
 What is Coffee Linux? Coffee Linux is a meta-distro similar to Gentoo, but not as painful.
-# The idea is that the entire installation process is script based meaning we do not have to worry about releases, old packages being installed or anything like that.
+# The idea is that the entire installation process is script based meaning we do not have to worry about releases, old packages being installed or anything like that. This
 
 It is Arch Linux at its core, but our specialized installer script takes 99% of the pain out of installing Arch Linux yourself. 
 The script downloads and installs everything for you as it goes as you make choices.
@@ -17,51 +17,31 @@ Instructions are as follows: For most things you just answer "yes" if asked.
 
 The installer has prepared everything in a certain order for your convenience and performance internally.
 
-==================================================
-
-Cloning Method for Installation. 
-
-==================================================
-
-1a:  Boot an official Arch Linux ISO in UEFI mode.
-
-2a: Enter: pacman -Syy
-
-3a: Enter: pacman -Syy --noconfirm archlinux-keyring
-
-4a: Enter: pacman -S --noconfirm git
-
-5a: Enter: git clone https://github.com/Project-X-Mods/coffeelinux.git
-
-6a: Enter: bash coffeelinux/opt/coffeebrewer.sh
-
 ===============================================================
 
 Execute normal install procedure as follows.
 
 ===============================================================
 
-1: Boot a Coffee Linux live iso (if one is available). [UEFI ONLY]
+1: Boot a Coffee Linux live iso. [UEFI ONLY]
 
 2: run the installer.
 
 3: enter your username, drive id, and partition numbers (easy to find out)
 
-4: partition the drive chosen with fdisk. (you need 1G for efi, and the rest of the drive for the OS/Home.)
+4: partition the drive chosen with fdisk. (you need 1G for efi bootloader, and the rest of the drive for the OS/Home.)
 
-5: hit yes alot when asked lol.
+5: hit yes alot when asked , same with passwords lol.
 
-6: let it do its thing. make choices involving pipewire and fonts, stupid stuff like that.
+6: let it do its thing. Most of it is automated for you.
 
-7: set the root password, user password, and the temp user password (needed to automate yay install).
-
-8: enter the temp user password to install yay.
+7: set the root password, and user password.
 
 9: yay installs come next (they will ask for the user password alot, sorry).
 
-10: it will fix sddm, and copy over coffee related files to /opt and user home directories, then reboot automattically if successful.
+10: it will copy over coffee related files to /opt and user home directories, then reboot automattically if successful.
 
-11: Login, open edje once, then reboot.
+11: Login, open chromium once, then reboot.
 
 That should finish it off for you. Enjoy your Coffee. Spread the word! Coffee is hot over here.
 
@@ -83,7 +63,7 @@ This Installer will create a Coffee-Linux install on the fly. Requires internet.
 [Notable Feature] 
 0: Home made and tested installer script.
 
-0a. Somehow.. in our tests of games like Elite Dangerous, The Forest, and No Mans Sky.. I am seeing a significant fps improvement over Linux Mint 22 (Vanessa) Cinnamon, Ubuntu 22.04.1 LTS, Fedora 36 Workstation, Manjaro (KDE, and Gnome).
+0a. Somehow.. in our tests of games like Elite Dangerous, The Forest, and No Mans Sky.. I am seeing a real significant fps improvement over Linux Mint 22 (Vanessa) Cinnamon, Ubuntu 22.04.1 LTS, Fedora 36 Workstation, Manjaro (KDE, and Gnome).
 Example: 
 
 The Forest on Ubuntu ran at ~45-55fps (on my hardware)[This is a known horrible performing game on Linux, so I knew this was the test I had to conduct.]
@@ -96,21 +76,21 @@ The Forest on Coffee Linux 2.1.0 ran at ~75-120fps, exact same settings, same in
 
 1. Pure Arch foundation using official repos (and a little AUR here and there)
 
-2. A choice of Desktop Environments designed to be easy to use. (Always the latest version due to Arch being a rolling release.)
+2. A Yaru powered Gnome Desktop Environment designed to be easy to use. (Always the latest version due to Arch being a rolling release.)
 
 2a. Coffee wallpapers in default location.
 
-3. Vaapi enabled by default in Edge**
+3. Vaapi enabled by default in Chromium**
 
 5. Pamac Graphical Software Manager (Select "1 4" in part 4 when prompted for pamac-aur for full functionality)
 
-6. Edge Preinstalled via yay (not Firefox)
+6. Chromium Preinstalled via yay (not Firefox)
 
 7. Latest Pipewire & Wireplumber for the best possible sound.
 
 8. Many gaming frameworks/dependencies preinstalled so you can get to it right away.
 
-9. Prebuilt with Steam, Wine, Winetricks, Protontricks, and DXVK for the best possible gaming experiences out of the box.
+9. Prebuilt with Steam, Wine, Winetricks, and Protontricks for the best possible gaming experiences out of the box.
 
 10. SystemD boot (as opposed to GRUB).
 
@@ -118,11 +98,9 @@ The Forest on Coffee Linux 2.1.0 ran at ~75-120fps, exact same settings, same in
 
 12. FirewallD (Better configuration than the standard one)
 
-13. Official SteamDeck Steam-Client (Desktop Version)
+** VAAPI requires copying chromium-flags file in /opt to your ~/.config folder **
 
-** VAAPI requires copying microsoft-edge-stable-flags file in /opt to your ~/.config folder **
-
-Note: This is designed for PCs with UEFI, Intel CPUs, and AMD CPU/GPUs, nvidia install is hit or miss tbh.
+Note: This is designed for PCs with UEFI enabled.
 
 Note-2 You will have to use fdisk to prepare your drive during installation.
 
