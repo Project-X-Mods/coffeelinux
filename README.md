@@ -37,11 +37,11 @@ Execute normal install procedure as follows.
 
 7: set the root password, and user password.
 
-9: yay installs come next (they will ask for the user password alot, sorry).
+8: yay installs come next (they will ask for the user password alot, sorry).
 
-10: it will copy over coffee related files to /opt and user home directories, then reboot automattically if successful.
+9: it will copy over coffee related files to /opt and user home directories, then reboot automattically if successful.
 
-11: Login, open chromium once, then reboot.
+10: Login, open chromium once, then reboot.
 
 That should finish it off for you. Enjoy your Coffee. Spread the word! Coffee is hot over here.
 
@@ -82,21 +82,21 @@ The Forest on Coffee Linux 2.1.0 ran at ~75-120fps, exact same settings, same in
 
 3. Vaapi enabled by default in Chromium**
 
-5. Pamac Graphical Software Manager (Select "1 4" in part 4 when prompted for pamac-aur for full functionality)
+4. Pamac Graphical Software Manager (Select "1 4" in part 4 when prompted for pamac-aur for full functionality)
 
-6. Chromium Preinstalled via yay (not Firefox)
+5. Chromium Preinstalled via yay (not Firefox)
 
-7. Latest Pipewire & Wireplumber for the best possible sound.
+6. Latest Pipewire & Wireplumber for the best possible sound.
 
-8. Many gaming frameworks/dependencies preinstalled so you can get to it right away.
+7. Many gaming frameworks/dependencies preinstalled so you can get to it right away.
 
-9. Prebuilt with Steam, Wine, Winetricks, and Protontricks for the best possible gaming experiences out of the box.
+8. Prebuilt with Steam, Wine, Winetricks, and Protontricks for the best possible gaming experiences out of the box.
 
-10. SystemD boot (as opposed to GRUB).
+9. SystemD boot (as opposed to GRUB).
 
-11. Yay for CLI installation of AUR applications.
+10. Yay for CLI installation of AUR applications.
 
-12. FirewallD (Better configuration than the standard one)
+11. FirewallD (Better configuration than the standard one)
 
 ** VAAPI requires copying chromium-flags file in /opt to your ~/.config folder **
 
