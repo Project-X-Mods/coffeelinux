@@ -1,4 +1,5 @@
-# Coffee Linux v.4.0.0
+# Coffee Linux v.4.0.0![CoffeeLinuxKDE](https://user-images.githubusercontent.com/8603363/191408653-f2142999-5cfc-4edc-9149-3575fa22aa45.png)
+
 
 What is Coffee Linux? Coffee Linux is a meta-distro similar to Gentoo, but not as painful.
 # The idea is that the entire installation process is script based meaning we do not have to worry about releases, old packages being installed or anything like that. 
