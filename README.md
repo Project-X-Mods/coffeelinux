@@ -1,5 +1,5 @@
-# Coffee Linux v.4.1.1!
-[CoffeeLinuxKDE](https://user-images.githubusercontent.com/8603363/191408653-f2142999-5cfc-4edc-9149-3575fa22aa45.png)
+# Coffee Linux v.4.1.1
+![CoffeeLinuxKDE](https://user-images.githubusercontent.com/8603363/191408653-f2142999-5cfc-4edc-9149-3575fa22aa45.png)
 
 ![CoffeeLinuxCinnamon](https://user-images.githubusercontent.com/8603363/191624422-beedfdf9-ba44-4d99-87be-2c68a96fa436.png)
 
