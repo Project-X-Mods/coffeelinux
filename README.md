@@ -112,3 +112,4 @@ Note-2 You will have to use fdisk to prepare your drive during installation.
 Like, Share, and Enjoy. Our Linux is the cure.
 
 ===============================================================
+![Screenshot from 2022-09-21 15-55-20](https://user-images.githubusercontent.com/8603363/191624422-beedfdf9-ba44-4d99-87be-2c68a96fa436.png)
