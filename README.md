@@ -15,7 +15,7 @@ This gives it that coffee flavor. We don't maintain anything but the script, eve
 
 We believe using your PC should be as easy as a sip of coffee, so we fixed it up to be that way for you. No guesswork, it just does what its supposed to do. So kick back, relax and enjoy your cup.
 
-Standard Gamescope+MangoHUD usage in steam:= gamescope -w 1280 -h 720 -W 1920 -H 1080 -f -U -r 144 -- mangohud %command%
+Standard Upcaled Fullscreen GamescopeSession+MangoHUD usage in steam:= gamescope -w 1280 -h 720 -W 1920 -H 1080 -f -U -r 144 -o 20 -- mangohud %command%
 
 ==================================================
 
