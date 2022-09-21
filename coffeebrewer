@@ -138,7 +138,7 @@ echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf &&
 echo $$
 EOT
 #
-echo options root="LABEL=$drivename0" rw >> /mnt/boot/loader/entries/arch.conf && 
+echo options root="LABEL=$drivename0" rw nvidia-drm.modeset=1 >> /mnt/boot/loader/entries/arch.conf && 
 #
 rm -R /mnt/usr/share/backgrounds/gnome/ && 
 mkdir -p /mnt/usr/share/backgrounds/gnome/ && 
@@ -291,7 +291,7 @@ echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf &&
 echo $$
 EOT
 #
-echo options root="LABEL=$drivename0" rw >> /mnt/boot/loader/entries/arch.conf && 
+echo options root="LABEL=$drivename0" rw nvidia-drm.modeset=1 >> /mnt/boot/loader/entries/arch.conf && 
 #
 
 
@@ -438,7 +438,7 @@ echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf &&
 echo $$
 EOT
 #
-echo options root="LABEL=$drivename0" rw >> /mnt/boot/loader/entries/arch.conf && 
+echo options root="LABEL=$drivename0" rw nvidia-drm.modeset=1 >> /mnt/boot/loader/entries/arch.conf && 
 #
 echo 'Attempting to fix the home directory automatically now...' && 
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
