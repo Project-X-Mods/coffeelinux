@@ -1,4 +1,4 @@
-# Coffee Linux v.4.0.0![CoffeeLinuxKDE](https://user-images.githubusercontent.com/8603363/191408653-f2142999-5cfc-4edc-9149-3575fa22aa45.png)
+# Coffee Linux v.4.1.0![CoffeeLinuxKDE](https://user-images.githubusercontent.com/8603363/191408653-f2142999-5cfc-4edc-9149-3575fa22aa45.png)
 
 
 What is Coffee Linux? Coffee Linux is a meta-distro similar to Gentoo, but not as painful.
@@ -78,7 +78,7 @@ The Forest on Coffee Linux 2.1.0 ran at ~75-120fps, exact same settings, same in
 
 1. Pure Arch foundation using official repos (and a little AUR here and there)
 
-2. A Yaru powered Gnome Desktop Environment designed to be easy to use. (Always the latest version due to Arch being a rolling release.)
+2. A choice of Desktop Environments designed to be easy to use. (Always the latest version due to Arch being a rolling release.)
 
 2a. Coffee wallpapers in default location.
 
@@ -100,7 +100,7 @@ The Forest on Coffee Linux 2.1.0 ran at ~75-120fps, exact same settings, same in
 
 11. FirewallD (Better configuration than the standard one)
 
-** VAAPI requires copying chromium-flags file in /opt to your ~/.config folder **
+** VAAPI requires copying chromium-flags file in $drivename/opt to your ~/.config folder **
 
 Note: This is designed for PCs with UEFI enabled.
 
