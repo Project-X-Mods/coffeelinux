@@ -1,4 +1,7 @@
-# Coffee Linux v.4.1.0![CoffeeLinuxKDE](https://user-images.githubusercontent.com/8603363/191408653-f2142999-5cfc-4edc-9149-3575fa22aa45.png)
+# Coffee Linux v.4.1.1!
+[CoffeeLinuxKDE](https://user-images.githubusercontent.com/8603363/191408653-f2142999-5cfc-4edc-9149-3575fa22aa45.png)
+
+![CoffeeLinuxCinnamon](https://user-images.githubusercontent.com/8603363/191624422-beedfdf9-ba44-4d99-87be-2c68a96fa436.png)
 
 
 What is Coffee Linux? Coffee Linux is a meta-distro similar to Gentoo, but not as painful.
@@ -112,4 +115,4 @@ Note-2 You will have to use fdisk to prepare your drive during installation.
 Like, Share, and Enjoy. Our Linux is the cure.
 
 ===============================================================
-![Screenshot from 2022-09-21 15-55-20](https://user-images.githubusercontent.com/8603363/191624422-beedfdf9-ba44-4d99-87be-2c68a96fa436.png)
+
