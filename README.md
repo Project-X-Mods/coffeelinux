@@ -64,7 +64,7 @@ Hashtags:
 
 ==================================================
 
-Key Features: Arch-Based, BTRFS installation, SteamOS-Infused Desktop Environment (KDE, Gnome, or Cinnamon) , Pipewire, VAAPI on Edge (with game streaming in mind)** , FirewallD, and SystemD-Boot.
+Key Features: Arch-Based, BTRFS installation, SteamOS-Infused Desktop Environment (KDE, Gnome, or Cinnamon) , Pipewire, VAAPI on Chromium (with game streaming in mind)** , FirewallD, and SystemD-Boot.
 
 A script/command designed to install a unique Coffee-Linux Experience via Arch easily, and semi painlessly.
 
