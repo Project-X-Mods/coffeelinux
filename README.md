@@ -3,15 +3,19 @@
 
 ![CoffeeLinuxCinnamon](https://user-images.githubusercontent.com/8603363/191624422-beedfdf9-ba44-4d99-87be-2c68a96fa436.png)
 
-
 What is Coffee Linux? Coffee Linux is a meta-distro similar to Gentoo, but not as painful.
-# The idea is that the entire installation process is script based meaning we do not have to worry about releases, old packages being installed or anything like that. 
+
+# The idea is that the entire installation process is a single script based and net installed from package publishers repos directly. Everything stays current proactively.
+It has the fastest most reliable desktop environments choice ready for you. (Gnome, KDE, or Cinnamon).
+
+Everything you need to game right away is done, Just enjoy your PC.
+
 # This is the cure to the distro hopping. Not kidding lol.
 
 It is Arch Linux at its core, but our specialized installer script takes 99% of the pain out of installing Arch Linux yourself. 
 The script downloads and installs everything for you as it goes as you make choices.
 It automatically configures everything for you with Arch, SteamOS, and Multilib, Repos enabled by default.
-This gives it that coffee flavor. We don't maintain anything but the script, everything else up to respective package maintainers. 
+This gives it that coffee flavor. We don't maintain anything but the script, everything else up to respective package maintainers.  
 
 We believe using your PC should be as easy as a sip of coffee, so we fixed it up to be that way for you. No guesswork, it just does what its supposed to do. So kick back, relax and enjoy your cup.
 
