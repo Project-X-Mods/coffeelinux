@@ -63,19 +63,8 @@ A script/command designed to install a unique Coffee-Linux Experience via Arch e
 
 This Installer will create a Coffee-Linux install on the fly. Requires internet.
  
-[Notable Feature] 
+[Notable Features] 
 0: Home made and tested installer script.
-
-0a. Somehow.. in our tests of games like Elite Dangerous, The Forest, and No Mans Sky.. I am seeing a real significant fps improvement over Linux Mint 22 (Vanessa) Cinnamon, Ubuntu 22.04.1 LTS, Fedora 36 Workstation, Manjaro (KDE, and Gnome).
-Example: 
-
-The Forest on Ubuntu ran at ~45-55fps (on my hardware)[This is a known horrible performing game on Linux, so I knew this was the test I had to conduct.]
-
-The Forest on Coffee Linux 2.1.0 ran at ~75-120fps, exact same settings, same installation of the game even on a second drive.
-
-0b. This is a massive gain and its worth mentioning this was tested on a "GTX 1660" @ 1920x1080 144hz Display default settings except vsync = on in game. This installation script must just do it right or something lol.
-
-0c. I personally (LiquidSmokeX64) test every build script on my own home pc just to be certain it works as intended.
 
 1. Pure Arch foundation using official repos (and a little AUR here and there)
 
@@ -83,7 +72,7 @@ The Forest on Coffee Linux 2.1.0 ran at ~75-120fps, exact same settings, same in
 
 2a. Coffee wallpapers in default location.
 
-3. Vaapi enabled by default in Chromium**
+3. Vaapi enabled by default in Chromium (driver only)
 
 4. Pamac Graphical Software Manager (Select "1 4" in part 4 when prompted for pamac-aur for full functionality)
 
@@ -100,8 +89,6 @@ The Forest on Coffee Linux 2.1.0 ran at ~75-120fps, exact same settings, same in
 10. Yay for CLI installation of AUR applications.
 
 11. FirewallD (Better configuration than the standard one)
-
-** VAAPI requires copying chromium-flags file in $drivename/opt to your ~/.config folder **
 
 Note: This is designed for PCs with UEFI enabled.
 
