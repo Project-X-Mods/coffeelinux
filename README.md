@@ -1,4 +1,4 @@
-# Coffee Linux v.5.0.0
+# Coffee Linux v.5.0.2
 ![CoffeeLinuxKDE](https://user-images.githubusercontent.com/8603363/191408653-f2142999-5cfc-4edc-9149-3575fa22aa45.png)
 
 ![CoffeeLinuxCinnamon](https://user-images.githubusercontent.com/8603363/191624422-beedfdf9-ba44-4d99-87be-2c68a96fa436.png)
@@ -94,7 +94,7 @@ The Forest on Coffee Linux 2.1.0 ran at ~75-120fps, exact same settings, same in
 
 4. Pamac Graphical Software Manager (Select "1 4" in part 4 when prompted for pamac-aur for full functionality)
 
-5. Chromium Preinstalled via yay (not Firefox)
+5. All firmware files actually installed for the kernel.
 
 6. Latest Pipewire & Wireplumber for the best possible sound.
 
