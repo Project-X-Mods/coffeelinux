@@ -3,21 +3,14 @@
 
 ![CoffeeLinuxCinnamon](https://user-images.githubusercontent.com/8603363/191624422-beedfdf9-ba44-4d99-87be-2c68a96fa436.png)
 
-What is Coffee Linux? Coffee Linux is a meta-distro similar to Gentoo, but not as painful.
-
-# The idea is that the entire installation process is a single script based and net installed from package publishers repos directly. Everything stays current proactively.
-It has the fastest most reliable desktop environments choice ready for you. (Gnome, KDE, or Cinnamon).
-
-Everything you need to game right away is done, Just enjoy your PC.
-
-# This is the cure to the distro hopping. Not kidding lol.
-
-It is Arch Linux at its core, but our specialized installer script takes 99% of the pain out of installing Arch Linux yourself. 
-The script downloads and installs everything for you as it goes as you make choices.
-It automatically configures everything for you with Arch, SteamOS, and Multilib, Repos enabled by default.
-This gives it that coffee flavor. We don't maintain anything but the script, everything else up to respective package maintainers.  
-
 We believe using your PC should be as easy as a sip of coffee, so we fixed it up to be that way for you. No guesswork, it just does what its supposed to do. So kick back, relax and enjoy your cup.
+
+Our specialized script installs a more feature complete version of Arch than the archinstall command. The idea here is to have ANYONE able to use Arch, without having to know all the packages and whatnot to do so.
+Our script make the installation easy enough for everyone.
+We go through the trouble of figuring out all the packages and dependencies and getting them in so when you first login, it is ready for whatever you throw at it. The default archinstall script is too barebones, and not really suitable for daily use, so we have made a better one ourselves.
+We tediously comb through the packages looking for anything that needs other stuff, and for errors of course to ensure you get a quality product.
+
+This is ready for gaming on Steam out of the box, and has Discord as well.
 
 Standard Upcaled Fullscreen GamescopeSession+MangoHUD usage in steam:= gamescope -w 1280 -h 720 -W 1920 -H 1080 -f -U -r 60 -o 20 -- mangohud %command%
 
