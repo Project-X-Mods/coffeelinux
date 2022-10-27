@@ -50,6 +50,10 @@ echo '[jupiter-main]' >> /etc/pacman.conf &&
 echo 'Server = https://steamdeck-packages.steamos.cloud/archlinux-mirror/$repo/os/$arch' >> /etc/pacman.conf &&
 echo 'SigLevel = Never' >> /etc/pacman.conf &&
 echo '' >> /etc/pacman.conf &&
+echo '[andontie-aur]' >> /etc/pacman.conf &&
+echo 'Server = https://aur.andontie.net/$arch' >> /etc/pacman.conf &&
+echo 'SigLevel = Never' >> /etc/pacman.conf &&
+echo '' >> /etc/pacman.conf &&
 pacman -Sy --noconfirm archlinux-keyring && 
 pacman -Sy --noconfirm archlinux-appstream-data && 
 #
@@ -111,23 +115,9 @@ else
 echo "You need to enter a valid desktop environment"
 fi
 
-echo 'Installing yay for AUR support' &&
-arch-chroot /mnt /bin/bash <<"EOT"
-mkdir -p /tmp/arch/stage2 &&
-cd /tmp/arch/stage2 &&
-ls -l && 
-cd /opt &&
-echo "AUR apps installation" &&
-sudo -Su $user01 sudo git clone https://aur.archlinux.org/yay.git && 
-sudo -Su $user01 sudo chown -hR $user01:users ./yay &&  
-cd /opt/yay &&
-sudo -Su $user01 makepkg -f -s --install --noconfirm --clean
-echo $$
-EOT
-
 #
 echo "Installing Coffee Extras"
-arch-chroot /mnt pacman -Sy --noconfirm chrony samba cups archivetools archiso gamescope mangohud lib32-mangohud qt6-multimedia-ffmpeg make unzip unrar xf86-video-amdgpu linux-headers sudo nano git base-devel dkms qt6 xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad egl-wayland gtk-engine-murrine virtualbox-host-modules-arch power-profiles-daemon go meson xorg xorg-server xorg-apps lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau virtualbox virtualbox-guest-utils git xdg-utils gettext ufw libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils  libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src libreoffice-fresh firewalld shotwell lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau lib32-vulkan-mesa-layers opencl-mesa wine-mono wine-gecko vulkan-mesa-layers steam steam-native-runtime discord lib32-opencl-mesa mesa qt6-wayland firefox thunderbird mesa-utils &&
+arch-chroot /mnt pacman -Sy --noconfirm yay chrony samba cups archivetools archiso gamescope mangohud lib32-mangohud qt6-multimedia-ffmpeg make unzip unrar xf86-video-amdgpu linux-headers sudo nano git base-devel dkms qt6 xed xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad egl-wayland gtk-engine-murrine virtualbox-host-modules-arch power-profiles-daemon go meson xorg xorg-server xorg-apps lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau virtualbox virtualbox-guest-utils git xdg-utils gettext ufw libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils  libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src libreoffice-fresh firewalld shotwell lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau lib32-vulkan-mesa-layers opencl-mesa wine-mono wine-gecko vulkan-mesa-layers steam steam-native-runtime discord lib32-opencl-mesa mesa qt6-wayland firefox thunderbird mesa-utils &&
 #
 #Phase 2
 arch-chroot /mnt archlinux-java set java-19-openjdk && 
@@ -282,6 +272,3 @@ umount -R /mnt &&
 reboot
 #
 ################################
-
-
-
