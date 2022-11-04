@@ -1,4 +1,4 @@
-# Coffee Linux v.5.0.2
+# Coffee Linux v.6.0.0
 ![CoffeeLinuxKDE](https://user-images.githubusercontent.com/8603363/191408653-f2142999-5cfc-4edc-9149-3575fa22aa45.png)
 
 ![CoffeeLinuxCinnamon](https://user-images.githubusercontent.com/8603363/191624422-beedfdf9-ba44-4d99-87be-2c68a96fa436.png)
@@ -11,8 +11,6 @@ We go through the trouble of figuring out all the packages and dependencies and 
 We tediously comb through the packages looking for anything that needs other stuff, and for errors of course to ensure you get a quality product.
 
 This is ready for gaming on Steam out of the box, and has Discord as well.
-
-Standard Upcaled Fullscreen GamescopeSession+MangoHUD usage in steam:= gamescope -w 1280 -h 720 -W 1920 -H 1080 -f -U -r 60 -o 20 -- mangohud %command%
 
 ==================================================
 
@@ -36,15 +34,15 @@ Execute normal install procedure as follows.
 
 5: hit yes alot when asked , same with passwords lol.
 
-6: let it do its thing. Most of it is automated for you.
+6: let it do its thing. most of it is automated for you.
 
 7: set the root password, and user password.
 
-8: yay installs come next (they will ask for the user password alot, sorry).
+8: yay installs come next.
 
-9: it will copy over coffee related files to /opt and user home directories, then reboot automattically if successful.
+9: it will copy over coffee related files to the system, then reboot automatically.
 
-10: Login, open chromium once, then reboot.
+10: Login, open Edge once, then reboot.
 
 That should finish it off for you. Enjoy your Coffee. Spread the word! Coffee is hot over here.
 
@@ -57,38 +55,36 @@ Hashtags:
 
 ==================================================
 
-Key Features: Arch-Based, BTRFS installation, SteamOS-Infused Desktop Environment (KDE, Gnome, or Cinnamon) , Pipewire, VAAPI on Chromium (with game streaming in mind)** , FirewallD, and SystemD-Boot.
+Key Features: Arch-Based, BTRFS installation, User-Choice Desktop Environment (KDE, Gnome, or Cinnamon) , Pipewire, FirewallD, and SystemD-Boot.
 
 A script/command designed to install a unique Coffee-Linux Experience via Arch easily, and semi painlessly.
 
 This Installer will create a Coffee-Linux install on the fly. Requires internet.
  
 [Notable Features] 
-0: Home made and tested installer script.
+0: Home made and tested pure Bash installer script.
 
 1. Pure Arch foundation using official repos (and a little AUR here and there)
 
 2. A choice of Desktop Environments designed to be easy to use. (Always the latest version due to Arch being a rolling release.)
 
-2a. Coffee wallpapers in default location.
+3. Coffee wallpapers in default location/s.
 
-3. Vaapi enabled by default in Chromium (driver only)
+4. Latest Pipewire & Wireplumber for the best possible sound.
 
-4. Pamac Graphical Software Manager (Select "1 4" in part 4 when prompted for pamac-aur for full functionality)
+5. Many gaming frameworks/dependencies preinstalled so you can get to it right away.
 
-5. All firmware files actually installed for the kernel.
+6. Prebuilt with Steam, Wine, Winetricks, Discord and Protontricks for the best possible gaming experiences out of the box.
 
-6. Latest Pipewire & Wireplumber for the best possible sound.
+7. SystemD boot (as opposed to GRUB).
 
-7. Many gaming frameworks/dependencies preinstalled so you can get to it right away.
+8. Yay for CLI installation of AUR applications.
 
-8. Prebuilt with Steam, Wine, Winetricks, and Protontricks for the best possible gaming experiences out of the box.
+9. FirewallD (Better configuration than the standard one)
 
-9. SystemD boot (as opposed to GRUB).
+10. New Xbox Series X|S Controller driver (DKMS)
 
-10. Yay for CLI installation of AUR applications.
-
-11. FirewallD (Better configuration than the standard one)
+11. Gnome-Disk-Utility for all DEs.
 
 Note: This is designed for PCs with UEFI enabled.
 
@@ -99,4 +95,3 @@ Note-2 You will have to use fdisk to prepare your drive during installation.
 Like, Share, and Enjoy. Our Linux is the cure.
 
 ===============================================================
-
