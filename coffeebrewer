@@ -1,0 +1,284 @@
+#!/bin/sh
+#Phase 1
+#
+echo "This script/command must be run directly as root user not via sudo. (ie: entering sudo -i first)"
+echo "If you have not ran as root user, please exit now, root, and run again."
+#
+echo "Set your Username."
+read user00
+user01=$user00
+#
+echo "Set your drive ('nvmeXn1 or sdX')"
+read drive
+pfx="/dev/"
+drive0=$pfx$drive
+#
+echo "Set your Boot Partition ('p1 or 1')."
+read boot
+boot0=$drive0$boot
+#
+echo "Set your Swap Partition ('p2 or 2')."
+read swap
+swap0=$drive0$swap
+#
+echo "Set your System/Home Partition ('p3 or 3')."
+read system
+system0=$drive0$system
+#
+echo "Set your PC Name (hostname)."
+read hostname
+hostname0=$hostname
+#
+echo "Set your drivename (ie: LocalDisk)."
+read drivename
+drivename0=$drivename
+#
+echo "What dektop environment would you like? ('gnome, kde, or cinnamon (case-sensitive)')."
+read desktop0
+#
+#echo 'Starting Base install'
+fdisk $drive0 &&
+echo 'Formatting Partitions' && 
+mkfs.fat -F32 $boot0 && 
+mkswap $swap0
+swapon $swap0
+mkfs.btrfs -L $drivename0 $system0 && 
+echo 'Mounting Disks' && 
+mount $system0 /mnt && 
+mkdir /mnt/boot && 
+mount $boot0 /mnt/boot && 
+echo 'Enable Repos' &&
+echo '' >> /etc/pacman.conf &&
+echo '[multilib]' >> /etc/pacman.conf && 
+echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf &&
+echo '' >> /etc/pacman.conf &&
+echo '[andontie-aur]' >> /etc/pacman.conf &&
+echo 'Server = https://aur.andontie.net/$arch' >> /etc/pacman.conf &&
+echo 'SigLevel = Never' >> /etc/pacman.conf &&
+echo '' >> /etc/pacman.conf &&
+pacman -Sy --noconfirm archlinux-keyring && 
+pacman -Sy --noconfirm archlinux-appstream-data && 
+#
+#echo 'Installing Kernel Frameworks' && 
+pacman -Syy && 
+pacstrap /mnt base intel-ucode amd-ucode linux linux-firmware btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo mkinitcpio sudo nano && 
+arch-chroot /mnt pacman -Syy &&
+arch-chroot /mnt pacman -Sy --noconfirm archlinux-keyring &&
+cp /etc/pacman.conf /mnt/etc/pacman.conf &&
+arch-chroot /mnt pacman -Syy &&
+#
+echo 'Set Root Password' && 
+arch-chroot /mnt passwd && 
+echo 'Adding User Account' && 
+arch-chroot /mnt useradd -m -G wheel,audio,video,users --badname $user01 && 
+echo 'Set User Password' && 
+arch-chroot /mnt passwd $user01
+echo $hostname0 > /mnt/etc/hostname && 
+echo '127.0.0.1 localhost' >> /mnt/etc/hosts && 
+echo '::1 localhost' >> /mnt/etc/hosts && 
+echo 127.0.1.1 $hostname0 >> /mnt/etc/hosts && 
+#
+echo 'Creating Links' && 
+genfstab -U /mnt >> /mnt/etc/fstab &&
+arch-chroot /mnt /bin/bash <<"EOT"
+echo 'Setting Locale' && 
+#read -n 1 -s -r -p "Press any key to continue" &&
+ln -sf ../usr/share/zoneinfo/America/Los_Angeles /etc/localtime && 
+hwclock --systohc && 
+echo 'en_US ISO-8859-1' >> /etc/locale.gen && 
+echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && 
+echo 'KEYMAP=us' > /etc/vconsole.conf && 
+echo 'LANG=en_US.UTF-8' > /etc/locale.conf && 
+export LANG=en_US.UTF-8 && 
+locale-gen &&  
+cd / &&  
+echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/wheel &&
+mkinitcpio -P && 
+echo $$
+EOT
+#
+cp --dereference /etc/resolv.conf /mnt/etc/ &&
+arch-chroot /mnt pacman -Sy --noconfirm archlinux-appstream-data &&
+arch-chroot /mnt pacman -Syu --noconfirm && 
+#
+if [ $desktop0 == 'gnome' ]
+then
+#
+arch-chroot /mnt pacman -Sy --noconfirm file-roller go xdg-desktop-portal-gnome xorg-xwayland libpulse qt6-multimedia-ffmpeg lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib gtk4 zenity gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber pipewire-jack gnome gdm bluez-libs amd-ucode dbus-python glib2 gtk3 dconf nftables python-gobject hicolor-icon-theme libnotify nm-connection-editor python-pyqt5 python-capng bash-completion phonon-qt5-gstreamer tesseract-data-eng mkinitcpio cronie pipewire-jack noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra gnu-free-fonts cmake meson nullmailer glibc gnome-extra gnome-firmware gnome-keyring polkit-gnome gnome-online-accounts gnome-console && 
+arch-chroot /mnt pacman -R --noconfirm gedit gnome-terminal
+#
+elif [ $desktop0 == 'kde' ]
+then
+arch-chroot /mnt pacman -Sy --noconfirm ark go xdg-desktop-portal-kde xorg-xwayland libpulse qt6-multimedia-ffmpeg lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib zenity gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber pipewire-jack plasma-framework bluez-libs amd-ucode dbus-python glib2 gtk3 dconf nftables python-gobject hicolor-icon-theme libnotify nm-connection-editor python-pyqt5 python-capng bash-completion phonon-qt5-gstreamer tesseract-data-eng mkinitcpio cronie pipewire-jack noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra gnu-free-fonts cmake meson nullmailer glibc kcmutils archlinux-appstream-data appstream-qt plasma-wayland-session qt5-graphicaleffects kuserfeedback knewstuff kidletime discount kirigami2 flatpak fwupd extra-cmake-modules plasma-wayland-protocols kde-applications-meta sddm sddm-kcm plasma-meta gnome-disk-utility qt6-wayland kscreen libunity kdialog
+#
+elif [ $desktop0 == 'cinnamon' ]
+then
+arch-chroot /mnt pacman -Sy --noconfirm file-roller go cinnamon xorg-xwayland libpulse lib32-libpulse qt6-multimedia-ffmpeg alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib zenity gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber pipewire-jack cinnamon-translations bluez-libs amd-ucode dbus-python glib2 gtk3 dconf nftables python-gobject hicolor-icon-theme libnotify nm-connection-editor python-pyqt5 python-capng bash-completion phonon-qt5-gstreamer tesseract-data-eng mkinitcpio cronie pipewire-jack noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra gnu-free-fonts cmake meson nullmailer glibc lightdm lightdm-gtk-greeter gtk3 gnome-console gnome-calculator gnome-system-monitor gnome-keyring polkit-gnome gnome-disk-utility && 
+arch-chroot /mnt pacman -R --noconfirm gedit
+else
+echo "You need to enter a valid desktop environment"
+fi
+
+#
+echo "Installing Coffee Extras"
+arch-chroot /mnt pacman -Sy --noconfirm yay libpipewire02 ttf-liberation chrony samba cups archivetools archiso qt6-multimedia-ffmpeg make unzip unrar xf86-video-amdgpu linux-headers sudo nano git base-devel dkms qt6 gnome-text-editor xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad egl-wayland gtk-engine-murrine virtualbox-host-modules-arch power-profiles-daemon go meson xorg xorg-server xorg-apps lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau virtualbox virtualbox-guest-utils git xdg-utils gettext ufw libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils  libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src libreoffice-fresh firewalld shotwell lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau lib32-vulkan-mesa-layers opencl-mesa wine-mono wine-gecko vulkan-mesa-layers steam discord lib32-opencl-mesa mesa qt6-wayland mesa-utils &&
+#
+#Phase 2
+echo "Set your Java Version (19 or newer)."
+read javaver
+java0=$javaver
+arch-chroot /mnt archlinux-java set java-$java0-openjdk && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mkinitcpio-firmware && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y text-engine-git && 
+#Phase 3
+arch-chroot /mnt pacman -Sy  && 
+#
+arch-chroot /mnt systemctl enable dhcpcd && 
+arch-chroot /mnt systemctl enable cronie && 
+arch-chroot /mnt systemctl enable chronyd &&
+arch-chroot /mnt systemctl enable dhcpcd &&
+arch-chroot /mnt systemctl enable NetworkManager && 
+arch-chroot /mnt systemctl --global enable pipewire.service pipewire-pulse.service wireplumber.service && 
+arch-chroot /mnt systemctl enable firewalld
+#
+arch-chroot /mnt /bin/bash <<"EOT"
+echo Installing Bootloader &&
+mkinitcpio -P && 
+#read -n 1 -s -r -p "Press any key to continue" &&  
+bootctl install && 
+echo 'default arch.conf' > /boot/loader/loader.conf && 
+echo 'timeout 5' >> /boot/loader/loader.conf && 
+echo 'console-mode max' >> /boot/loader/loader.conf && 
+echo 'editor no' >> /boot/loader/loader.conf && 
+echo 'title Coffee-Linux "Fresco" (6.0.0)' > /boot/loader/entries/arch.conf && 
+echo 'linux /vmlinuz-linux' >> /boot/loader/entries/arch.conf &&
+echo 'initrd /intel-ucode.img' >> /boot/loader/entries/arch.conf && 
+echo 'initrd /amd-ucode.img' >> /boot/loader/entries/arch.conf && 
+echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf &&
+echo $$
+EOT
+#
+
+echo options root="LABEL=$drivename0" rw >> /mnt/boot/loader/entries/arch.conf && 
+#
+#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y pamac-aur && 
+#arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y libva-vdpau-driver-vp9-git && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y amdgpu-fan && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y protontricks && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev &&
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y xone-dkms &&
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y microsoft-edge-stable
+#
+
+if [ $desktop0 == 'gnome' ]
+then
+#
+rm -R /mnt/usr/share/backgrounds/gnome/ && 
+mkdir -p /mnt/usr/share/backgrounds/gnome/ && 
+cp /opt/backgrounds/coffee/coffeewall03.webp /mnt/usr/share/backgrounds/gnome/adwaita-d.webp && 
+cp /opt/backgrounds/coffee/coffeewall05.webp /mnt/usr/share/backgrounds/gnome/adwaita-l.webp && 
+cp /opt/backgrounds/coffee/coffeewall04.webp /mnt/usr/share/backgrounds/gnome/grid-l.webp && 
+cp /opt/backgrounds/coffee/coffeewall06.webp /mnt/usr/share/backgrounds/gnome/grid-d.webp &&
+cp /opt/backgrounds/coffee/coffeewall02.webp /mnt/usr/share/backgrounds/gnome/licorice-l.webp && 
+cp /opt/backgrounds/coffee/coffeewall07.webp /mnt/usr/share/backgrounds/gnome/licorice-d.webp && 
+cp /opt/backgrounds/coffee/coffeewall08.webp /mnt/usr/share/backgrounds/gnome/wood-l.webp && 
+cp /opt/backgrounds/coffee/coffeewall01.webp /mnt/usr/share/backgrounds/gnome/wood-d.webp && 
+#
+echo 'Installing Coffee-QOL-Extras' && 
+#
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y humanity-icon-theme && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-shell-extension-ubuntu-dock && 
+#arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-shell-extension-impatience && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-shell-extension-appindicator && 
+#arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-shell-extension-desktop-icons-ng && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-browser-connector && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mutter-dynamic-buffering && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y extension-manager &&
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-gtk-theme && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean n  --answerdiff y --answeredit y --answerupgrade y yaru-icon-theme && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean n  --answerdiff y --answeredit y --answerupgrade y yaru-gnome-shell-theme && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean n  --answerdiff y --answeredit y --answerupgrade y yaru-session && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean n  --answerdiff y --answeredit y --answerupgrade y yaru-sound-theme && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean n  --answerdiff y --answeredit y --answerupgrade y yaru-unity-theme &&  
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gdm-settings &&
+arch-chroot /mnt pacman -Syu && 
+rm -r /mnt/usr/share/xsessions/gnome* && 
+rm -r /mnt/usr/share/wayland-sessions/gnome* && 
+arch-chroot /mnt systemctl enable gdm &&
+arch-chroot /mnt systemctl enable amdgpu-fan
+# 
+
+elif [ $desktop0 == 'kde' ]
+then
+echo 'Attempting to fix the home directory automatically now...' && 
+arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
+arch-chroot /mnt xdg-user-dirs-update &&  
+#
+echo 'Installing Coffee-QOL-Extras' &&  
+ 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y systemd-kcm && 
+
+mkdir -p /mnt/usr/share/wallpapers/coffee/ && 
+#
+cp /opt/backgrounds/coffee/coffeewall03.webp /mnt/usr/share/wallpapers/coffee/coffeewall01.webp && 
+cp /opt/backgrounds/coffee/coffeewall05.webp /mnt/usr/share/wallpapers/coffee/coffeewall02.webp && 
+cp /opt/backgrounds/coffee/coffeewall04.webp /mnt/usr/share/wallpapers/coffee/coffeewall03.webp && 
+cp /opt/backgrounds/coffee/coffeewall06.webp /mnt/usr/share/wallpapers/coffee/coffeewall04.webp &&
+cp /opt/backgrounds/coffee/coffeewall02.webp /mnt/usr/share/wallpapers/coffee/coffeewall05.webp && 
+cp /opt/backgrounds/coffee/coffeewall07.webp /mnt/usr/share/wallpapers/coffee/coffeewall06.webp && 
+cp /opt/backgrounds/coffee/coffeewall08.webp /mnt/usr/share/wallpapers/coffee/coffeewall07.webp && 
+cp /opt/backgrounds/coffee/coffeewall01.webp /mnt/usr/share/wallpapers/coffee/coffeewall08.webp &&  
+# 
+echo 'Ensuring correct DM is set.' &&  
+arch-chroot /mnt pacman -Syu && 
+arch-chroot /mnt systemctl enable sddm && 
+arch-chroot /mnt systemctl enable amdgpu-fan
+#Phase 5
+#
+
+elif [ $desktop0 == 'cinnamon' ]
+then
+echo 'Attempting to fix the home directory automatically now...' && 
+arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
+arch-chroot /mnt xdg-user-dirs-update && 
+#
+echo 'Installing Coffee-QOL-Extras' && 
+mkdir -p /mnt/usr/share/backgrounds/gnome/ && 
+cp /opt/backgrounds/coffee/coffeewall03.webp /mnt/usr/share/backgrounds/gnome/adwaita-l.webp && 
+cp /opt/backgrounds/coffee/coffeewall03.webp /mnt/usr/share/backgrounds/gnome/coffeewall01.webp && 
+cp /opt/backgrounds/coffee/coffeewall05.webp /mnt/usr/share/backgrounds/gnome/coffeewall02.webp && 
+cp /opt/backgrounds/coffee/coffeewall04.webp /mnt/usr/share/backgrounds/gnome/coffeewall03.webp && 
+cp /opt/backgrounds/coffee/coffeewall06.webp /mnt/usr/share/backgrounds/gnome/coffeewall04.webp &&
+cp /opt/backgrounds/coffee/coffeewall02.webp /mnt/usr/share/backgrounds/gnome/coffeewall05.webp && 
+cp /opt/backgrounds/coffee/coffeewall07.webp /mnt/usr/share/backgrounds/gnome/coffeewall06.webp && 
+cp /opt/backgrounds/coffee/coffeewall08.webp /mnt/usr/share/backgrounds/gnome/coffeewall07.webp && 
+cp /opt/backgrounds/coffee/coffeewall01.webp /mnt/usr/share/backgrounds/gnome/coffeewall08.webp && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y humanity-icon-theme && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-themes-legacy &&  
+#arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-calendar-linuxmint && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork && 
+echo 'Ensuring correct DM is set.' && 
+arch-chroot /mnt pacman -Syu && 
+echo '[Seat:*]' >> /mnt/etc/lightdm/lightdm.conf
+echo 'greeter-session=lightdm-slick-greeter' >> /mnt/etc/lightdm/lightdm.conf
+arch-chroot /mnt systemctl enable lightdm && 
+arch-chroot /mnt systemctl enable amdgpu-fan
+#Phase 5
+else
+echo "You need to enter a valid desktop environment"
+fi
+
+#
+#Phase 5
+echo 'Cleaning up' && 
+arch-chroot /mnt systemctl daemon-reload && 
+arch-chroot /mnt systemctl daemon-reexec && 
+cp /opt/os-release /mnt/etc/ &&
+#cp /usr/local/bin/coffeebrewer /mnt/opt/ && 
+#
+echo "Installation Complete, Please Reboot to use your OS." && 
+read -n 1 -s -r -p "Press any key to continue" && 
+umount -R /mnt &&
+reboot
+#
+################################
