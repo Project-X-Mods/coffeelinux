@@ -1,43 +1,82 @@
 #!/bin/sh
 #Phase 1
 #
-echo "This script/command must be run directly as root user not via sudo. (ie: entering sudo -i first)"
-echo "If you have not ran as root user, please exit now, root, and run again."
+#echo "This script/command must be run directly as root user not via sudo. (ie: entering sudo -i first)"
+#echo "If you have not ran as root user, please exit now, root, and run again."
 #
 echo "Set your Username."
 read user00
 user01=$user00
 #
-echo "Set your drive ('nvmeXn1 or sdX')"
+echo "Set your drive ('nvme0n1 or nvme1n1 / sda or sdb')"
 read drive
 pfx="/dev/"
 drive0=$pfx$drive
 #
-echo "Set your Boot Partition ('p1 or 1')."
-read boot
+
+if [ $drive == 'nvme0n1' ]
+then
+boot=p1
+swap=p2
+system=p3
+elif [ $drive == 'nvme1n1' ]
+then
+boot=p1
+swap=p2
+system=p3
+elif [ $drive == 'sda' ]
+then
+boot=1
+swap=2
+system=3
+elif [ $drive == 'sdb' ]
+then
+boot=1
+swap=2
+system=3
+else
+echo 'You need to enter a valid drive'
+fi
+
+#
 boot0=$drive0$boot
 #
-echo "Set your Swap Partition ('p2 or 2')."
-read swap
 swap0=$drive0$swap
 #
-echo "Set your System/Home Partition ('p3 or 3')."
-read system
 system0=$drive0$system
 #
-echo "Set your PC Name (hostname)."
-read hostname
-hostname0=$hostname
+hostname0=CoffeeLinux
 #
-echo "Set your drivename (ie: LocalDisk)."
-read drivename
-drivename0=$drivename
+drivename0=CoffeePot
+#
+echo "Set your Swap Size (ie: 8G for 8 Gigagytes of swapspace. )."
+read swapsize
+swap1=$swapsize
 #
 echo "What dektop environment would you like? ('gnome, kde, or cinnamon (case-sensitive)')."
 read desktop0
 #
-#echo 'Starting Base install'
-fdisk $drive0 &&
+(
+echo g # Create a new empty DOS partition table
+echo n # Add a new partition
+echo 1 # Partition number
+echo   # First sector (Accept default: 1)
+echo +2G # Last sector (Accept default: varies)
+echo 2 # Partition number
+echo   # First sector (Accept default: 1)
+echo +$swap1 # Last sector (Accept default: varies)
+echo 3 # Partition number
+echo   # First sector (Accept default: 1)
+echo   # Last sector (Accept default: varies)
+echo t # Set EFI to the new partition
+echo 1 # Partition number
+echo 1 # Partition type (Accept default: 1)
+echo t # Set EFI to the new partition
+echo 2 # Partition number
+echo 19 # Partition type (Accept default: 1)
+echo w # Write changes
+) | fdisk $drive0
+#
 echo 'Formatting Partitions' && 
 mkfs.fat -F32 $boot0 && 
 mkswap $swap0
@@ -104,16 +143,16 @@ arch-chroot /mnt pacman -Syu --noconfirm &&
 if [ $desktop0 == 'gnome' ]
 then
 #
-arch-chroot /mnt pacman -Sy --noconfirm file-roller go xdg-desktop-portal-gnome xorg-xwayland libpulse qt6-multimedia-ffmpeg lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib gtk4 zenity gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber pipewire-jack gnome gdm bluez-libs amd-ucode dbus-python glib2 gtk3 dconf nftables python-gobject hicolor-icon-theme libnotify nm-connection-editor python-pyqt5 python-capng bash-completion phonon-qt5-gstreamer tesseract-data-eng mkinitcpio cronie pipewire-jack noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra gnu-free-fonts cmake meson nullmailer glibc gnome-extra gnome-firmware gnome-keyring polkit-gnome gnome-online-accounts gnome-console && 
+arch-chroot /mnt pacman -Sy --noconfirm file-roller go xdg-desktop-portal-gnome xorg-xwayland libpulse qt6 qt6-wayland qt6-multimedia-ffmpeg lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib gtk4 zenity gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber pipewire-jack gnome gdm bluez-libs amd-ucode dbus-python glib2 gtk4 dconf nftables python-gobject hicolor-icon-theme libnotify nm-connection-editor python-pyqt6 bash-completion tesseract-data-eng mkinitcpio cronie pipewire-jack noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra gnu-free-fonts cmake meson nullmailer glibc gnome-extra gnome-firmware gnome-keyring polkit-gnome gnome-online-accounts flatpak gnome-console && 
 arch-chroot /mnt pacman -R --noconfirm gedit gnome-terminal
 #
 elif [ $desktop0 == 'kde' ]
 then
-arch-chroot /mnt pacman -Sy --noconfirm ark go xdg-desktop-portal-kde xorg-xwayland libpulse qt6-multimedia-ffmpeg lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib zenity gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber pipewire-jack plasma-framework bluez-libs amd-ucode dbus-python glib2 gtk3 dconf nftables python-gobject hicolor-icon-theme libnotify nm-connection-editor python-pyqt5 python-capng bash-completion phonon-qt5-gstreamer tesseract-data-eng mkinitcpio cronie pipewire-jack noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra gnu-free-fonts cmake meson nullmailer glibc kcmutils archlinux-appstream-data appstream-qt plasma-wayland-session qt5-graphicaleffects kuserfeedback knewstuff kidletime discount kirigami2 flatpak fwupd extra-cmake-modules plasma-wayland-protocols kde-applications-meta sddm sddm-kcm plasma-meta gnome-disk-utility qt6-wayland kscreen kdialog
+arch-chroot /mnt pacman -Sy --noconfirm ark go xdg-desktop-portal-kde xorg-xwayland libpulse qt6-multimedia-ffmpeg lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib zenity gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber pipewire-jack plasma-framework bluez-libs amd-ucode dbus-python glib2 gtk4 dconf nftables python-gobject hicolor-icon-theme libnotify nm-connection-editor python-pyqt6 bash-completion qt6-imageformats tesseract-data-eng mkinitcpio cronie pipewire-jack noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra gnu-free-fonts cmake meson nullmailer glibc kcmutils archlinux-appstream-data appstream-qt plasma-wayland-session kuserfeedback knewstuff kidletime discount kirigami2 flatpak extra-cmake-modules plasma-wayland-protocols kde-applications-meta sddm sddm-kcm plasma-meta gnome-disk-utility qt6-wayland kscreen qt6
 #
 elif [ $desktop0 == 'cinnamon' ]
 then
-arch-chroot /mnt pacman -Sy --noconfirm file-roller go cinnamon xorg-xwayland libpulse lib32-libpulse qt6-multimedia-ffmpeg alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib zenity gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber pipewire-jack cinnamon-translations bluez-libs amd-ucode dbus-python glib2 gtk3 dconf nftables python-gobject hicolor-icon-theme libnotify nm-connection-editor python-pyqt5 python-capng bash-completion phonon-qt5-gstreamer tesseract-data-eng mkinitcpio cronie pipewire-jack noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra gnu-free-fonts cmake meson nullmailer glibc lightdm lightdm-gtk-greeter gtk3 gnome-console gnome-calculator gnome-system-monitor gnome-keyring polkit-gnome gnome-disk-utility && 
+arch-chroot /mnt pacman -Sy --noconfirm file-roller go cinnamon xorg-xwayland libpulse lib32-libpulse qt6-multimedia-ffmpeg alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib zenity gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber pipewire-jack cinnamon-translations bluez-libs amd-ucode dbus-python glib2 gtk3 dconf nftables python-gobject hicolor-icon-theme libnotify nm-connection-editor python-pyqt6 bash-completion qt6-imageformats tesseract-data-eng mkinitcpio cronie pipewire-jack noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra gnu-free-fonts cmake meson nullmailer qt6-imageformats glibc lightdm lightdm-gtk-greeter gtk3 gnome-console gnome-calculator gnome-system-monitor gnome-keyring polkit-gnome gnome-disk-utility geary gnome-photos flatpak gnome-software qt6 && 
 arch-chroot /mnt pacman -R --noconfirm gedit
 else
 echo "You need to enter a valid desktop environment"
@@ -121,7 +160,7 @@ fi
 
 #
 echo "Installing Coffee Extras"
-arch-chroot /mnt pacman -Sy --noconfirm yay libpipewire02 ttf-liberation chrony samba cups archivetools archiso qt6-multimedia-ffmpeg make unzip unrar xf86-video-amdgpu linux-headers sudo nano git base-devel dkms qt6 gnome-text-editor xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad egl-wayland gtk-engine-murrine virtualbox-host-modules-arch power-profiles-daemon go meson xorg xorg-server xorg-apps lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau virtualbox virtualbox-guest-utils git xdg-utils gettext ufw libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils  libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src libreoffice-fresh firewalld shotwell lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau lib32-vulkan-mesa-layers opencl-mesa wine-mono wine-gecko vulkan-mesa-layers steam discord lib32-opencl-mesa mesa qt6-wayland mesa-utils &&
+arch-chroot /mnt pacman -Sy --noconfirm yay ttf-liberation chrony samba cups archivetools archiso qt6-multimedia-ffmpeg make unzip unrar xf86-video-amdgpu linux-headers sudo nano git base-devel dkms qt6 gnome-text-editor xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad egl-wayland gtk-engine-murrine virtualbox-host-modules-arch power-profiles-daemon go meson xorg xorg-server xorg-apps lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau virtualbox virtualbox-guest-utils git xdg-utils gettext ufw libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils  libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src libreoffice-fresh firewalld shotwell lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau lib32-vulkan-mesa-layers opencl-mesa wine-mono wine-gecko vulkan-mesa-layers steam discord lib32-opencl-mesa mesa qt6-wayland mesa-utils &&
 #
 #Phase 2
 echo "Set your Java Version (19 or newer)."
@@ -136,7 +175,6 @@ arch-chroot /mnt pacman -Sy  &&
 arch-chroot /mnt systemctl enable dhcpcd && 
 arch-chroot /mnt systemctl enable cronie && 
 arch-chroot /mnt systemctl enable chronyd &&
-arch-chroot /mnt systemctl enable dhcpcd &&
 arch-chroot /mnt systemctl enable NetworkManager && 
 arch-chroot /mnt systemctl --global enable pipewire.service pipewire-pulse.service wireplumber.service && 
 arch-chroot /mnt systemctl enable firewalld
@@ -150,7 +188,7 @@ echo 'default arch.conf' > /boot/loader/loader.conf &&
 echo 'timeout 5' >> /boot/loader/loader.conf && 
 echo 'console-mode max' >> /boot/loader/loader.conf && 
 echo 'editor no' >> /boot/loader/loader.conf && 
-echo 'title Coffee-Linux "Fresco" (6.0.0)' > /boot/loader/entries/arch.conf && 
+echo 'title Coffee-Linux "Grinder" (7.0.0)' > /boot/loader/entries/arch.conf && 
 echo 'linux /vmlinuz-linux' >> /boot/loader/entries/arch.conf &&
 echo 'initrd /intel-ucode.img' >> /boot/loader/entries/arch.conf && 
 echo 'initrd /amd-ucode.img' >> /boot/loader/entries/arch.conf && 
@@ -167,7 +205,10 @@ arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --
 arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y protontricks && 
 arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev &&
 arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y xone-dkms &&
-arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y microsoft-edge-stable
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y microsoft-edge-stable && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mangoapp && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gamescope-plus && 
+arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y dxvk-bin
 #
 
 if [ $desktop0 == 'gnome' ]
@@ -238,9 +279,6 @@ arch-chroot /mnt systemctl enable amdgpu-fan
 
 elif [ $desktop0 == 'cinnamon' ]
 then
-echo 'Attempting to fix the home directory automatically now...' && 
-arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
-arch-chroot /mnt xdg-user-dirs-update && 
 #
 echo 'Installing Coffee-QOL-Extras' && 
 mkdir -p /mnt/usr/share/backgrounds/gnome/ && 
@@ -255,7 +293,7 @@ cp /opt/backgrounds/coffee/coffeewall08.webp /mnt/usr/share/backgrounds/gnome/co
 cp /opt/backgrounds/coffee/coffeewall01.webp /mnt/usr/share/backgrounds/gnome/coffeewall08.webp && 
 arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y humanity-icon-theme && 
 arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-themes-legacy &&  
-#arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-calendar-linuxmint && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-calendar-linuxmint && 
 arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork && 
 echo 'Ensuring correct DM is set.' && 
 arch-chroot /mnt pacman -Syu && 
@@ -270,6 +308,9 @@ fi
 
 #
 #Phase 5
+echo 'Attempting to fix the home directory automatically now...' && 
+arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
+arch-chroot /mnt xdg-user-dirs-update && 
 echo 'Cleaning up' && 
 arch-chroot /mnt systemctl daemon-reload && 
 arch-chroot /mnt systemctl daemon-reexec && 
