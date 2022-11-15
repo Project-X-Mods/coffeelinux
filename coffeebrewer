@@ -49,7 +49,7 @@ hostname0=CoffeeLinux
 #
 drivename0=CoffeePot
 #
-echo "Set your Swap Size (ie: 8G for 8 Gigagytes of swapspace. )."
+echo "Set your Swap Size (ie: +8G for 8 Gigagytes of swapspace. )."
 read swapsize
 swap1=$swapsize
 #
@@ -57,21 +57,21 @@ echo "What dektop environment would you like? ('gnome, kde, or cinnamon (case-se
 read desktop0
 #
 (
-echo g # Create a new empty DOS partition table
+echo g # Create a new empty GPT partition table
 echo n # Add a new partition
 echo 1 # Partition number
 echo   # First sector (Accept default: 1)
 echo +2G # Last sector (Accept default: varies)
 echo 2 # Partition number
 echo   # First sector (Accept default: 1)
-echo +$swap1 # Last sector (Accept default: varies)
+echo $swap1 # Last sector (Accept default: varies)
 echo 3 # Partition number
 echo   # First sector (Accept default: 1)
 echo   # Last sector (Accept default: varies)
 echo t # Set EFI to the new partition
 echo 1 # Partition number
 echo 1 # Partition type (Accept default: 1)
-echo t # Set EFI to the new partition
+echo t # Set Swap to the new partition
 echo 2 # Partition number
 echo 19 # Partition type (Accept default: 1)
 echo w # Write changes
