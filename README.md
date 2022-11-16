@@ -1,97 +1,31 @@
-# Coffee Linux v.6.0.0
+# Coffee Linux v.7.0.0 "Grinder"
 ![CoffeeLinuxKDE](https://user-images.githubusercontent.com/8603363/191408653-f2142999-5cfc-4edc-9149-3575fa22aa45.png)
 
 ![CoffeeLinuxCinnamon](https://user-images.githubusercontent.com/8603363/191624422-beedfdf9-ba44-4d99-87be-2c68a96fa436.png)
 
 We believe using your PC should be as easy as a sip of coffee, so we fixed it up to be that way for you. No guesswork, it just does what its supposed to do. So kick back, relax and enjoy your cup.
 
-Our specialized script installs a more feature complete version of Arch than the archinstall command. The idea here is to have ANYONE able to use Arch, without having to know all the packages and whatnot to do so.
-Our script make the installation easy enough for everyone.
-We go through the trouble of figuring out all the packages and dependencies and getting them in so when you first login, it is ready for whatever you throw at it. The default archinstall script is too barebones, and not really suitable for daily use, so we have made a better one ourselves.
-We tediously comb through the packages looking for anything that needs other stuff, and for errors of course to ensure you get a quality product.
+CoffeeLinux is basically Arch but more refined for gaming specifically. 
+The idea here is to have everything ready for you right away.
+I have personally hand selected each package and wrote the script by hand using Arch install guides galore and a bit of knowhow of how to get it all to piece together nicely and install everything in the simplest most direct way possible.
 
-This is ready for gaming on Steam out of the box, and has Discord as well.
+It has Java, Wine, Protontricks, DXVK, Vulkan, Steam, Discord, and Edge all good to go.
+Latest Controller and Graphics drivers.
+Latest Linux Kernel.
+Gamescope and MangoHud (from SteamOS 3.4).
+Gnome, KDE, or Cinnamon Desktops. (You get to choose along the way)
+Yay AUR package manager (Terminal only).
+Proper Nvidia GPU DKMS driver (if selected).
+True Zero-Out Drive formatting (if selected).
+Yaru/Ubuntu theming for Gnome with Yaru sessions.
+Mint theming for Cinnamon.
+CoffeeLinux Wallpapers, and OS Info.
+SystemD-Bootloader via built in sysv-utils (not grub2 which is extra that is pointless really)
 
-==================================================
-
-Instructions are as follows: For most things you just answer "yes" if asked.
-
-The installer has prepared everything in a certain order for your convenience and performance internally.
-
-===============================================================
-
-Execute normal install procedure as follows.
-
-===============================================================
-
-1: Boot a Coffee Linux live iso. [UEFI ONLY]
-
-2: run the installer.
-
-3: enter your username, drive id, and partition numbers (easy to find out)
-
-4: partition the drive chosen with fdisk. (you need 1G for efi bootloader, and the rest of the drive for the OS/Home.)
-
-5: hit yes alot when asked , same with passwords lol.
-
-6: let it do its thing. most of it is automated for you.
-
-7: set the root password, and user password.
-
-8: yay installs come next.
-
-9: it will copy over coffee related files to the system, then reboot automatically.
-
-10: Login, open Edge once, then reboot.
-
-That should finish it off for you. Enjoy your Coffee. Spread the word! Coffee is hot over here.
-
-Hashtags:
-#GamingOnLinux #ArchGaming #SteamLinux #ArchInstaller #CoffeeLinux
-
-==================================================
-
-[Detailed-Description]
-
-==================================================
-
-Key Features: Arch-Based, BTRFS installation, User-Choice Desktop Environment (KDE, Gnome, or Cinnamon) , Pipewire, FirewallD, and SystemD-Boot.
-
-A script/command designed to install a unique Coffee-Linux Experience via Arch easily, and semi painlessly.
-
-This Installer will create a Coffee-Linux install on the fly. Requires internet.
- 
-[Notable Features] 
-0: Home made and tested pure Bash installer script.
-
-1. Pure Arch foundation using official repos (and a little AUR here and there)
-
-2. A choice of Desktop Environments designed to be easy to use. (Always the latest version due to Arch being a rolling release.)
-
-3. Coffee wallpapers in default location/s.
-
-4. Latest Pipewire & Wireplumber for the best possible sound.
-
-5. Many gaming frameworks/dependencies preinstalled so you can get to it right away.
-
-6. Prebuilt with Steam, Wine, Winetricks, Discord and Protontricks for the best possible gaming experiences out of the box.
-
-7. SystemD boot (as opposed to GRUB).
-
-8. Yay for CLI installation of AUR applications.
-
-9. FirewallD (Better configuration than the standard one)
-
-10. New Xbox Series X|S Controller driver (DKMS)
-
-11. Gnome-Disk-Utility for all DEs.
-
-Note: This is designed for PCs with UEFI enabled.
-
-Note-2 You will have to use fdisk to prepare your drive during installation.
+Just use Etcher to write the iso to usb, and go. Easy-peezy.
 
 ===============================================================
 
-Like, Share, and Enjoy. Our Linux is the cure.
+Like, Share, and Enjoy. My Linux is the cure to the distro war.
 
 ===============================================================
