@@ -1,7 +1,4 @@
-# Coffee Linux v.7.0.0 "Grinder"
-![CoffeeLinuxKDE](https://user-images.githubusercontent.com/8603363/191408653-f2142999-5cfc-4edc-9149-3575fa22aa45.png)
-
-![CoffeeLinuxCinnamon](https://user-images.githubusercontent.com/8603363/191624422-beedfdf9-ba44-4d99-87be-2c68a96fa436.png)
+# Coffee Linux v.7.1.0 "Grinder"
 
 We believe using your PC should be as easy as a sip of coffee, so we fixed it up to be that way for you. No guesswork, it just does what its supposed to do. So kick back, relax and enjoy your cup.
 
@@ -13,12 +10,11 @@ It has Java, Wine, Protontricks, DXVK, Vulkan, Steam, Discord, and Edge all good
 Latest Controller and Graphics drivers.
 Latest Linux Kernel.
 Gamescope and MangoHud (from SteamOS 3.4).
-Gnome, KDE, or Cinnamon Desktops. (You get to choose along the way)
+Gnome, or KDE Desktops. (You get to choose along the way)
 Yay AUR package manager (Terminal only).
 Proper Nvidia GPU DKMS driver (if selected).
 True Zero-Out Drive formatting (if selected).
 Yaru/Ubuntu theming for Gnome with Yaru sessions.
-Mint theming for Cinnamon.
 CoffeeLinux Wallpapers, and OS Info.
 SystemD-Bootloader via built in sysv-utils (not grub2 which is extra that is pointless really)
 
