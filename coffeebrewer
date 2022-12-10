@@ -1,10 +1,6 @@
 #!/bin/sh
 #Phase 1
 #
-yayinstall='arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y'
-pacstrapinstall='pacstrap /mnt'
-pacmaninstall='arch-chroot /mnt pacman -Sy'
-systemdenable='arch-chroot /mnt systemctl enable'
 #echo "This script/command must be run directly as root user not via sudo. (ie: entering sudo -i first)"
 #echo "If you have not ran as root user, please exit now, root, and run again."
 #
@@ -143,16 +139,15 @@ echo '[andontie-aur]' >> /etc/pacman.conf &&
 echo 'Server = https://aur.andontie.net/$arch' >> /etc/pacman.conf &&
 echo 'SigLevel = Never' >> /etc/pacman.conf &&
 echo '' >> /etc/pacman.conf &&
-pacman -Sy --noconfirm archlinux-keyring && 
-pacman -Sy --noconfirm archlinux-appstream-data && 
+pacman -Sy --noconfirm archlinux-keyring &&
 #
 #echo 'Installing Kernel Frameworks' && 
 pacman -Syy && 
-$pacstrapinstall base intel-ucode amd-ucode linux linux-firmware btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo mkinitcpio sudo nano && 
-$pacmaninstally &&
-$pacmaninstall --noconfirm archlinux-keyring &&
+pacstrap /mnt base base-devel intel-ucode amd-ucode linux linux-firmware btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo mkinitcpio sudo nano &&
+arch-chroot /mnt pacman -Syy &&
+arch-chroot /mnt pacman -Sy --noconfirm archlinux-keyring &&
 cp /etc/pacman.conf /mnt/etc/pacman.conf &&
-$pacmaninstally &&
+arch-chroot /mnt pacman -Syy &&
 #
 echo 'Set Root Password' && 
 echo -e "$userpass1\n$userpass1\n" | arch-chroot /mnt passwd && 
@@ -186,19 +181,18 @@ EOT
 
 #
 cp --dereference /etc/resolv.conf /mnt/etc/ &&
-$pacmaninstall --noconfirm archlinux-appstream-data &&
-$pacmaninstallu --noconfirm && 
+arch-chroot /mnt pacman -Syu --noconfirm &&
 #
 
 if [ $desktop0 == 'gnome' ]
 then
 #
-$pacmaninstall --noconfirm file-roller go xdg-desktop-portal-gnome xorg-xwayland libpulse qt6 qt6-wayland qt6-multimedia-ffmpeg lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib gtk4 zenity gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber pipewire-jack gnome gdm bluez-libs amd-ucode dbus-python glib2 gtk4 dconf nftables python-gobject hicolor-icon-theme libnotify nm-connection-editor python-pyqt6 bash-completion tesseract-data-eng mkinitcpio cronie pipewire-jack noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra gnu-free-fonts cmake meson nullmailer glibc gnome-extra gnome-firmware gnome-keyring polkit-gnome gnome-online-accounts flatpak gnome-console && 
+arch-chroot /mnt pacman -Sy --noconfirm file-roller bash-language-server shellcheck xdg-desktop-portal-gnome xorg-xwayland libpulse qt6 qt6-wayland qt6-multimedia-ffmpeg lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib gtk4 zenity gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber pipewire-jack gnome gdm bluez-libs amd-ucode dbus-python glib2 gtk4 dconf nftables python-gobject hicolor-icon-theme libnotify nm-connection-editor python-pyqt6 bash-completion tesseract-data-eng mkinitcpio cronie pipewire-jack noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra gnu-free-fonts cmake meson nullmailer glibc gnome-extra gnome-firmware gnome-keyring polkit-gnome gnome-online-accounts flatpak gnome-console gnome-text-editor shotwell gtk-engine-murrine colord ttf-ms-fonts ttf-vista-fonts gnome-color-manager libdrm libelf expat libglvnd libomxil-bellagio libunwind libxdamage libxshmfence libxxf86vm llvm-libs lm_sensors zstd libva-mesa-driver mesa-vdpau opengl-man-pages clang cmake directx-headers elfutils glslang libclc libva libvdpau libx11 libxml2 libxrandr llvm meson python-mako xorgproto valgrind systemd &&
 arch-chroot /mnt pacman -R --noconfirm gedit gnome-terminal
 #
 elif [ $desktop0 == 'kde' ]
 then
-$pacmaninstall --noconfirm ark go xdg-desktop-portal-kde xorg-xwayland libpulse qt6-multimedia-ffmpeg lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib zenity gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber pipewire-jack plasma-framework bluez-libs amd-ucode dbus-python glib2 gtk4 dconf nftables python-gobject hicolor-icon-theme libnotify nm-connection-editor python-pyqt6 bash-completion qt6-imageformats tesseract-data-eng mkinitcpio cronie pipewire-jack noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra gnu-free-fonts cmake meson nullmailer glibc kcmutils archlinux-appstream-data appstream-qt plasma-wayland-session kuserfeedback knewstuff kidletime discount kirigami2 flatpak extra-cmake-modules plasma-wayland-protocols kde-applications-meta sddm sddm-kcm plasma-meta gnome-disk-utility qt6-wayland kscreen qt6
+arch-chroot /mnt pacman -Sy --noconfirm ark go bash-language-server shellcheck xdg-desktop-portal-kde xorg-xwayland libpulse qt6-multimedia-ffmpeg lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib zenity gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber pipewire-jack plasma-framework bluez-libs amd-ucode dbus-python glib2 dconf nftables python-gobject hicolor-icon-theme libnotify nm-connection-editor python-pyqt6 bash-completion qt6-imageformats tesseract-data-eng mkinitcpio cronie pipewire-jack noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra gnu-free-fonts cmake meson nullmailer glibc kcmutils appstream-qt plasma-wayland-session kuserfeedback knewstuff kidletime discount kirigami2 flatpak extra-cmake-modules plasma-wayland-protocols kde-applications-meta sddm sddm-kcm plasma-meta gnome-disk-utility qt6-wayland kscreen qt6 kvantum kgamma5 colord colord-kde ttf-ms-fonts ttf-vista-fonts kdevelop-python gtk-engine-murrine gtk4 gnome-color-manager libdrm libelf expat libglvnd libomxil-bellagio libunwind libxdamage libxshmfence libxxf86vm llvm-libs lm_sensors zstd libva-mesa-driver mesa-vdpau opengl-man-pages clang cmake directx-headers elfutils glslang libclc libva libvdpau libx11 libxml2 libxrandr llvm meson python-mako xorgproto valgrind systemd
 #
 else
 echo "You need to enter a valid desktop environment"
@@ -206,23 +200,24 @@ fi
 
 #
 echo "Installing Coffee Extras"
-$pacmaninstall --noconfirm yay ttf-liberation chrony samba cups archivetools archiso qt6-multimedia-ffmpeg make unzip unrar xf86-video-amdgpu linux-headers sudo nano git base-devel dkms qt6 gnome-text-editor xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad egl-wayland gtk-engine-murrine virtualbox-host-modules-arch power-profiles-daemon go meson xorg xorg-server xorg-apps lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau virtualbox virtualbox-guest-utils git xdg-utils gettext ufw libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils  libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src libreoffice-fresh firewalld shotwell lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau lib32-vulkan-mesa-layers opencl-mesa wine-mono wine-gecko vulkan-mesa-layers steam discord lib32-opencl-mesa mesa qt6-wayland mesa-utils &&
+arch-chroot /mnt pacman -Sy --noconfirm yay ttf-liberation chrony samba cups archivetools archiso qt6-multimedia-ffmpeg make unzip unrar xf86-video-amdgpu linux-headers sudo nano git base-devel dkms qt6 xreader vlc udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad egl-wayland virtualbox-host-modules-arch power-profiles-daemon go meson xorg xorg-server xorg-apps lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau virtualbox virtualbox-guest-utils git xdg-utils gettext ufw libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src libreoffice-fresh firewalld lib32-libva-mesa-driver vulkan-radeon lib32-vulkan-radeon libva-utils libva-mesa-driver mesa-vdpau lib32-mesa-vdpau lib32-vulkan-mesa-layers opencl-mesa wine-mono wine-gecko vulkan-mesa-layers steam discord lib32-opencl-mesa mesa qt6-wayland mesa-utils exfatprogs ntfsprogs aria2 cabextract innoextract mtools dkms syslinux efibootmgr terminus-font &&
 #
 #Phase 2
 arch-chroot /mnt archlinux-java set java-$java0-openjdk && 
 
 #
-echo -e '1\n' | $yayinstall mkinitcpio-firmware && 
-echo -e '1\n' | $yayinstall text-engine-git && 
+echo -e '3\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y pamac-aur &&
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mkinitcpio-firmware &&
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y text-engine-git &&
 #Phase 3
 arch-chroot /mnt pacman -Sy  && 
 #
-$systemdenable dhcpcd && 
-$systemdenable cronie && 
-$systemdenable chronyd &&
-$systemdenable NetworkManager && 
+arch-chroot /mnt systemctl enable dhcpcd &&
+arch-chroot /mnt systemctl enable cronie &&
+arch-chroot /mnt systemctl enable chronyd &&
+arch-chroot /mnt systemctl enable NetworkManager &&
 arch-chroot /mnt systemctl --global enable pipewire.service pipewire-pulse.service wireplumber.service && 
-$systemdenable firewalld
+arch-chroot /mnt systemctl enable firewalld
 #
 arch-chroot /mnt /bin/bash <<"EOT"
 echo Installing Bootloader &&
@@ -238,9 +233,9 @@ EOT
 
 if [ $native1 == 'yes' ]
 then
-echo 'title Coffee-Linux "Grinder" (7.1.1)' > /mnt/boot/loader/entries/arch.conf
+echo 'title Coffee-Linux "Harvest" (8.0.0)' > /mnt/boot/loader/entries/arch.conf
 else
-echo 'title Coffee-Linux "Grinder" (7.1.1-Unofficial)' > /mnt/boot/loader/entries/arch.conf
+echo 'title Coffee-Linux "Harvest" (8.0.0-Unofficial)' > /mnt/boot/loader/entries/arch.conf
 fi
 
 echo 'linux /vmlinuz-linux' >> /mnt/boot/loader/entries/arch.conf &&
@@ -254,9 +249,9 @@ then
 
 echo 'Installing Nvidia GPU drivers, and Control Panel.'
 
-$pacmaninstall --noconfirm nvidia-dkms nvidia-utils nvidia-settings
+arch-chroot /mnt pacman -Sy --noconfirm nvidia-dkms nvidia-utils nvidia-settings
 
-echo options root="LABEL=$drivename0" rw nvidiadrm.modeset=1  >> /mnt/boot/loader/entries/arch.conf 
+echo options root="LABEL=$drivename0" rw nvidia-drm.modeset=1  >> /mnt/boot/loader/entries/arch.conf
 
 elif [ $gpu0 == 'intel' ]
 then
@@ -268,23 +263,22 @@ echo options root="LABEL=$drivename0" rw >> /mnt/boot/loader/entries/arch.conf
 elif [ $gpu0 == 'amd' ]
 then
 
-echo 'AMD GPUs are supported by default. Installing a service level GPU Fan Controller instead.'
+echo 'AMD GPUs are supported by default. Installing a service level GPU Fan Controller instead and CoreCtrl GUI.'
 
 echo options root="LABEL=$drivename0" rw >> /mnt/boot/loader/entries/arch.conf 
 
-echo -e '1\n' | $yayinstall amdgpu-fan
-
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y amdgpu-fan
+arch-chroot /mnt pacman -Sy --noconfirm corectrl
 #arch-chroot /mnt systemctl enable amdgpu-fan
 
 fi
 
-echo -e '1\n' | $yayinstall protontricks && 
-echo -e '1\n' | $yayinstall game-devices-udev &&
-echo -e '1\n' | $yayinstall xone-dkms &&
-echo -e '1\n' | $yayinstall microsoft-edge-stable && 
-echo -e '2 7\n' | $yayinstall mangohud && 
-echo -e '1\n' | $yayinstall gamescope && 
-echo -e '2\n' | $yayinstall dxvk-bin
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y protontricks &&
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev &&
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y microsoft-edge-stable &&
+echo -e '2 7\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mangohud &&
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gamescope &&
+echo -e '2\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y dxvk-bin
 #
 
 if [ $desktop0 == 'gnome' ]
@@ -302,7 +296,15 @@ cp /opt/backgrounds/coffee/grid-d.webp /mnt/usr/share/backgrounds/gnome/grid-d.w
 cp /opt/backgrounds/coffee/licorice-l.webp /mnt/usr/share/backgrounds/gnome/licorice-l.webp && 
 cp /opt/backgrounds/coffee/licorice-d.webp /mnt/usr/share/backgrounds/gnome/licorice-d.webp && 
 cp /opt/backgrounds/coffee/wood-l.webp /mnt/usr/share/backgrounds/gnome/wood-l.webp && 
-cp /opt/backgrounds/coffee/wood-d.webp /mnt/usr/share/backgrounds/gnome/wood-d.webp
+cp /opt/backgrounds/coffee/wood-d.webp /mnt/usr/share/backgrounds/gnome/wood-d.webp &&
+cp /opt/backgrounds/coffee/coffeewall03.jpg /mnt/usr/share/backgrounds/coffee/coffeewall01.jpg &&
+cp /opt/backgrounds/coffee/coffeewall05.jpg /mnt/usr/share/backgrounds/coffee/coffeewall02.jpg &&
+cp /opt/backgrounds/coffee/coffeewall04.jpg /mnt/usr/share/backgrounds/coffee/coffeewall03.jpg &&
+cp /opt/backgrounds/coffee/coffeewall06.jpg /mnt/usr/share/backgrounds/coffee/coffeewall04.jpg &&
+cp /opt/backgrounds/coffee/coffeewall02.jpg /mnt/usr/share/backgrounds/coffee/coffeewall05.jpg &&
+cp /opt/backgrounds/coffee/coffeewall07.jpg /mnt/usr/share/backgrounds/coffee/coffeewall06.jpg &&
+cp /opt/backgrounds/coffee/coffeewall08.jpg /mnt/usr/share/backgrounds/coffee/coffeewall07.jpg &&
+cp /opt/backgrounds/coffee/coffeewall01.jpg /mnt/usr/share/backgrounds/coffee/coffeewall08.jpg
 else
 echo ''
 fi
@@ -310,22 +312,22 @@ fi
 #
 echo 'Installing Coffee-QOL-Extras' && 
 #
-echo -e '1\n' | $yayinstall gnome-themes-extra && 
-echo -e '1\n' | $yayinstall humanity-icon-theme && 
-echo -e '1\n' | $yayinstall gnome-shell-extension-ubuntu-dock && 
-echo -e '1\n' | $yayinstall gnome-shell-extension-appindicator && 
-echo -e "1\n" | $yayinstall gnome-shell-extension-desktop-icons-ng && 
-echo -e '1\n' | $yayinstall yaru-gtk-theme && 
-echo -e '1\n' | $yayinstall yaru-icon-theme && 
-echo -e '1\n' | $yayinstall yaru-gnome-shell-theme && 
-echo -e '1\n' | $yayinstall yaru-session && 
-echo -e '1\n' | $yayinstall yaru-sound-theme && 
-echo -e '1\n' | $yayinstall yaru-unity-theme &&  
-echo -e '1\n' | $yayinstall gdm-settings &&
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-themes-extra &&
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y humanity-icon-theme &&
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-shell-extension-ubuntu-dock &&
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-shell-extension-appindicator &&
+echo -e "1\n" | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-shell-extension-desktop-icons-ng &&
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-gtk-theme &&
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-icon-theme &&
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-gnome-shell-theme &&
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-session &&
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-sound-theme &&
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y yaru-unity-theme &&
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gdm-settings &&
 arch-chroot /mnt pacman -Syu && 
 rm -r /mnt/usr/share/xsessions/gnome* && 
 rm -r /mnt/usr/share/wayland-sessions/gnome* && 
-$systemdenable gdm
+arch-chroot /mnt systemctl enable gdm
 # 
 
 elif [ $desktop0 == 'kde' ]
@@ -333,7 +335,7 @@ then
 #
 echo 'Installing Coffee-QOL-Extras' &&  
  
-echo -e '1\n' | $yayinstall systemd-kcm
+echo -e '1\n' | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y systemd-kcm
 
 if [ $native1 == 'yes' ]
 then
@@ -353,23 +355,29 @@ echo ''
 fi
 
 echo 'Ensuring correct DM is set.' &&  
-$pacmaninstallu && 
-$systemdenable sddm
+arch-chroot /mnt pacman -Syu &&
+arch-chroot /mnt systemctl enable sddm
 #
 
 fi
 
 #Phase 5
 echo 'Attempting to fix the home directory automatically now...' && 
-$pacmaninstall --noconfirm xdg-user-dirs &&
+arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
 arch-chroot /mnt xdg-user-dirs-update && 
-echo 'Cleaning up' && 
-arch-chroot /mnt systemctl daemon-reload && 
-arch-chroot /mnt systemctl daemon-reexec 
+echo 'Cleaning up'
+#arch-chroot /mnt systemctl daemon-reload &&
+#arch-chroot /mnt systemctl daemon-reexec
 
 if [ $native1 == 'yes' ]
 then
 cp /opt/os-release /mnt/etc/
+cp /opt/lsb-release /mnt/etc/
+cp /opt/logo /mnt/opt/
+cp /opt/config.conf /mnt/opt/
+mkdir -p /mnt/home/$user01/.config/neofetch/
+#cp /opt/config.conf /mnt/etc/neofetch/
+cp /opt/config.conf /mnt/home/$user01/.config/neofetch/config.conf
 #cp /usr/local/bin/coffeebrewer /mnt/opt/
 else
 echo ''
