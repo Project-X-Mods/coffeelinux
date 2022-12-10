@@ -1,5 +1,7 @@
 # Coffee Linux v.8.0.0 "Harvest"
 
+![Screenshot_20221209_223429](https://user-images.githubusercontent.com/8603363/206835846-3e6e3eab-7632-471e-8a88-d2ffb548faa9.png)
+
 We believe using your PC should be as easy as a sip of coffee, so we fixed it up to be that way for you. No guesswork, it just does what its supposed to do. So kick back, relax and enjoy your cup.
 
 CoffeeLinux is basically Arch but more refined for gaming specifically. 
