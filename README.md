@@ -14,18 +14,30 @@ Notable Feature: Secure-Boot support is available to install on the OS (however 
 
 (You do need to enroll your generated .cer in the MOK manually post-install similar to Ubuntu, it is placed in /boot/ by default )
 
-It has Java, Wine, Protontricks, DXVK, Vulkan, Steam, Discord, and Edge all good to go.
+It has Java, Wine, Protontricks, DXVK, Vulkan, Steam, Discord, and MS Edge all good to go.
+
 Latest Controller and Graphics drivers.
+
 Latest Linux Kernel.
+
 Gamescope and MangoHud (from SteamOS 3.4).
+
 Gnome, or KDE Desktops. (You get to choose along the way)
+
 Yay AUR package manager (Terminal only).
+
 Proper Nvidia GPU DKMS driver (if selected).
+
 True Zero-Out Drive formatting (if selected).
+
 Yaru/Ubuntu theming for Gnome with Yaru sessions.
+
 CoffeeLinux Wallpapers, and OS Info.
+
 Custom Neofetch Logo.
+
 Pamac GUI Package Manager.
+
 SystemD-Bootloader via built in sysv-utils (not grub2 which is extra that is pointless really)
 
 Just use Etcher to write the iso to usb, and go. Easy-peezy.
