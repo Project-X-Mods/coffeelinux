@@ -26,7 +26,7 @@ Gnome, or KDE Desktops. (You get to choose along the way)
 
 Yay AUR package manager (Terminal only).
 
-Proper Nvidia GPU DKMS driver (if selected).
+Proper Nvidia GPU drivers (if selected).
 
 True Zero-Out Drive formatting (if selected).
 
@@ -38,6 +38,8 @@ Custom Neofetch Logo.
 
 Pamac GUI Package Manager.
 
+Snap-Store support (if selected)
+
 SystemD-Bootloader via built in sysv-utils (not grub2 which is extra that is pointless really)
 
 Just use Etcher to write the iso to usb, and go. Easy-peezy.
@@ -45,5 +47,3 @@ Just use Etcher to write the iso to usb, and go. Easy-peezy.
 ===============================================================
 
 Like, Share, and Enjoy. My Linux is the cure to the distro war.
-
-===============================================================
