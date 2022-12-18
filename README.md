@@ -1,4 +1,4 @@
-# Coffee Linux v.9.0.0 "Infusion"
+# Coffee Linux v.10.0.0 "Infusion"
 
 ![Screenshot_20221209_223429](https://user-images.githubusercontent.com/8603363/206835846-3e6e3eab-7632-471e-8a88-d2ffb548faa9.png)
 
