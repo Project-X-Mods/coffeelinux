@@ -1,4 +1,4 @@
-# Coffee Linux v.11.1.0 "Karma"
+# Coffee Linux v.12.0.0 "Latte"
 
 ![Screenshot_20221209_223429](https://user-images.githubusercontent.com/8603363/206835846-3e6e3eab-7632-471e-8a88-d2ffb548faa9.png)
 
@@ -22,7 +22,7 @@ Latest Linux Kernel.
 
 Gamescope and MangoHud (from SteamOS 3.4).
 
-Gnome, or KDE Desktops. (You get to choose along the way)
+Gnome, KDE, Cinnamon, Mate, LXDE, LXQT, XFCE, and Deepin Desktops. (You get to choose along the way)
 
 Yay AUR package manager (Terminal only).
 
