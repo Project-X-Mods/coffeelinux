@@ -360,6 +360,26 @@ elif [ "$snapcheck" = "2" ]; then
 snapon="no"
 fi
 
+while [ "$vmwarecheck" != "1" ] && [ "$vmwarecheck" != "2" ]; do
+printf "%b\nWould you like VMWare Workstation?\n" "$*"
+printf "%b\n1 - Yes\n" "$*"
+printf "%b\n2 - No\n" "$*"
+
+read -r vmwarecheck
+case $vmwarecheck in
+  1) printf "%b\nPerfect\n" "$*" ;;
+  2) printf "%b\nA good choice.\n" "$*" ;;
+  *) printf "%b\nUnrecognized option, please try again: $user00\n" "$*" ;;
+esac
+done
+
+if [ "$vmwarecheck" = "1" ]; then
+vmwareon="yes"
+elif [ "$bmwarecheck" = "2" ]; then
+vmwareon="no"
+fi
+
+
 while [ "$gpucheck" != "1" ] && [ "$gpucheck" != "2" ]; do
 printf "%b\nDo you have an amd or nvidia graphics card? -- Intel ARC not yet supported.\n" "$*"
 printf "%b\n1 - AMD\n" "$*"
@@ -499,6 +519,52 @@ printf "%b3\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodi
 printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y mkinitcpio-firmware
 printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y text-engine-git
 
+if [ ]$vmwareon = "yes" ]; then
+printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y vmware-workstation
+echo "[Unit]" >> /mnt/etc/systemd/system/vmware.service
+echo "Description=VMware daemon" >> /mnt/etc/systemd/system/vmware.service
+echo "Requires=vmware-usbarbitrator.service" >> /mnt/etc/systemd/system/vmware.service
+echo "Before=vmware-usbarbitrator.service" >> /mnt/etc/systemd/system/vmware.service
+echo "After=network.target" >> /mnt/etc/systemd/system/vmware.service
+echo "[Service]" >> /mnt/etc/systemd/system/vmware.service
+echo "ExecStart=/etc/init.d/vmware start" >> /mnt/etc/systemd/system/vmware.service
+echo "ExecStop=/etc/init.d/vmware stop" >> /mnt/etc/systemd/system/vmware.service
+echo "PIDFile=/var/lock/subsys/vmware" >> /mnt/etc/systemd/system/vmware.service
+echo "RemainAfterExit=yes" >> /mnt/etc/systemd/system/vmware.service
+echo "[Install]" >> /mnt/etc/systemd/system/vmware.service
+echo "WantedBy=multi-user.target" >> /mnt/etc/systemd/system/vmware.service
+
+echo "[Unit]" >> /mnt/etc/systemd/system/vmware-usbarbitrator.service
+echo "Description=VMware USB Arbitrator" >> /mnt/etc/systemd/system/vmware-usbarbitrator.service
+echo "Requires=vmware.service" >> /mnt/etc/systemd/system/vmware-usbarbitrator.service
+echo "After=vmware.service" >> /mnt/etc/systemd/system/vmware-usbarbitrator.service
+
+echo "[Service]" >> /mnt/etc/systemd/system/vmware-usbarbitrator.service
+echo "ExecStart=/usr/bin/vmware-usbarbitrator" >> /mnt/etc/systemd/system/vmware-usbarbitrator.service
+echo "ExecStop=/usr/bin/vmware-usbarbitrator --kill" >> /mnt/etc/systemd/system/vmware-usbarbitrator.service
+echo "RemainAfterExit=yes" >> /mnt/etc/systemd/system/vmware-usbarbitrator.service
+
+echo "[Install]" >> /mnt/etc/systemd/system/vmware-usbarbitrator.service
+echo "WantedBy=multi-user.target" >> /mnt/etc/systemd/system/vmware-usbarbitrator.service
+
+echo "[Unit]" >> /mnt/etc/systemd/system/vmware-networks-server.service
+echo "Description=VMware Networks" >> /mnt/etc/systemd/system/vmware-networks-server.service
+echo "Wants=vmware-networks-configuration.service" >> /mnt/etc/systemd/system/vmware-networks-server.service
+echo "After=vmware-networks-configuration.service" >> /mnt/etc/systemd/system/vmware-networks-server.service
+
+echo "[Service]" >> /mnt/etc/systemd/system/vmware-networks-server.service
+echo "Type=forking" >> /mnt/etc/systemd/system/vmware-networks-server.service
+echo "ExecStartPre=-/sbin/modprobe vmnet" >> /mnt/etc/systemd/system/vmware-networks-server.service
+echo "ExecStart=/usr/bin/vmware-networks --start" >> /mnt/etc/systemd/system/vmware-networks-server.service
+echo "ExecStop=/usr/bin/vmware-networks --stop" >> /mnt/etc/systemd/system/vmware-networks-server.service
+
+echo "[Install]" >> /mnt/etc/systemd/system/vmware-networks-server.service
+echo "WantedBy=multi-user.target" >> /mnt/etc/systemd/system/vmware-networks-server.service
+
+arch-chroot /mnt systemctl enable vmware-networks-server.service vmware-usbarbitrator.service vmware.service
+fi
+
+
 arch-chroot /mnt /bin/bash <<"EOT"
 printf "%bInstalling Bootloader\n" "$*"
 mkinitcpio -P
@@ -507,9 +573,9 @@ printf "%bdefault arch.conf\ntimeout 5\nconsole-mode max\neditor no\n" "$*" > /b
 EOT
 
 if [ $native1 = "yes" ]; then
-printf "%btitle Coffee-Linux 'Latte' (12.0.1)\n" "$*" > /mnt/boot/loader/entries/arch.conf
+printf "%btitle Coffee-Linux 'Latte' (12.1.0)\n" "$*" > /mnt/boot/loader/entries/arch.conf
 elif [ $native1 = "no" ]; then
-printf "%btitle Coffee-Linux 'Latte' (12.0.1-Unofficial)\n" "$*" > /mnt/boot/loader/entries/arch.conf
+printf "%btitle Coffee-Linux 'Latte' (12.1.0-Unofficial)\n" "$*" > /mnt/boot/loader/entries/arch.conf
 fi
 
 printf "%blinux /vmlinuz-linux\ninitrd /intel-ucode.img\ninitrd /amd-ucode.img\ninitrd /initramfs-linux.img\n" "$*" >> /mnt/boot/loader/entries/arch.conf
@@ -663,8 +729,6 @@ cp /opt/backgrounds/coffee/coffeewall06.jpg /mnt/usr/share/backgrounds/gnome/cof
 cp /opt/backgrounds/coffee/coffeewall02.jpg /mnt/usr/share/backgrounds/gnome/coffeewall05.jpg
 cp /opt/backgrounds/coffee/coffeewall07.jpg /mnt/usr/share/backgrounds/gnome/coffeewall06.jpg
 cp /opt/backgrounds/coffee/coffeewall08.jpg /mnt/usr/share/backgrounds/gnome/coffeewall07.jpg
-rm -R /mnt/usr/share/backgrounds/gnome/ 
-mkdir -p /mnt/usr/share/backgrounds/gnome/
 cp /opt/backgrounds/coffee/*.webp /mnt/usr/share/backgrounds/gnome/
 fi
 
