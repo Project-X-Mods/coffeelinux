@@ -32,6 +32,8 @@ True Zero-Out Drive formatting (if selected).
 
 Yaru/Ubuntu theming for Gnome with Yaru sessions.
 
+Mint Theming for Cinnamon, Mate, and XFCE.
+
 CoffeeLinux Wallpapers, and OS Info.
 
 Custom Neofetch Logo.
