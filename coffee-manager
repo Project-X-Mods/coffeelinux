@@ -2,7 +2,8 @@
 
 # Coffee-Manager v1.2.0
 
-while [ $returncheck != "1" ]; do
+while [ "$returncheck" != "1" ]; do
+
 #-Main-Menu
 while [ "$updatecheck" != "1" ] && [ "$updatecheck" != "2" ] && [ "$updatecheck" != "3" ] && [ "$updatecheck" != "4" ] && [ "$updatecheck" != "5" ]; do 
 printf "%b\n What would you like to do?\n" "$*"
