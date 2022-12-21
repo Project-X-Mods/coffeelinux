@@ -22,7 +22,7 @@ Latest Linux Kernel.
 
 Gamescope and MangoHud (from SteamOS 3.4).
 
-Gnome, KDE, Cinnamon, Mate, LXDE, LXQT, XFCE, and Deepin Desktops. (You get to choose along the way)
+Gnome, KDE, Cinnamon, Mate, LXDE, LXQT, and XFCE Desktops. (You get to choose along the way)
 
 Yay AUR package manager (Terminal only).
 
