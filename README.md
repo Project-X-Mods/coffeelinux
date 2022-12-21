@@ -16,6 +16,8 @@ Notable Feature: Secure-Boot support is available to install on the OS (however 
 
 It has Java, Wine, Protontricks, DXVK, Vulkan, Steam, Discord, and MS Edge all good to go.
 
+Coffee-Manager tool for easy updates and application management. (type: "coffee-manager" in a terminal) 
+
 Latest Controller and Graphics drivers.
 
 Latest Linux Kernel.
