@@ -577,9 +577,9 @@ printf "%bdefault arch.conf\ntimeout 5\nconsole-mode max\neditor no\n" "$*" > /b
 EOT
 
 if [ $native1 = "yes" ]; then
-printf "%btitle Coffee-Linux 'Latte' (12.1.1)\n" "$*" > /mnt/boot/loader/entries/arch.conf
+printf "%btitle Coffee-Linux 'Latte' (12.1.2)\n" "$*" > /mnt/boot/loader/entries/arch.conf
 elif [ $native1 = "no" ]; then
-printf "%btitle Coffee-Linux 'Latte' (12.1.1-Unofficial)\n" "$*" > /mnt/boot/loader/entries/arch.conf
+printf "%btitle Coffee-Linux 'Latte' (12.1.2-Unofficial)\n" "$*" > /mnt/boot/loader/entries/arch.conf
 fi
 
 printf "%blinux /vmlinuz-linux\ninitrd /intel-ucode.img\ninitrd /amd-ucode.img\ninitrd /initramfs-linux.img\n" "$*" >> /mnt/boot/loader/entries/arch.conf
@@ -656,8 +656,7 @@ if [ $native1 = "yes" ]; then
 
   rm -R /mnt/usr/share/backgrounds/gnome/ 
   mkdir -p /mnt/usr/share/backgrounds/gnome/
-  cp /opt/backgrounds/coffee/*.webp /mnt/usr/share/backgrounds/gnome/
-  cp /opt/backgrounds/coffee/*.jpg /mnt/usr/share/backgrounds/gnome/
+  cp /opt/backgrounds/coffee/* /mnt/usr/share/backgrounds/gnome/
 fi
 
 printf "%bInstalling Coffee-QOL-Extras\n" "$*"
@@ -679,13 +678,6 @@ rm -r /mnt/usr/share/xsessions/gnome*
 rm -r /mnt/usr/share/wayland-sessions/gnome*
 arch-chroot /mnt systemctl enable gdm
 
-if [ $snapon = "yes" ]; then
-printf "%b3\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y snapd
-printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y snapd-glib
-arch-chroot /mnt systemctl enable snapd.apparmor
-arch-chroot /mnt systemctl enable snapd
-fi
-
 osfinished="yes"
 
 elif [ $desktop0 = "kde" ]; then  
@@ -696,19 +688,12 @@ printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodi
 
 if [ $native1 = "yes" ]; then
   mkdir -p /mnt/usr/share/wallpapers/coffee/
-  cp /opt/backgrounds/coffee/*.jpg /mnt/usr/share/wallpapers/coffee/
+  cp /opt/backgrounds/coffee/* /mnt/usr/share/wallpapers/coffee/
 fi
 
 printf "%bEnsuring correct DM is set.\n" "$*"  
 arch-chroot /mnt pacman -Syu
 arch-chroot /mnt systemctl enable sddm
-
-if [ $snapon = "yes" ]; then
-printf "%b3\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y snapd
-printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y snapd-glib
-arch-chroot /mnt systemctl enable snapd.apparmor
-arch-chroot /mnt systemctl enable snapd
-fi
 
 elif [ $desktop0 = "cinnamon" ]; then
 
@@ -716,7 +701,7 @@ printf "%bInstalling Coffee-QOL-Extras\n" "$*"
 
 if [ $native1 = "yes" ]; then
 mkdir -p /mnt/usr/share/backgrounds/gnome/
-cp /opt/backgrounds/coffee/*.svg /mnt/usr/share/backgrounds/gnome/
+cp /opt/backgrounds/coffee/* /mnt/usr/share/backgrounds/gnome/
 fi
 
 printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y lightdm-settings
@@ -735,13 +720,6 @@ echo "[Seat:*]" >> /mnt/etc/lightdm/lightdm.conf
 echo "greeter-session=lightdm-slick-greeter" >> /mnt/etc/lightdm/lightdm.conf
 arch-chroot /mnt systemctl enable lightdm
 
-if [ $snapon = "yes" ]; then
-printf "%b3\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y snapd
-printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y snapd-glib
-arch-chroot /mnt systemctl enable snapd.apparmor
-arch-chroot /mnt systemctl enable snapd
-fi
-
 osfinished="yes"
 
 elif [ $desktop0 = "xfce" ]; then
@@ -750,7 +728,7 @@ printf "%bInstalling Coffee-QOL-Extras\n" "$*"
 
 if [ $native1 = "yes" ]; then
   mkdir -p /mnt/usr/share/wallpapers/coffee/
-  cp /opt/backgrounds/coffee/*.jpg /mnt/usr/share/wallpapers/coffee/
+  cp /opt/backgrounds/coffee/* /mnt/usr/share/wallpapers/coffee/
 fi
 
 printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y lightdm-settings
@@ -770,13 +748,6 @@ echo "greeter-session=lightdm-slick-greeter" >> /mnt/etc/lightdm/lightdm.conf
 arch-chroot /mnt systemctl enable lightdm
 arch-chroot /mnt xfconf-query -c xfwm4 -p /general/vblank_mode -s glx
 
-if [ $snapon = "yes" ]; then
-printf "%b3\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y snapd
-printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y snapd-glib
-arch-chroot /mnt systemctl enable snapd.apparmor
-arch-chroot /mnt systemctl enable snapd
-fi
-
 osfinished="yes"
 
 elif [ $desktop0 = "mate" ]; then
@@ -785,7 +756,7 @@ printf "%bInstalling Coffee-QOL-Extras\n" "$*"
 
 if [ $native1 = "yes" ]; then
   mkdir -p /mnt/usr/share/wallpapers/coffee/
-  cp /opt/backgrounds/coffee/*.svg /mnt/usr/share/wallpapers/coffee/
+  cp /opt/backgrounds/coffee/* /mnt/usr/share/wallpapers/coffee/
 fi
 
 printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su $user01 yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y lightdm-settings
@@ -805,13 +776,6 @@ echo "[Seat:*]" >> /mnt/etc/lightdm/lightdm.conf
 echo "greeter-session=lightdm-slick-greeter" >> /mnt/etc/lightdm/lightdm.conf
 arch-chroot /mnt systemctl enable lightdm
 
-if [ $snapon = "yes" ]; then
-printf "%b3\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y snapd
-printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y snapd-glib
-arch-chroot /mnt systemctl enable snapd.apparmor
-arch-chroot /mnt systemctl enable snapd
-fi
-
 osfinished="yes"
 
 elif [ $desktop0 = "lxde" ]; then
@@ -820,19 +784,12 @@ printf "%bInstalling Coffee-QOL-Extras\n" "$*"
 
 if [ $native1 = "yes" ]; then
   mkdir -p /mnt/usr/share/wallpapers/coffee/
-  cp /opt/backgrounds/coffee/*.jpg /mnt/usr/share/wallpapers/coffee/
+  cp /opt/backgrounds/coffee/* /mnt/usr/share/wallpapers/coffee/
 fi
 
 printf "%bEnsuring correct DM is set.\n" "$*"
 arch-chroot /mnt pacman -Syu
 arch-chroot /mnt systemctl enable lxdm
-
-if [ $snapon = "yes" ]; then
-printf "%b3\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y snapd
-printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y snapd-glib
-arch-chroot /mnt systemctl enable snapd.apparmor
-arch-chroot /mnt systemctl enable snapd
-fi
 
 osfinished="yes"
 
@@ -842,19 +799,12 @@ printf "%bInstalling Coffee-QOL-Extras\n" "$*"
 
 if [ $native1 = "yes" ]; then
   mkdir -p /mnt/usr/share/wallpapers/coffee/
-  cp /opt/backgrounds/coffee/*.jpg /mnt/usr/share/wallpapers/coffee/
+  cp /opt/backgrounds/coffee/* /mnt/usr/share/wallpapers/coffee/
 fi
 
 printf "%bEnsuring correct DM is set.\n" "$*"
 arch-chroot /mnt pacman -Syu
 arch-chroot /mnt systemctl enable sddm
-
-if [ $snapon = "yes" ]; then
-printf "%b3\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y snapd
-printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y snapd-glib
-arch-chroot /mnt systemctl enable snapd.apparmor
-arch-chroot /mnt systemctl enable snapd
-fi
 
 osfinished="yes"
 
@@ -891,6 +841,14 @@ osfinished="yes"
 fi
 
 if [ $osfinished = "yes" ]; then
+
+if [ $snapon = "yes" ]; then
+printf "%b3\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y snapd
+printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y snapd-glib
+arch-chroot /mnt systemctl enable snapd.apparmor
+arch-chroot /mnt systemctl enable snapd
+fi
+
 printf "%bAttempting to fix the home directory automatically now...\n" "$*"
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs
 arch-chroot /mnt xdg-user-dirs-update
