@@ -1,4 +1,4 @@
-# Coffee Linux v.12.0.1 "Latte"
+# Coffee Linux v.12.1.1 "Latte"
 
 ![Screenshot_20221209_223429](https://user-images.githubusercontent.com/8603363/206835846-3e6e3eab-7632-471e-8a88-d2ffb548faa9.png)
 
@@ -41,6 +41,8 @@ Custom Neofetch Logo.
 Pamac GUI Package Manager.
 
 Snap-Store support (if selected)
+
+VMware Workstation/Player (if selected)
 
 SystemD-Bootloader via built in sysv-utils (not grub2 which is extra that is pointless really)
 
