@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Coffee-Manager v1.2.0
+
+while [ $returncheck != "1" ]; do
 #-Main-Menu
 while [ "$updatecheck" != "1" ] && [ "$updatecheck" != "2" ] && [ "$updatecheck" != "3" ] && [ "$updatecheck" != "4" ] && [ "$updatecheck" != "5" ]; do 
 printf "%b\n What would you like to do?\n" "$*"
@@ -138,5 +141,21 @@ fi
 #End Application- Uninstaller
 
 fi
-#-End-Script
+printf "%b\n Would you like to return to the Main Menu?\n" "$*"
+printf "%b\n1 - No\n" "$*"
+printf "%b\n2 - Yes\n" "$*"
+read -r returncheck
+case $returncheck in
+  1) printf "%b\nExiting\n" "$*" ;;
+  2) printf "%b\nReturning to Main..\n" "$*" ;;
+  #3) printf "%b\n$pakname\n" "$*" ;;
+  *) printf "%b\nUnrecognized option\n" "$*" ;;
+esac
+if [ "$returncheck" = "1" ]; then 
+exit
+elif [ "$returncheck" = "2" ]; then
+echo ""
+fi
 
+done
+#-End-Script
