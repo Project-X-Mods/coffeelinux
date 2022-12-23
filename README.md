@@ -1,4 +1,4 @@
-# Coffee Linux v.12.1.2 "Latte"
+# Coffee Linux v.13.0.0 "Mocha"
 
 ![Screenshot_20221209_223429](https://user-images.githubusercontent.com/8603363/206835846-3e6e3eab-7632-471e-8a88-d2ffb548faa9.png)
 
@@ -8,6 +8,8 @@ CoffeeLinux is basically Arch but more refined for gaming specifically.
 The idea here is to have everything ready for you right away.
 I have personally hand selected each package and wrote the script by hand using Arch install guides galore and a bit of knowhow of how to get it all to piece together nicely and install everything in the simplest most direct way possible.
 
+Simply open a Terminal, type: "sudo -i" then "coffeebrewer" to begin installation.
+
 Notable Feature: Secure-Boot support is available to install on the OS (however it does not boot the ISO itself in Secure-Boot mode)
 
 (Simply turn on "Windows UEFI Mode" or similar in BIOS post-install of Secure-Boot enabled OS)
@@ -15,6 +17,8 @@ Notable Feature: Secure-Boot support is available to install on the OS (however 
 (You do need to enroll your generated .cer in the MOK manually post-install similar to Ubuntu, it is placed in /boot/ by default )
 
 It has Java, Wine, Protontricks, DXVK, Vulkan, Steam, Discord, and MS Edge all good to go.
+
+Full Live GUI (Gnome). [ default user password = "coffee" ]
 
 Coffee-Manager tool for easy updates and application management. (type: "coffee-manager" in a terminal) 
 
@@ -53,3 +57,8 @@ Just use Etcher to write the iso to usb, and go. Easy-peezy.
 ===============================================================
 
 Like, Share, and Enjoy. My Linux is the cure to the distro war.
+================================================================
+
+Links: [source] (https://drive.google.com/file/d/1lTFQGV51bElCmvX50THJKA8ez74vbdjn/view?usp=share_link)
+
+       [Iso] (https://drive.google.com/file/d/1nKlqbZ-Kqm4UkOKCCHsDByclYwjTtvtQ/view?usp=share_link)
