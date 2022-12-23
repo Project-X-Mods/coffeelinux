@@ -63,3 +63,8 @@ Download Links
 [source](https://drive.google.com/file/d/1lTFQGV51bElCmvX50THJKA8ez74vbdjn/view?usp=share_link) - releng-mod2coffee
        
 [Iso](https://drive.google.com/file/d/1nKlqbZ-Kqm4UkOKCCHsDByclYwjTtvtQ/view?usp=share_link) - Main File
+
+Known issues: 
+1. VM installs may fail due to systemd-bootloader being the primary for the OS.
+ 
+2. Coffeebrewer rootcheck shows an error, this is due to a typo. Does not actually affect anything. Just ignore it.
