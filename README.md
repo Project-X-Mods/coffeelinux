@@ -1,4 +1,4 @@
-# Coffee Linux v.13.0.0 "Mocha"
+# Coffee Linux v.13.1.0 "Mocha"
 
 ![Screenshot_20221209_223429](https://user-images.githubusercontent.com/8603363/206835846-3e6e3eab-7632-471e-8a88-d2ffb548faa9.png)
 
@@ -50,7 +50,7 @@ Snap-Store support (if selected)
 
 VMware Workstation/Player (if selected)
 
-SystemD-Bootloader via built in sysv-utils (not grub2 which is extra that is pointless really)
+Choice of Bootloader (SystemD-Bootloader or Grub)
 
 Just use Etcher to write the iso to usb, and go. Easy-peezy.
 
@@ -60,11 +60,6 @@ Like, Share, and Enjoy. My Linux is the cure to the distro war.
 ================================================================
 Download Links
 
-[source](https://drive.google.com/file/d/1lTFQGV51bElCmvX50THJKA8ez74vbdjn/view?usp=share_link) - releng-mod2coffee
+[source](https://drive.google.com/file/d/1lg4HfBsM3uWu-jZSZ7oKPvaSbTkfKnzY/view?usp=share_link) - coffeeiso
        
-[Iso](https://drive.google.com/file/d/1nKlqbZ-Kqm4UkOKCCHsDByclYwjTtvtQ/view?usp=share_link) - Main File
-
-Known issues: 
-1. VM installs may fail due to systemd-bootloader being the primary for the OS.
- 
-2. Coffeebrewer rootcheck shows an error, this is due to a typo. Does not actually affect anything. Just ignore it.
+[Iso](https://drive.google.com/file/d/1MgMw8aeJ36_iJQOyoyhSZanmVwgusy9q/view?usp=share_link) - Main File
