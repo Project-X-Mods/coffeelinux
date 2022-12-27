@@ -3,7 +3,6 @@
 # Coffee-Manager v1.2.0
 
 while [ "$returncheck" != "1" ]; do
-
 #-Main-Menu
 while [ "$updatecheck" != "1" ] && [ "$updatecheck" != "2" ] && [ "$updatecheck" != "3" ] && [ "$updatecheck" != "4" ] && [ "$updatecheck" != "5" ]; do 
 printf "%b\n What would you like to do?\n" "$*"
@@ -153,10 +152,13 @@ case $returncheck in
   *) printf "%b\nUnrecognized option\n" "$*" ;;
 esac
 if [ "$returncheck" = "1" ]; then 
-exit
+echo ""
 elif [ "$returncheck" = "2" ]; then
 echo ""
 fi
 
 done
 #-End-Script
+exit
+
+
