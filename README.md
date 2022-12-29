@@ -65,6 +65,5 @@ Syslinux bootloader on .iso only for additional VM client support (ie: VMware Pl
 Just use Etcher to write the iso to usb, and go. Easy-peezy.
 
 ===============================================================
-
 Like, Share, and Enjoy. My Linux is the cure to the distro war.
 ================================================================
