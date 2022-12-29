@@ -70,9 +70,12 @@ Like, Share, and Enjoy. My Linux is the cure to the distro war.
 
 To build your own iso:
 
-open a terminal an issue the following commands.
+Install archiso first.
+
+Then open a terminal an issue the following commands.
 
 git clone https://github.com/Project-X-Mods/coffeelinux-sources.git
+
 sudo mkarchiso -v -w ~/work/ ~/out/ ~/coffeelinux-sources/releng/
 
 Iso will be created in ~/out/ (home directory /out)
