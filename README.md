@@ -42,7 +42,7 @@ Proper GPU drivers installed (AMD or Nvidia).
 
 True Zero-Out Drive formatting (if selected).
 
-Yaru/Ubuntu theming for Gnome with Yaru sessions. (with Ubuntu Dock and Icons)
+Yaru/Ubuntu theming for Gnome ( active by default in Yaru sessions). (with Ubuntu Dock and Icons)
 
 GDM customization App. (Login Screen of Gnome DE)
 
@@ -64,6 +64,21 @@ Syslinux bootloader on .iso only for additional VM client support (ie: VMware Pl
 
 Just use Etcher to write the iso to usb, and go. Easy-peezy.
 
-===============================================================
+=======================================================
 Like, Share, and Enjoy. My Linux is the cure to the distro war.
-================================================================
+=======================================================
+
+To build your own iso:
+
+open a terminal an issue the following commands.
+
+git clone https://github.com/Project-X-Mods/coffeelinux-sources.git
+sudo mkarchiso -v -w ~/work/ ~/out/ ~/coffeelinux-sources/releng/
+
+Iso will be created in ~/out/ (home directory /out)
+
+=======================================================
+Join us on Discord: https://discord.gg/6Pz43wP
+We love hearing what you thing of our project, or have suggestions (polite ones)
+=======================================================
+
