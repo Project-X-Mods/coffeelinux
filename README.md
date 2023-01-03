@@ -24,8 +24,6 @@ A ton of critical and optional dependencies resolved for most packages.
 
 Additional firmware from mkinitcpio-firmware to eliminate most default kernel module warnings.
 
-Coffee-Manager tool/script for easy updates and application management. (type: "coffee-manager" in a terminal) 
-
 Latest Controller and Graphics drivers.
 
 Latest Linux Kernel and basic drivers.
