@@ -20,6 +20,8 @@ lxqtapps="wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack lightd
 
 deepinapps="deepin deepin-anything-arch deepin-extra lightdm lightdm-deepin-greeter wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack"
 
+i3apps="i3-wm i3lock i3status i3blocks firefox micro lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack"
+
 questionare (){
 
 while [ "$rootusercheck" != "1" ]; do
@@ -267,7 +269,7 @@ case $swapcheck in
 esac
 done
 
-while [ "$desktopcheck" != "1" ] && [ "$desktopcheck" != "2" ] && [ "$desktopcheck" != "3" ] && [ "$desktopcheck" != "4" ] && [ "$desktopcheck" != "5" ] && [ "$desktopcheck" != "6" ] && [ "$desktopcheck" != "7" ] && [ "$desktopcheck" != "8" ]; do
+while [ "$desktopcheck" != "1" ] && [ "$desktopcheck" != "2" ] && [ "$desktopcheck" != "3" ] && [ "$desktopcheck" != "4" ] && [ "$desktopcheck" != "5" ] && [ "$desktopcheck" != "6" ] && [ "$desktopcheck" != "7" ] && [ "$desktopcheck" != "8" ] && [ "$desktopcheck" != "9" ]; do
 #
 printf "%b\nWhat desktop environment do you want?\n" "$*"
 printf "%b\n1 - Gnome\n" "$*"
@@ -278,6 +280,7 @@ printf "%b\n5 - LXDE\n" "$*"
 printf "%b\n6 - LXQT\n" "$*"
 printf "%b\n7 - XFCE\n" "$*"
 printf "%b\n8 - Deepin - WIP May not work. \n" "$*"
+printf "%b\n9 - i3\n" "$*"
 
 read -r desktopcheck
 case $desktopcheck in
@@ -288,7 +291,8 @@ case $desktopcheck in
   5) printf "%b\nA good choice.\n" "$*" ;;
   6) printf "%b\nA good choice.\n" "$*" ;;
   7) printf "%b\nA good choice.\n" "$*" ;;
-  #-8) printf "%b\nA brave choice.\n" "$*" ;;
+  8) printf "%b\nA brave choice.\n" "$*" ;;
+  9) printf "%b\nA super choice.\n" "$*" ;;
   *) printf "%b\nUnrecognized option, please try again: $user00\n" "$*" ;;
 esac
 done
@@ -316,6 +320,9 @@ desktop0="xfce"
 
 elif [ "$desktopcheck" = "8" ]; then
 desktop0="deepin"
+
+elif [ "$desktopcheck" = "9" ]; then
+desktop0="i3"
 
 fi
 
@@ -827,9 +834,9 @@ printf "%bdefault arch.conf\ntimeout 5\nconsole-mode max\neditor no\n" "$*" >> /
 EOT
 
 if [ $native1 = "yes" ]; then
-printf "%btitle Coffee-Linux 'Nevermore' (14.0.0)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
+printf "%btitle Coffee-Linux 'Nevermore' (14.1.0)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
 elif [ $native1 = "no" ]; then
-printf "%btitle Coffee-Linux 'Nevermore' (14.0.0-Unofficial)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
+printf "%btitle Coffee-Linux 'Nevermore' (14.1.0-Unofficial)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
 fi
 
 printf "%blinux /vmlinuz-linux\ninitrd /intel-ucode.img\ninitrd /amd-ucode.img\ninitrd /initramfs-linux.img\n" "$*" >> /mnt/boot/loader/entries/arch.conf
