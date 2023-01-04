@@ -18,9 +18,21 @@ lxdeapps="wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack lxde l
 
 lxqtapps="wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack lightdm lightdm-gtk-greeter lximage-qt lxqt lxqt-about lxqt-admin lxqt-archiver lxqt-config lxqt-globalkeys lxqt-notificationd lxqt-openssh-askpass lxqt-panel lxqt-policykit lxqt-powermanagement lxqt-qtplugin lxqt-runner lxqt-session lxqt-sudo lxqt-themes mousepad obconf-qt oxygen-icons pavucontrol-qt pcmanfm-qt qterminal screengrab sddm xdg-desktop-portal-lxqt "
 
-deepinapps="deepin deepin-anything-arch deepin-extra lightdm lightdm-deepin-greeter wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack"
+deepinapps="deepin deepin-anything-arch deepin-kwin deepin-extra lightdm lightdm-deepin-greeter wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack"
 
-i3apps="i3-wm i3lock i3status i3blocks firefox micro lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack"
+i3apps="i3-wm i3lock i3status i3blocks firefox micro lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
+
+swayapps="sway swaybg swayidle swayimg swaylock waybar firefox lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
+
+cutefishapps="cutefish-calculator cutefish-core cutefish-dock cutefish-filemanager cutefish-icons cutefish-kwin-plugins cutefish-launcher cutefish-qt-plugins cutefish-screenlocker cutefish-settings cutefish-statusbar cutefish-terminal cutefish-wallpapers fishui libcutefish firefox lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
+
+budgieapps="budgie-control-center budgie-desktop budgie-desktop-view budgie-extras budgie-screensaver firefox lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
+
+awesomeapps="awesome awesome-terminal-fonts firefox lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
+
+enlightenmentapps="enlightenment firefox lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
+
+vmwareprokey="MC60H-DWHD5-H80U9-6V85M-8280D"
 
 questionare (){
 
@@ -269,7 +281,7 @@ case $swapcheck in
 esac
 done
 
-while [ "$desktopcheck" != "1" ] && [ "$desktopcheck" != "2" ] && [ "$desktopcheck" != "3" ] && [ "$desktopcheck" != "4" ] && [ "$desktopcheck" != "5" ] && [ "$desktopcheck" != "6" ] && [ "$desktopcheck" != "7" ] && [ "$desktopcheck" != "8" ] && [ "$desktopcheck" != "9" ]; do
+while [ "$desktopcheck" != "1" ] && [ "$desktopcheck" != "2" ] && [ "$desktopcheck" != "3" ] && [ "$desktopcheck" != "4" ] && [ "$desktopcheck" != "5" ] && [ "$desktopcheck" != "6" ] && [ "$desktopcheck" != "7" ] && [ "$desktopcheck" != "8" ] && [ "$desktopcheck" != "9" ] && [ "$desktopcheck" != "10" ] && [ "$desktopcheck" != "11" ] && [ "$desktopcheck" != "12" ] && [ "$desktopcheck" != "13" ] && [ "$desktopcheck" != "14" ]; do
 #
 printf "%b\nWhat desktop environment do you want?\n" "$*"
 printf "%b\n1 - Gnome\n" "$*"
@@ -281,6 +293,11 @@ printf "%b\n6 - LXQT\n" "$*"
 printf "%b\n7 - XFCE\n" "$*"
 printf "%b\n8 - Deepin - WIP May not work. \n" "$*"
 printf "%b\n9 - i3\n" "$*"
+printf "%b\n10 - Sway\n" "$*"
+printf "%b\n11 - Cutefish\n" "$*"
+printf "%b\n12 - Budgie\n" "$*"
+printf "%b\n13 - Enlightenment\n" "$*"
+printf "%b\n14 - Awesome\n" "$*"
 
 read -r desktopcheck
 case $desktopcheck in
@@ -293,6 +310,11 @@ case $desktopcheck in
   7) printf "%b\nA good choice.\n" "$*" ;;
   8) printf "%b\nA brave choice.\n" "$*" ;;
   9) printf "%b\nA super choice.\n" "$*" ;;
+  10) printf "%b\nA super choice.\n" "$*" ;;
+  11) printf "%b\nA super choice.\n" "$*" ;;
+  12) printf "%b\nA super choice.\n" "$*" ;;
+  13) printf "%b\nA super choice.\n" "$*" ;;
+  14) printf "%b\nA super choice.\n" "$*" ;;
   *) printf "%b\nUnrecognized option, please try again: $user00\n" "$*" ;;
 esac
 done
@@ -323,6 +345,21 @@ desktop0="deepin"
 
 elif [ "$desktopcheck" = "9" ]; then
 desktop0="i3"
+
+elif [ "$desktopcheck" = "10" ]; then
+desktop0="sway"
+
+elif [ "$desktopcheck" = "11" ]; then
+desktop0="cutefish"
+
+elif [ "$desktopcheck" = "12" ]; then
+desktop0="budgie"
+
+elif [ "$desktopcheck" = "13" ]; then
+desktop0="Enlightenment"
+
+elif [ "$desktopcheck" = "14" ]; then
+desktop0="awesome"
 
 fi
 
@@ -662,6 +699,42 @@ arch-chroot /mnt pacman -Sy --noconfirm $deepinapps
 #arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
 arch-chroot /mnt systemctl enable lightdm
 
+elif [ "$desktop0" = "i3" ]; then
+
+arch-chroot /mnt pacman -Sy --noconfirm $i3apps
+#arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
+arch-chroot /mnt systemctl enable lightdm
+
+elif [ "$desktop0" = "sway" ]; then
+
+arch-chroot /mnt pacman -Sy --noconfirm $swayapps
+#arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
+arch-chroot /mnt systemctl enable lightdm
+
+elif [ "$desktop0" = "cutefish" ]; then
+
+arch-chroot /mnt pacman -Sy --noconfirm $cutefishapps
+#arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
+arch-chroot /mnt systemctl enable sddm
+
+elif [ "$desktop0" = "budgie" ]; then
+
+arch-chroot /mnt pacman -Sy --noconfirm $budgieapps
+#arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
+arch-chroot /mnt systemctl enable lightdm
+
+elif [ "$desktop0" = "budgie" ]; then
+
+arch-chroot /mnt pacman -Sy --noconfirm $enlightenmentapps
+#arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
+arch-chroot /mnt systemctl enable lightdm
+
+elif [ "$desktop0" = "awesome" ]; then
+
+arch-chroot /mnt pacman -Sy --noconfirm $awesomeapps
+#arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
+arch-chroot /mnt systemctl enable lightdm
+
 fi
 
 command4finished="1"
@@ -720,6 +793,9 @@ printf "%b1\n[Unit]\nDescription=VMware USB Arbitrator\nRequires=vmware.service\
 printf "%b\n[Unit]\nDescription=VMware Networks\nWants=vmware-networks-configuration.service\nAfter=vmware-networks-configuration.service\n[Service]\nType=forking\nExecStartPre=-/sbin/modprobe vmnet\nExecStart=/usr/bin/vmware-networks --start\nExecStop=/usr/bin/vmware-networks --stop\n[Install]\nWantedBy=multi-user.target\n" "$*" >> /mnt/etc/systemd/system/vmware-networks-server.service
 
 arch-chroot /mnt systemctl enable vmware-networks-server.service vmware-usbarbitrator.service vmware.service
+
+printf "%b\n$vmwareprokey\n" "$*" > /mnt/home/$user01/Documents/vmwareprokey.txt
+
 fi
 
 
@@ -742,6 +818,8 @@ printf "%b3\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodi
 printf "%b2\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y snapd-glib
 arch-chroot /mnt systemctl enable snapd.apparmor
 arch-chroot /mnt systemctl enable snapd
+
+
 fi
 
 command7finished="1"
@@ -834,9 +912,9 @@ printf "%bdefault arch.conf\ntimeout 5\nconsole-mode max\neditor no\n" "$*" >> /
 EOT
 
 if [ $native1 = "yes" ]; then
-printf "%btitle Coffee-Linux 'Nevermore' (14.1.0)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
+printf "%btitle Coffee-Linux 'Nevermore' (14.2.0)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
 elif [ $native1 = "no" ]; then
-printf "%btitle Coffee-Linux 'Nevermore' (14.1.0-Unofficial)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
+printf "%btitle Coffee-Linux 'Nevermore' (14.2.0-Unofficial)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
 fi
 
 printf "%blinux /vmlinuz-linux\ninitrd /intel-ucode.img\ninitrd /amd-ucode.img\ninitrd /initramfs-linux.img\n" "$*" >> /mnt/boot/loader/entries/arch.conf
