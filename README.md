@@ -77,10 +77,96 @@ git clone https://github.com/Project-X-Mods/coffeelinux-sources.git
 
 sudo mkarchiso -v -w ~/work/ ~/out/ ~/coffeelinux-sources/releng/
 
-Iso will be created in ~/out/ (home directory /out)
+Iso will be created in ~/out/ (home directory /out)# Coffee Linux v.14.0.0 "Nevermore"
+2
+​
+3
+![Screenshot_20221209_223429](https://user-images.githubusercontent.com/8603363/206835846-3e6e3eab-7632-471e-8a88-d2ffb548faa9.png)
+4
+​
+5
+We believe using your PC should be as easy as a sip of coffee, so we fixed it up to be that way for you. No guesswork, it just does what its supposed to do. So kick back, relax and enjoy your cup.
+6
+​
+7
+CoffeeLinux is basically Arch Linux, but has been made easy for anyone to install and use. 
+8
+The idea here is to have everything ready for you right away.
+9
+​
+10
+It asks a few simple questions to customize the OS to your liking, then you just wait for the reboot. Everything is downloaded and installed on the system for the system. 
+11
+Everything that really can be given a user choice has been. This is still YOUR OS YOUR WAY. We have just made simpler to install with minimal hiccups.
+12
+​
+13
+Simply type "coffeebrewer" to begin installation.
+14
+​
+15
+Notable Feature: Secure-Boot support is available to install on the OS [via SystemD-Bootloader ONLY] (however it does not boot the ISO itself in Secure-Boot mode)
+16
+​
+17
+(Simply turn on "Windows UEFI Mode" or similar in BIOS post-install of Secure-Boot enabled OS)
+18
+​
+19
+(You do need to enroll your generated .cer in the MOK manually post-install similar to Ubuntu, it is placed in /boot/ by default )
+20
+​
+21
+Java, Wine, Protontricks, DXVK, Vulkan, Steam, Discord, and MS Edge setup.
+22
+​
+23
+A ton of critical and optional dependencies resolved for most packages.
+24
+​
+25
+Additional firmware from mkinitcpio-firmware to eliminate most default kernel module warnings.
+26
+​
+27
+Latest Controller and Graphics drivers.
+28
+​
+29
+Latest Linux Kernel and basic drivers.
+30
+​
+31
+Bluetooth Support.
+32
+​
+33
+Latest Gamescope and MangoHud.
+34
+​
+35
+Newest Gnome, KDE, Cinnamon, Mate, LXDE, LXQT, and XFCE Desktops. (You get to choose along the way)
+36
+​
+37
+Yay AUR package manager (Terminal only).
+38
+​
+39
+Proper GPU drivers installed (AMD or Nvidia).
+40
+​
+41
+True Zero-Out Drive formatting (if selected).
+42
+​
+43
+Yaru/Ubuntu theming for Gnome ( active by default in Yaru sessions). (with Ubuntu Dock and Icons)
 
 ===============================================
+
 Join us on Discord: https://discord.gg/6Pz43wP
 We love hearing what you thing of our project, 
 or have suggestions (polite ones)
+
 ===============================================
