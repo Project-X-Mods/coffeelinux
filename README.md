@@ -77,4 +77,13 @@ git clone https://github.com/Project-X-Mods/coffeelinux-sources.git
 
 sudo mkarchiso -v -w ~/work/ ~/out/ ~/coffeelinux-sources/releng/
 
-Iso will be created in ~/out/ (home directory /out)# Coffee Linux v.14.0.0 "Nevermore"
+Iso will be created in ~/out/ (home directory /out)
+
+===============================================
+
+Join us on Discord: https://discord.gg/6Pz43wP
+We love hearing what you thing of our project, 
+or have suggestions (polite ones)
+
+===============================================
+
