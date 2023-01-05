@@ -20,6 +20,8 @@ Notable Feature: Secure-Boot support is available to install on the OS [via Syst
 
 Java, Wine, Protontricks, DXVK, Vulkan, Steam, Discord, and MS Edge setup.
 
+Ext4 and BTRFS options for compatibility with some hardware.
+
 A ton of critical and optional dependencies resolved for most packages.
 
 Additional firmware from mkinitcpio-firmware to eliminate most default kernel module warnings.
