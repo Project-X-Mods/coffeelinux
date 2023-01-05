@@ -574,9 +574,9 @@ mkswap $swap0
 swapon $swap0
 
 if [ "$fs0" = "btrfs" ]; then
-mkfs.btrfs -f -L $drivename0 $system0
+mkfs.btrfs -f -L "$drivename0"$system0
 elif [ "$fs0" = "ext4" ]; then
-mkfs.ext4 -f -L $drivename0 $system0
+mkfs.ext4 -L "$drivename0" $system0
 fi
 printf "%b\nMounting Disks\n" "$*"
 mount $system0 /mnt
@@ -917,7 +917,7 @@ mkinitcpio -P
 pacman -Sy --noconfirm
 EOT
 
-arch-chroot /mnt grub-install ---target=i386-pc $drive0
+arch-chroot /mnt grub-install --target=i386-pc $drive0
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
 fi
@@ -928,13 +928,13 @@ arch-chroot /mnt /bin/bash <<"EOT"
 printf "%bInstalling SystemD-Bootloader UEFI\n" "$*"
 mkinitcpio -P
 bootctl install
-printf "%bdefault arch.conf\ntimeout 5\nconsole-mode max\neditor no\n" "$*" >> /boot/loader/loader.conf
+printf "%bdefault arch.conf\ntimeout 10\nconsole-mode max\neditor no\n" "$*" >> /boot/loader/loader.conf
 EOT
 
 if [ $native1 = "yes" ]; then
-printf "%btitle Coffee-Linux 'Nevermore' (14.2.2)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
+printf "%btitle Coffee-Linux 'Nevermore' (14.2.3)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
 elif [ $native1 = "no" ]; then
-printf "%btitle Coffee-Linux 'Nevermore' (14.2.2-Unofficial)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
+printf "%btitle Coffee-Linux 'Nevermore' (14.2.3-Unofficial)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
 fi
 
 printf "%blinux /vmlinuz-linux\ninitrd /intel-ucode.img\ninitrd /amd-ucode.img\ninitrd /initramfs-linux.img\n" "$*" >> /mnt/boot/loader/entries/arch.conf
