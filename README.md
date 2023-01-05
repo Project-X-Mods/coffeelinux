@@ -32,9 +32,7 @@ Bluetooth Support.
 
 Latest Gamescope and MangoHud.
 
-Newest Gnome, KDE, Cinnamon, Mate, LXDE, LXQT, Cutefish, Awesome, Budgie and XFCE Desktops. (You get to choose along the way)
-
-(or if DE's aren't your thing.. i3, and Sway are also available)
+A choice of 14 different Desktop Environments / Window Managers. (You get to choose along the way)
 
 Yay AUR package manager (Terminal only).
 
