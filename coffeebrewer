@@ -24,15 +24,13 @@ i3apps="i3-wm i3lock i3status i3blocks firefox micro lightdm lightdm-gtk-greeter
 
 swayapps="sway swaybg swayidle swayimg swaylock waybar firefox lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
 
-cutefishapps="cutefish-calculator cutefish-core cutefish-dock cutefish-filemanager cutefish-icons cutefish-kwin-plugins cutefish-launcher cutefish-qt-plugins cutefish-screenlocker cutefish-settings cutefish-statusbar cutefish-terminal cutefish-wallpapers fishui libcutefish firefox lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
+cutefishapps="cutefish-calculator cutefish-core cutefish-dock cutefish-filemanager cutefish-icons cutefish-kwin-plugins cutefish-launcher cutefish-qt-plugins cutefish-screenlocker cutefish-settings cutefish-statusbar cutefish-terminal cutefish-wallpapers fishui libcutefish firefox sddm rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
 
 budgieapps="budgie-control-center budgie-desktop budgie-desktop-view budgie-extras budgie-screensaver firefox lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
 
-awesomeapps="awesome awesome-terminal-fonts firefox lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
+awesomeapps="awesome xterm awesome-terminal-fonts firefox lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
 
 enlightenmentapps="enlightenment firefox lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
-
-vmwareprokey="MC60H-DWHD5-H80U9-6V85M-8280D"
 
 questionare (){
 
@@ -457,6 +455,25 @@ elif [ "$zerout0" = "no" ]; then
 printf "%b\nZero-Out Skipped.\n" "$*"
 fi
 
+
+while [ "$fscheck" != "1" ] && [ "$fscheck" != "2" ]; do
+printf "%b\nWould you like Ext4 or BTRFS Filesystem type?\n" "$*"
+printf "%b\n1 - Ext4\n" "$*"
+printf "%b\n2 - BTRFS\n" "$*"
+
+read -r fscheck
+case $fscheck in
+  1) printf "%b\nPerfect\n" "$*" ;;
+  2) printf "%b\nA good choice.\n" "$*" ;;
+  *) printf "%b\nUnrecognized option, please try again: $user00\n" "$*" ;;
+esac
+done
+if [ "$fscheck" = "1" ]; then
+fs0="ext4"
+elif [ "$fscheck" = "2" ]; then
+fs0="btrfs"
+fi
+
 while [ "$grubcheck" != "1" ] && [ "$grubcheck" != "2" ] && [ "$grubcheck" != "3" ]; do
 printf "%b\nWould you like GRUB or SystemD-Bootloader?\nGRUB is more compatible with VMs.\nUnofficial Installs MUST use SystemD and be using actual hardware.\n" "$*"
 printf "%b\n1 - GRUB UEFI version\n" "$*"
@@ -555,7 +572,12 @@ printf "%bg\nn\n1\n\n+2G\nn\n2\n\n$swap1\nn\n3\n\n\nt\n1\n1\nt\n2\n19\nw\n" "$*"
 mkfs.fat -F32 $boot0
 mkswap $swap0
 swapon $swap0
-mkfs.btrfs -f -L "$drivename0" $system0 
+
+if [ "$fs0" = "btrfs" ]; then
+mkfs.btrfs -f -L $drivename0 $system0
+elif [ "$fs0" = "ext4" ]; then
+mkfs.ext4 -f -L $drivename0 $system0
+fi
 printf "%b\nMounting Disks\n" "$*"
 mount $system0 /mnt
 mkdir /mnt/boot
@@ -794,8 +816,6 @@ printf "%b\n[Unit]\nDescription=VMware Networks\nWants=vmware-networks-configura
 
 arch-chroot /mnt systemctl enable vmware-networks-server.service vmware-usbarbitrator.service vmware.service
 
-printf "%b\n$vmwareprokey\n" "$*" > /mnt/home/$user01/Documents/vmwareprokey.txt
-
 fi
 
 
@@ -912,9 +932,9 @@ printf "%bdefault arch.conf\ntimeout 5\nconsole-mode max\neditor no\n" "$*" >> /
 EOT
 
 if [ $native1 = "yes" ]; then
-printf "%btitle Coffee-Linux 'Nevermore' (14.2.0)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
+printf "%btitle Coffee-Linux 'Nevermore' (14.2.2)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
 elif [ $native1 = "no" ]; then
-printf "%btitle Coffee-Linux 'Nevermore' (14.2.0-Unofficial)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
+printf "%btitle Coffee-Linux 'Nevermore' (14.2.2-Unofficial)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
 fi
 
 printf "%blinux /vmlinuz-linux\ninitrd /intel-ucode.img\ninitrd /amd-ucode.img\ninitrd /initramfs-linux.img\n" "$*" >> /mnt/boot/loader/entries/arch.conf
