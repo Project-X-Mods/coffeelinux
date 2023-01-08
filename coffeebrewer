@@ -775,7 +775,7 @@ arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
 mkdir -p /mnt/home/$user01/.config/sway/
 cp /mnt/etc/sway/config /mnt/home/$user01/.config/sway/
 
-printf "%b\nexec_always xrandr --output "\$"(xrandr | grep -m 1 XWAYLAND | awk '{print "\$"1;}') --primary\nexec_always j4-dmenu-desktop --dmenu=bemenu -i --nb "\"""#3f3f3f""\"" --nf "\"""#dcdccc""\"" --fn 'pango:Monospace 12' --term='foot'\ninclude /etc/sway/config.d/*\noutput "\"""*""\"" bg /usr/share/backgrounds/gnome/coffeewall03.jpg fill\n" "$*" >> /mnt/home/$user01/.config/sway/config
+printf "%b\nexec_always xrandr --output "\$"(xrandr | grep -m 1 XWAYLAND | awk '{print "\$"1;}') --primary\nexec_always j4-dmenu-desktop --dmenu=bemenu -i --nb #3f3f3f --nf #dcdccc --fn pango:Monospace 12 --term=foot\ninclude /etc/sway/config.d/*\noutput * bg /usr/share/backgrounds/gnome/coffeewall03.jpg fill\noutput * adaptive_sync on\n" "$*" >> /mnt/home/$user01/.config/sway/config
 
 if [ $gpu0 = "nvidia" ]; then
 printf "%b\nexec_always export WLR_NO_HARDWARE_CURSORS=1\n" "$*" >> /mnt/home/$user01/.config/sway/config
