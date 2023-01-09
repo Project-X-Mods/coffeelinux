@@ -1,4 +1,4 @@
-# Coffee Linux v.14.2.6 "Nevermore"
+# Coffee Linux v.14.2.7 "Nevermore"
 
 ![Screenshot_20221209_223429](https://user-images.githubusercontent.com/8603363/206835846-3e6e3eab-7632-471e-8a88-d2ffb548faa9.png)
 
@@ -18,7 +18,7 @@ Notable Feature: Secure-Boot support is available to install on the OS [via Syst
 
 (You do need to enroll your generated .cer in the MOK manually post-install similar to Ubuntu, it is placed in /boot/ by default )
 
-Java, Wine, Protontricks, DXVK, Vulkan, Steam, Discord, and MS Edge setup.
+Java, Wine, Protontricks, DXVK, Vulkan, Steam, Discord, and Firefox setup.
 
 Ext4 and BTRFS options for compatibility with some hardware.
 
