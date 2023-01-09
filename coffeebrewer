@@ -1,36 +1,36 @@
 #!/bin/sh
 
-baseapps="amd-ucode apparmor archinstall arch-install-scripts b43-fwcutter base base-devel bind brltty broadcom-wl btrfs-progs clonezilla cloud-init cryptsetup darkhttpd ddrescue dhclient dhcpcd diffutils dmidecode dmraid dnsmasq dosfstools e2fsprogs edk2-shell efibootmgr efitools exfatprogs f2fs-tools fatresize fsarchiver gpm gptfdisk grml-zsh-config grub hdparm hyperv intel-ucode iwd jfsutils kitty-terminfo libfido2 libusb-compat linux linux-atm linux-firmware linux-firmware-marvell man-db man-pages mkinitcpio mkinitcpio-archiso mkinitcpio-nfs-utils modemmanager mokutil mtools nano net-tools networkmanager nfs-utils nmap ntfs-3g nvme-cli openconnect open-iscsi openssh open-vm-tools openvpn partclone pcsclite ppp pptpclient qemu-guest-agent refind reflector reiserfsprogs rp-pppoe rsync rxvt-unicode-terminfo sbctl sbsigntools screen sdparm sg3_utils smartmontools sof-firmware squashfs-tools sudo syslinux systemd-resolvconf tcpdump terminus-font testdisk texinfo tmux tpm2-tss udftools usb_modeswitch usbmuxd usbutils vim vpnc wireless-regdb wireless_tools wpa_supplicant xfsprogs xl2tpd zsh"
+baseapps="amd-ucode system-config-printer apparmor archinstall mlocate arch-install-scripts b43-fwcutter base base-devel bind brltty broadcom-wl btrfs-progs clonezilla cloud-init cryptsetup darkhttpd ddrescue dhclient dhcpcd diffutils dmidecode dmraid dnsmasq dosfstools e2fsprogs edk2-shell efibootmgr efitools exfatprogs f2fs-tools fatresize fsarchiver gpm gptfdisk grml-zsh-config grub hdparm hyperv intel-ucode iwd jfsutils kitty-terminfo libfido2 libusb-compat linux linux-atm linux-firmware linux-firmware-marvell man-db man-pages mkinitcpio mkinitcpio-archiso mkinitcpio-nfs-utils modemmanager mokutil mtools nano net-tools networkmanager nfs-utils nmap ntfs-3g nvme-cli openconnect open-iscsi openssh open-vm-tools openvpn partclone pcsclite ppp pptpclient qemu-guest-agent refind reflector reiserfsprogs rp-pppoe rsync rxvt-unicode-terminfo sbctl sbsigntools screen sdparm sg3_utils smartmontools sof-firmware squashfs-tools sudo syslinux systemd-resolvconf tcpdump terminus-font testdisk texinfo tmux tpm2-tss udftools usb_modeswitch usbmuxd usbutils vim vpnc wireless-regdb wireless_tools wpa_supplicant xfsprogs xl2tpd zsh"
 
-coffeeapps="system-config-printer alsa-lib alsa-plugins amd-ucode archiso archivetools archlinux-wallpaper aria2 base-devel bash-completion bash-language-server blueman bluez-libs cabextract chrony clang cmake colord cronie cups dbus dbus-python dconf directx-headers discord dkms efibootmgr egl-wayland elfutils exfatprogs expat extra-cmake-modules file-roller firewalld flatpak gettext giflib gimp git glib2 glibc glslang gnu-free-fonts gnutls go gst-libav gst-plugin-pipewire gst-plugins-bad gst-plugins-base gst-plugins-base-libs gst-plugins-good gst-plugins-ugly gstreamer gtk-engine-murrine hicolor-icon-theme innoextract jdk-openjdk jre-openjdk jre-openjdk-headless kcmutils lib32-alsa-lib lib32-alsa-plugins lib32-giflib lib32-gnutls lib32-gst-plugins-base-libs lib32-libjpeg-turbo lib32-libldap lib32-libpng lib32-libpulse lib32-libva lib32-libva-mesa-driver lib32-libxcomposite lib32-libxinerama lib32-libxslt lib32-mesa-vdpau lib32-mpg123 lib32-ncurses lib32-openal lib32-opencl-icd-loader lib32-opencl-mesa lib32-pipewire lib32-pipewire-jack lib32-v4l-utils lib32-vkd3d lib32-vulkan-icd-loader lib32-vulkan-mesa-layers lib32-vulkan-radeon lib32-vulkan-radeon libclc libdrm libelf libglvnd libjpeg-turbo libldap libnotify libomxil-bellagio libpng libpulse libreoffice-fresh libunwind libva libva-mesa-driver libva-utils libva-vdpau-driver libvdpau libx11 libxcomposite libxdamage libxinerama libxml2 libxrandr libxshmfence libxslt libxxf86vm linux-headers llvm llvm-libs lm_sensors lutris make mesa mesa-utils mesa-vdpau meson mkinitcpio mpg123 mtools nano ncurses neofetch nftables nitrogen nm-connection-editor noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ntfsprogs ntp nullmailer openal opencl-icd-loader opencl-mesa opengl-man-pages openjdk-doc openjdk-src pipewire pipewire-alsa pipewire-jack pipewire-pulse power-profiles-daemon python-gobject python-mako python-pyqt6 qt6 qt6-imageformats qt6-multimedia-ffmpeg qt6-wayland samba shellcheck shotwell steam sudo syslinux systemd terminus-font tesseract-data-eng ttf-liberation ttf-ms-fonts ttf-vista-fonts udev ufw unrar unzip v4l-utils valgrind virtualbox virtualbox-guest-utils virtualbox-host-modules-arch vkd3d vlc vulkan-icd-loader vulkan-mesa-layers vulkan-radeon w3m wine wine-gecko wine-mono winetricks wireplumber xdg-utils xf86-video-amdgpu xorg xorg-apps xorgproto xorg-server xorg-xwayland xreader yay zenity zstd"
+coffeeapps="firefox alsa-lib alsa-plugins amd-ucode archiso archivetools archlinux-wallpaper aria2 base-devel bash-completion bash-language-server blueman bluez-libs cabextract chrony clang cmake colord cronie cups dbus dbus-python dconf directx-headers discord dkms efibootmgr egl-wayland elfutils exfatprogs expat extra-cmake-modules file-roller firewalld flatpak gettext giflib gimp git glib2 glibc glslang gnu-free-fonts gnutls go gst-libav gst-plugin-pipewire gst-plugins-bad gst-plugins-base gst-plugins-base-libs gst-plugins-good gst-plugins-ugly gstreamer gtk-engine-murrine hicolor-icon-theme innoextract jdk-openjdk jre-openjdk jre-openjdk-headless kcmutils lib32-alsa-lib lib32-alsa-plugins lib32-giflib lib32-gnutls lib32-gst-plugins-base-libs lib32-libjpeg-turbo lib32-libldap lib32-libpng lib32-libpulse lib32-libva lib32-libva-mesa-driver lib32-libxcomposite lib32-libxinerama lib32-libxslt lib32-mesa-vdpau lib32-mpg123 lib32-ncurses lib32-openal lib32-opencl-icd-loader lib32-opencl-mesa lib32-pipewire lib32-pipewire-jack lib32-v4l-utils lib32-vkd3d lib32-vulkan-icd-loader lib32-vulkan-mesa-layers lib32-vulkan-radeon lib32-vulkan-radeon libclc libdrm libelf libglvnd libjpeg-turbo libldap libnotify libomxil-bellagio libpng libpulse libreoffice-fresh libunwind libva libva-mesa-driver libva-utils libva-vdpau-driver libvdpau libx11 libxcomposite libxdamage libxinerama libxml2 libxrandr libxshmfence libxslt libxxf86vm linux-headers llvm llvm-libs lm_sensors lutris make mesa mesa-utils mesa-vdpau meson mkinitcpio mpg123 mtools nano ncurses neofetch nftables nitrogen nm-connection-editor noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ntfsprogs ntp nullmailer openal opencl-icd-loader opencl-mesa opengl-man-pages openjdk-doc openjdk-src pipewire pipewire-alsa pipewire-jack pipewire-pulse power-profiles-daemon python-gobject python-mako python-pyqt6 qt6 qt6-imageformats qt6-multimedia-ffmpeg qt6-wayland samba shellcheck shotwell steam sudo syslinux systemd terminus-font tesseract-data-eng ttf-liberation ttf-ms-fonts ttf-vista-fonts udev ufw unrar unzip v4l-utils valgrind virtualbox virtualbox-guest-utils virtualbox-host-modules-arch vkd3d vlc vulkan-icd-loader vulkan-mesa-layers vulkan-radeon w3m wine wine-gecko wine-mono winetricks wireplumber xdg-utils xf86-video-amdgpu xorg xorg-apps xorgproto xorg-server xorg-xwayland xreader yay zenity zstd"
 
 gnomeapps="wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack gdm gnome gnome-photos gnome-color-manager gnome-console gnome-extra gnome-firmware gnome-keyring gnome-menus gnome-online-accounts gnome-text-editor gtk4 polkit-gnome xdg-desktop-portal-gnome"
 
 kdeapps="wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack appstream-qt ark colord-kde gnome-color-manager gnome-disk-utility gnome-menus gtk4 kde-applications-meta kdevelop-python kgamma5 knewstuff kscreen kuserfeedback kvantum plasma-framework plasma-meta plasma-wayland-protocols plasma-wayland-session sddm sddm-kcm xdg-desktop-portal-kde"
 
-cinnamonapps="wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack cinnamon cinnamon-translations geary gnome-calculator gnome-color-manager gnome-console gnome-disk-utility gnome-keyring gnome-menus gnome-photos gnome-software gnome-system-monitor gtk3 lightdm lightdm-slick-greeter xdg-desktop-portal-gtk xed"
+cinnamonapps="polkit polkit-gnome gnome-keyring libsecret gtk3 wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack cinnamon cinnamon-translations geary gnome-calculator gnome-color-manager gnome-console gnome-disk-utility gnome-keyring gnome-menus gnome-photos gnome-software gnome-system-monitor gtk3 lightdm lightdm-slick-greeter xdg-desktop-portal-gtk xed"
 
-mateapps="wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack engrampa eom gnome-calculator gnome-color-manager gnome-console gnome-disk-utility gnome-keyring gnome-menus leafpad marco mate mate-applet-dock mate-applet-streamer mate-common mate-extra mate-media mate-menu mate-netbook mate-power-manager mate-system-monitor mate-terminal mozo orca pluma lightdm lightdm-slick-greeter xed"
+mateapps="polkit polkit-gnome gnome-keyring libsecret gtk3 wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack engrampa eom gnome-calculator gnome-color-manager gnome-console gnome-disk-utility gnome-keyring gnome-menus leafpad marco mate mate-applet-dock mate-applet-streamer mate-common mate-extra mate-media mate-menu mate-netbook mate-power-manager mate-system-monitor mate-terminal mozo orca pluma lightdm lightdm-slick-greeter xed"
 
-xfceapps="wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack arc-gtk-theme galculator geary gnome-disk-utility gnome-keyring leafpad lightdm lightdm-slick-greeter pavucontrol thunar-archive-plugin thunar-media-tags-plugin xfce4 xfce4-battery-plugin xfce4-datetime-plugin xfce4-goodies xfce4-mount-plugin xfce4-netload-plugin xfce4-notifyd xfce4-screensaver xfce4-taskmanager xfce4-wavelan-plugin xfce4-weather-plugin xfce4-whiskermenu-plugin xfce4-xkb-plugin xfwm4"
+xfceapps="polkit polkit-gnome gnome-keyring libsecret gtk3 wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack arc-gtk-theme galculator geary gnome-disk-utility gnome-keyring leafpad lightdm lightdm-slick-greeter pavucontrol thunar-archive-plugin thunar-media-tags-plugin xfce4 xfce4-battery-plugin xfce4-datetime-plugin xfce4-goodies xfce4-mount-plugin xfce4-netload-plugin xfce4-notifyd xfce4-screensaver xfce4-taskmanager xfce4-wavelan-plugin xfce4-weather-plugin xfce4-whiskermenu-plugin xfce4-xkb-plugin xfwm4"
 
 lxdeapps="wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack lxde lxde-common lxdm lxpanel lxsession mousepad xcompmgr xdg-desktop-portal-lxqt"
 
 lxqtapps="wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack lightdm lightdm-gtk-greeter lximage-qt lxqt lxqt-about lxqt-admin lxqt-archiver lxqt-config lxqt-globalkeys lxqt-notificationd lxqt-openssh-askpass lxqt-panel lxqt-policykit lxqt-powermanagement lxqt-qtplugin lxqt-runner lxqt-session lxqt-sudo lxqt-themes mousepad obconf-qt oxygen-icons pavucontrol-qt pcmanfm-qt qterminal screengrab sddm xdg-desktop-portal-lxqt "
 
-deepinapps="deepin deepin-anything-arch deepin-kwin deepin-extra lightdm lightdm-deepin-greeter wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack"
+deepinapps="polkit polkit-gnome gnome-keyring libsecret deepin gtk3 gtk4 deepin-anything-arch deepin-kwin deepin-extra lightdm lightdm-deepin-greeter wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack"
 
-i3apps="i3-wm i3lock i3status i3blocks firefox micro lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
+i3apps="polkit polkit-gnome gnome-keyring libsecret gnome-text-editor gnome-console gnome-system-monitor nautilus i3-wm i3lock gtk3 i3status i3blocks micro lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
 
-swayapps="dmenu bemenu bemenu-wayland bemenu-x11 bemenu-ncurses i3-wm i3blocks micro sway swaybg swayidle swayimg swaylock waybar wlroots polkit seatd feh foot wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol wofi j4-dmenu-desktop xdg-desktop-portal-gtk"
+swayapps="gnome-disk-utility xed htop nemo polkit polkit-gnome gnome-keyring libsecret egl-wayland xorg-xwayland dmenu bemenu bemenu-wayland gtk3 bemenu-x11 bemenu-ncurses i3blocks micro sway swaybg swayidle swayimg swaylock wlroots seatd feh foot wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol wofi j4-dmenu-desktop xdg-desktop-portal-gtk"
 
-cutefishapps="cutefish-calculator cutefish-core cutefish-dock cutefish-filemanager cutefish-icons cutefish-kwin-plugins cutefish-launcher cutefish-qt-plugins cutefish-screenlocker cutefish-settings cutefish-statusbar cutefish-terminal cutefish-wallpapers fishui libcutefish firefox sddm rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
+cutefishapps="polkit polkit-gnome gnome-keyring libsecret cutefish-calculator gtk3 cutefish-core cutefish-dock cutefish-filemanager cutefish-icons cutefish-kwin-plugins cutefish-launcher cutefish-qt-plugins cutefish-screenlocker cutefish-settings cutefish-statusbar cutefish-terminal cutefish-wallpapers fishui libcutefish sddm rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
 
-budgieapps="budgie-control-center budgie-desktop budgie-desktop-view budgie-extras budgie-screensaver firefox lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
+budgieapps="polkit polkit-gnome gnome-keyring libsecret budgie-control-center gtk3 budgie-desktop budgie-desktop-view budgie-extras budgie-screensaver lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
 
-awesomeapps="awesome xterm awesome-terminal-fonts firefox lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
+awesomeapps="polkit polkit-gnome gnome-keyring libsecret awesome xterm gtk3 awesome-terminal-fonts lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
 
-enlightenmentapps="enlightenment firefox lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
+enlightenmentapps="polkit polkit-gnome gnome-keyring libsecret enlightenment gtk3 lightdm lightdm-gtk-greeter rofi feh wireplumber pipewire-pulse pipewire pipewire-alsa pipewire-jack pavucontrol dmenu"
 
 questionare (){
 
@@ -684,8 +684,13 @@ arch-chroot /mnt pacman -Sy --noconfirm $gnomeapps
 arch-chroot /mnt pacman -R --noconfirm gedit gnome-terminal
 arch-chroot /mnt systemctl preset-all
 arch-chroot /mnt systemctl disable systemd-resolved systemd-networkd
-arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
-arch-chroot /mnt systemctl enable gdm
+#arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
+
+if [ $gpu0 = "vm" ]; then
+gpu0="amd"
+fi
+
+arch-chroot /mnt systemctl enable gdm cups
 
 elif [ "$desktop0" = "kde" ]; then 
 
@@ -693,8 +698,13 @@ arch-chroot /mnt pacman -Sy --noconfirm $kdeapps
 
 arch-chroot /mnt systemctl preset-all
 arch-chroot /mnt systemctl disable systemd-resolved systemd-networkd
-arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
-arch-chroot /mnt systemctl enable sddm
+#arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
+
+if [ $gpu0 = "vm" ]; then
+gpu0="amd"
+fi
+
+arch-chroot /mnt systemctl enable sddm cups
 
 elif [ "$desktop0" = "cinnamon" ]; then
 
@@ -702,9 +712,14 @@ arch-chroot /mnt pacman -Sy --noconfirm $cinnamonapps
 
 arch-chroot /mnt systemctl preset-all
 arch-chroot /mnt systemctl disable systemd-resolved systemd-networkd
-arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
+#arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
 #arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
-arch-chroot /mnt systemctl enable lightdm
+
+if [ $gpu0 = "vm" ]; then
+gpu0="amd"
+fi
+
+arch-chroot /mnt systemctl enable lightdm cups
 
 elif [ "$desktop0" = "mate" ]; then
 
@@ -712,9 +727,14 @@ arch-chroot /mnt pacman -Sy --noconfirm $mateapps
 
 arch-chroot /mnt systemctl preset-all
 arch-chroot /mnt systemctl disable systemd-resolved systemd-networkd
-arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
+#arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
 #arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
-arch-chroot /mnt systemctl enable lightdm
+
+if [ $gpu0 = "vm" ]; then
+gpu0="amd"
+fi
+
+arch-chroot /mnt systemctl enable lightdm cups
 
 elif [ "$desktop0" = "lxde" ]; then
 
@@ -722,9 +742,14 @@ arch-chroot /mnt pacman -Sy --noconfirm $lxdeapps
 
 arch-chroot /mnt systemctl preset-all
 arch-chroot /mnt systemctl disable systemd-resolved systemd-networkd
-arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
+#arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
 #arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
-arch-chroot /mnt systemctl enable lxdm 
+
+if [ $gpu0 = "vm" ]; then
+gpu0="amd"
+fi
+
+arch-chroot /mnt systemctl enable lxdm cups
 
 elif [ "$desktop0" = "lxqt" ]; then
 
@@ -732,9 +757,14 @@ arch-chroot /mnt pacman -Sy --noconfirm $lxqtapps
 
 arch-chroot /mnt systemctl preset-all
 arch-chroot /mnt systemctl disable systemd-resolved systemd-networkd
-arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
+#arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
 #arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
-arch-chroot /mnt systemctl enable sddm
+
+if [ $gpu0 = "vm" ]; then
+gpu0="amd"
+fi
+
+arch-chroot /mnt systemctl enable sddm cups
 
 elif [ "$desktop0" = "xfce" ]; then
 
@@ -742,9 +772,14 @@ arch-chroot /mnt pacman -Sy --noconfirm $xfceapps
 
 arch-chroot /mnt systemctl preset-all
 arch-chroot /mnt systemctl disable systemd-resolved systemd-networkd
-arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
+#arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
 #arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
-arch-chroot /mnt systemctl enable lightdm
+
+if [ $gpu0 = "vm" ]; then
+gpu0="amd"
+fi
+
+arch-chroot /mnt systemctl enable lightdm cups
 
 elif [ "$desktop0" = "deepin" ]; then
 
@@ -752,9 +787,14 @@ arch-chroot /mnt pacman -Sy --noconfirm $deepinapps
 
 arch-chroot /mnt systemctl preset-all
 arch-chroot /mnt systemctl disable systemd-resolved systemd-networkd
-arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
+#arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
 #arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
-arch-chroot /mnt systemctl enable lightdm
+
+if [ $gpu0 = "vm" ]; then
+gpu0="amd"
+fi
+
+arch-chroot /mnt systemctl enable lightdm cups
 
 elif [ "$desktop0" = "i3" ]; then
 
@@ -762,21 +802,23 @@ arch-chroot /mnt pacman -Sy --noconfirm $i3apps
 
 arch-chroot /mnt systemctl preset-all
 arch-chroot /mnt systemctl disable systemd-resolved systemd-networkd
-arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
+#arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
 #arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
-arch-chroot /mnt systemctl enable lightdm
+
+if [ $gpu0 = "vm" ]; then
+gpu0="amd"
+fi
+
+arch-chroot /mnt systemctl enable lightdm cups
 
 elif [ "$desktop0" = "sway" ]; then
 
 arch-chroot /mnt pacman -Sy --noconfirm $swayapps
 arch-chroot /mnt systemctl preset-all
 arch-chroot /mnt systemctl disable systemd-resolved systemd-networkd
-arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
-mkdir -p /mnt/home/$user01/.config/sway/
-cp /mnt/etc/sway/config /mnt/home/$user01/.config/sway/
-
-printf "%b\nexec_always xrandr --output "\$"(xrandr | grep -m 1 XWAYLAND | awk '{print "\$"1;}') --primary\nexec_always j4-dmenu-desktop --dmenu=bemenu -i --nb #3f3f3f --nf #dcdccc --fn pango:Monospace 12 --term=foot\ninclude /etc/sway/config.d/*\noutput * bg /usr/share/backgrounds/gnome/coffeewall03.jpg fill\noutput * adaptive_sync on\n" "$*" >> /mnt/home/$user01/.config/sway/config
-
+#arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
+#mkdir -p /mnt/home/$user01/.config/sway/
+cp /opt/config /mnt/etc/sway/config
 printf "%b\nif [ -z ""\$"\{DISPLAY\}" ] && [ ""\$"\{XDG_VTNR\}" -eq 1 ]; then\nexec sway\nfi\n" "$*" >> /mnt/etc/profile
 
 if [ $gpu0 = "nvidia" ]; then
@@ -787,6 +829,7 @@ printf "%b\nexec_always export WLR_NO_HARDWARE_CURSORS=1\n" "$*" >> /mnt/home/$u
 gpu0="amd"
 fi
 
+arch-chroot /mnt systemctl enable cups
 #arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
 
 
@@ -795,39 +838,55 @@ elif [ "$desktop0" = "cutefish" ]; then
 arch-chroot /mnt pacman -Sy --noconfirm $cutefishapps
 arch-chroot /mnt systemctl preset-all
 arch-chroot /mnt systemctl disable systemd-resolved systemd-networkd
-arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
+#arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
 #arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
-arch-chroot /mnt systemctl enable sddm
+
+if [ $gpu0 = "vm" ]; then
+gpu0="amd"
+fi
+
+arch-chroot /mnt systemctl enable sddm cups
 
 elif [ "$desktop0" = "budgie" ]; then
 
 arch-chroot /mnt pacman -Sy --noconfirm $budgieapps
 arch-chroot /mnt systemctl preset-all
 arch-chroot /mnt systemctl disable systemd-resolved systemd-networkd
-arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
+#arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
+
+if [ $gpu0 = "vm" ]; then
+gpu0="amd"
+fi
 
 #arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
-arch-chroot /mnt systemctl enable lightdm
+arch-chroot /mnt systemctl enable lightdm cups
 
 elif [ "$desktop0" = "enlightenment" ]; then
 
 arch-chroot /mnt pacman -Sy --noconfirm $enlightenmentapps
 arch-chroot /mnt systemctl preset-all
 arch-chroot /mnt systemctl disable systemd-resolved systemd-networkd
-arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
+
+if [ $gpu0 = "vm" ]; then
+gpu0="amd"
+fi
 
 #arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
-arch-chroot /mnt systemctl enable lightdm
+arch-chroot /mnt systemctl enable lightdm cups
 
 elif [ "$desktop0" = "awesome" ]; then
 
 arch-chroot /mnt pacman -Sy --noconfirm $awesomeapps
 arch-chroot /mnt systemctl preset-all
 arch-chroot /mnt systemctl disable systemd-resolved systemd-networkd
-arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
+#arch-chroot /mnt systemctl enable systemd-user-sessions systemd-logind
+
+if [ $gpu0 = "vm" ]; then
+gpu0="amd"
+fi
 
 #arch-chroot /mnt pacman -R --noconfirm pipewire-media-session jack2 pulseaudio
-arch-chroot /mnt systemctl enable lightdm
+arch-chroot /mnt systemctl enable lightdm cups
 
 fi
 
@@ -1000,13 +1059,13 @@ arch-chroot /mnt /bin/bash <<"EOT"
 printf "%bInstalling SystemD-Bootloader UEFI\n" "$*"
 mkinitcpio -P
 bootctl install
-printf "%b\ndefault arch.conf\ntimeout 3\nconsole-mode max\neditor no\n" "$*" > /boot/loader/loader.conf
+printf "%b\ndefault arch.conf\ntimeout 3\nconsole-mode keep\neditor no\n" "$*" > /boot/loader/loader.conf
 EOT
 
 if [ $native1 = "yes" ]; then
-printf "%btitle Coffee-Linux 'Nevermore' (14.2.6)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
+printf "%btitle Coffee-Linux 'Nevermore' (14.2.7)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
 elif [ $native1 = "no" ]; then
-printf "%btitle Coffee-Linux 'Nevermore' (14.2.6-Unofficial)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
+printf "%btitle Coffee-Linux 'Nevermore' (14.2.7-Unofficial)\n" "$*" >> /mnt/boot/loader/entries/arch.conf
 fi
 
 printf "%blinux /vmlinuz-linux\ninitrd /intel-ucode.img\ninitrd /amd-ucode.img\ninitrd /initramfs-linux.img\n" "$*" >> /mnt/boot/loader/entries/arch.conf
@@ -1062,7 +1121,7 @@ printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodi
 printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y text-engine-git
 printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y protontricks
 printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y game-devices-udev
-printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a --answerdiff n --answeredit y --answerupgrade y microsoft-edge-stable
+#printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a --answerdiff n --answeredit y --answerupgrade y microsoft-edge-stable
 printf "%b2 7\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y mangohud
 printf "%b1\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y gamescope
 printf "%b2\n" "$*" | arch-chroot /mnt sudo -Su "$user01" yay --noconfirm --nodiffmenu --noremovemake --answerclean a  --answerdiff n --answeredit y --answerupgrade y dxvk-bin
@@ -1279,13 +1338,12 @@ if [ "$native1" = "yes" ]; then
   cp /opt/backgrounds/coffee/* /mnt/usr/share/backgrounds/gnome/
   cp /opt/os-release /mnt/etc/
   cp /opt/lsb-release /mnt/etc/
-  cp /opt/* /mnt/opt/
-  mkdir -p /mnt/home/"$user01"/.config/neofetch/
-  cp /opt/config.conf /mnt/home/"$user01"/.config/neofetch/config.conf
+  cp -r /opt/* /mnt/opt/
+  mkdir -p /mnt/etc/neofetch/
+  cp /opt/config.conf /mnt/etc/neofetch/config.conf
   cp /usr/local/bin/coffeebrewer /mnt/usr/local/bin/
   arch-chroot /mnt chmod 755 /usr/local/bin/coffeebrewer
-  arch-chroot /mnt chmod 755 /home/$user01/.config/sway/config
-  arch-chroot /mnt chmod 755 /home/$user01/.config/neofetch/config.conf
+  #arch-chroot /mnt chmod 755 /home/$user01/.config/neofetch/config.conf
 fi
 
 printf "%b\n Did the installer complete sussessfully? \n" "$*"
