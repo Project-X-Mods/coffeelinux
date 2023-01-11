@@ -1,16 +1,14 @@
-# Coffee Linux v.14.2.7 "Nevermore"
+# Coffee Linux v.15.0.0 "Opus"
 
 ![Screenshot_20221209_223429](https://user-images.githubusercontent.com/8603363/206835846-3e6e3eab-7632-471e-8a88-d2ffb548faa9.png)
 
 We believe using your PC should be as easy as a sip of coffee, so we fixed it up to be that way for you. No guesswork, it just does what its supposed to do. So kick back, relax and enjoy your cup.
 
-CoffeeLinux is basically Arch Linux, but has been made easy for anyone to install and use. 
+CoffeeLinux is a spin of Arch, but has been made easy for anyone to install and use for nearly anything. 
 The idea here is to have everything ready for you right away.
 
 It asks a few simple questions to customize the OS to your liking, then you just wait for the reboot. Everything is downloaded and installed on the system for the system. 
 Everything that really can be given a user choice has been. This is still YOUR OS YOUR WAY. We have just made simpler to install with minimal hiccups.
-
-Simply type "coffeebrewer" to begin installation.
 
 Notable Feature: Secure-Boot support is available to install on the OS [via SystemD-Bootloader ONLY] (however it does not boot the ISO itself in Secure-Boot mode)
 
@@ -18,39 +16,41 @@ Notable Feature: Secure-Boot support is available to install on the OS [via Syst
 
 (You do need to enroll your generated .cer in the MOK manually post-install similar to Ubuntu, it is placed in /boot/ by default )
 
-Java, Wine, Protontricks, DXVK, Vulkan, Steam, Discord, and Firefox setup.
+=========================================================================
+
+A Prismatic Environment (15 Desktop/WM Sessions* in one) with GDM Login/Session Manager.
+
+Prismatic Session selection. Change DE/WM anytime, no reinstallation needed.
+
+*=Session choices include: Awesome*** , Budgie, Cutefish, Cinnamon** , i3, KDE/Openbox, LXDE, LXQT, Plasma (KDE)** ,Sway*** , XFCE, Yaru (Gnome)**
+**= includes multiple session types
+***= WM only (no Desktop)
+
+=========================================================================
+
+Java, Wine, Protontricks, DXVK, Vulkan, Steam, Discord, Heroic (Epic/GOG) games Launcher, Lutris and Firefox setup.
 
 Ext4 and BTRFS options for compatibility with some hardware.
 
-A ton of critical and optional dependencies resolved for most packages.
+A ton of critical and optional dependencies resolved for most common packages.
 
 Additional firmware from mkinitcpio-firmware to eliminate most default kernel module warnings.
 
-Latest Controller and Graphics drivers.
+Latest Controller and Graphics drivers (AMD/Nvidia).
 
-Latest Linux Kernel and basic drivers.
+Latest Linux Kernel and broad spectrum set of drivers.
 
 Bluetooth Support.
 
 Latest Gamescope and MangoHud.
 
-A choice of 14 different Desktop Environments / Window Managers. (You get to choose along the way)
-
 Yay AUR package manager (Terminal only).
 
-Proper GPU drivers installed (AMD or Nvidia).
+Yaru/Ubuntu/Mint and Arc theming packages installed. (with Ubuntu Dock and Icons on Yaru sessions)
 
-True Zero-Out Drive formatting (if selected).
+GDM settings app. (Login Screen)
 
-Yaru/Ubuntu theming for Gnome ( active by default in Yaru sessions). (with Ubuntu Dock and Icons)
-
-GDM customization App. (Login Screen of Gnome DE)
-
-Mint Theming for Cinnamon, Mate, and XFCE.
-
-CoffeeLinux Wallpapers, and OS Info for native iso installs (by choice).
-
-Custom Neofetch Logo.
+Sway settings GUI app. (Good to have)
 
 Pamac GUI Package Manager.
 
@@ -61,6 +61,8 @@ VMware Workstation/Player (if selected)
 Choice of Bootloader (SystemD-Bootloader UEFI w/secure-boot support or Grub UEFI or BIOS/MBR w/o secure-boot)
 
 Syslinux bootloader on .iso only for additional VM client support (ie: VMware Player).
+
+And of course all the default apps for all DE/WMs are manditory installed.
 
 Just use Etcher to write the iso to usb, and go. Easy-peezy.
 
